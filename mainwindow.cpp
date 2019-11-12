@@ -81,24 +81,28 @@ void MainWindow::moveToTripSelect()
 
 void MainWindow::moveToNuggetsTrip()
 {
+	tripWind.setNuggetsTrip();
 	//Stacked Widget index 5: Trip Window
 	ui->stackedWidget->setCurrentIndex(5);
 }
 
 void MainWindow::moveToSpecifiedTrip()
 {
+	tripWind.setSpecifiedTrip();
 	//Stacked Widget index 5: Trip Window
 	ui->stackedWidget->setCurrentIndex(5);
 }
 
 void MainWindow::moveToPistonsTrip()
 {
+	tripWind.setPistonsTrip();
 	//Stacked Widget index 5: Trip Window
 	ui->stackedWidget->setCurrentIndex(5);
 }
 
 void MainWindow::moveToShortestTrip()
 {
+	tripWind.setShortestTrip();
 	//Stacked Widget index 5: Trip Window
 	ui->stackedWidget->setCurrentIndex(5);
 }

@@ -15,6 +15,14 @@ public:
 	explicit TripWindow(QWidget *parent = nullptr);
 	~TripWindow();
 
+	void setNuggetsTrip();
+
+	void setSpecifiedTrip();
+
+	void setPistonsTrip();
+
+	void setShortestTrip();
+
 signals:
 	void moveToTripSelectClicked();
 

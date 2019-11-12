@@ -62,10 +62,69 @@
     </item>
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
-      <widget class="QWidget" name="DenverNuggetsPage"/>
-      <widget class="QWidget" name="CustomSpecifiedPage"/>
-      <widget class="QWidget" name="DetroitPistonsPage"/>
-      <widget class="QWidget" name="CustomShortestPage"/>
+      <property name="currentIndex">
+       <number>3</number>
+      </property>
+      <widget class="QWidget" name="DenverNuggetsPage">
+       <widget class="QLabel" name="label_2">
+        <property name="geometry">
+         <rect>
+          <x>370</x>
+          <y>10</y>
+          <width>101</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Denver Nuggets Trip</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="CustomSpecifiedPage">
+       <widget class="QLabel" name="label_3">
+        <property name="geometry">
+         <rect>
+          <x>330</x>
+          <y>10</y>
+          <width>181</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Choose Custom Cities to Visit in order</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="DetroitPistonsPage">
+       <widget class="QLabel" name="label_4">
+        <property name="geometry">
+         <rect>
+          <x>370</x>
+          <y>10</y>
+          <width>101</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Detroit Pistons Trip</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="CustomShortestPage">
+       <widget class="QLabel" name="label_5">
+        <property name="geometry">
+         <rect>
+          <x>310</x>
+          <y>10</y>
+          <width>231</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Select Custom Cities to Visit in Shortest Distance</string>
+        </property>
+       </widget>
+      </widget>
      </widget>
     </item>
     <item>

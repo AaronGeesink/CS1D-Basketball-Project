@@ -13,6 +13,26 @@ TripWindow::~TripWindow()
 	delete ui;
 }
 
+void TripWindow::setNuggetsTrip()
+{
+	ui->stackedWidget->setCurrentIndex(0);
+}
+
+void TripWindow::setSpecifiedTrip()
+{
+	ui->stackedWidget->setCurrentIndex(1);
+}
+
+void TripWindow::setPistonsTrip()
+{
+	ui->stackedWidget->setCurrentIndex(2);
+}
+
+void TripWindow::setShortestTrip()
+{
+	ui->stackedWidget->setCurrentIndex(3);
+}
+
 void TripWindow::on_moveToTripSelect_clicked()
 {
 	emit moveToTripSelectClicked();
