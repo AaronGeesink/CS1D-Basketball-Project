@@ -2,6 +2,8 @@
 #define LOGINWINDOW_H
 
 #include <QWidget>
+#include <QtSql>
+#include <QMessageBox>
 
 namespace Ui {
 class LoginWindow;
