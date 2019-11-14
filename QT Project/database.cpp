@@ -6,7 +6,9 @@ void createDatabase()
 	QSqlDatabase db;
 	db = QSqlDatabase::database();
 	// Load database from file
-	const QString DB_PATH = QDir::currentPath() + "/resources/database.db";
+    QString path = qApp->applicationDirPath();
+
+    const QString DB_PATH = path + "/resources/database.db";
 	db.setDatabaseName(DB_PATH);
 }
 
