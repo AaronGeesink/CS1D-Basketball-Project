@@ -56,19 +56,19 @@
     <rect>
      <x>90</x>
      <y>250</y>
-     <width>75</width>
+     <width>111</width>
      <height>23</height>
     </rect>
    </property>
    <property name="text">
-    <string>View Arenas</string>
+    <string>Arenas and Teams</string>
    </property>
   </widget>
   <widget class="QPushButton" name="eastTeamButton">
    <property name="geometry">
     <rect>
      <x>90</x>
-     <y>300</y>
+     <y>350</y>
      <width>171</width>
      <height>31</height>
     </rect>
@@ -81,7 +81,7 @@
    <property name="geometry">
     <rect>
      <x>90</x>
-     <y>350</y>
+     <y>400</y>
      <width>171</width>
      <height>31</height>
     </rect>
@@ -94,7 +94,7 @@
    <property name="geometry">
     <rect>
      <x>90</x>
-     <y>400</y>
+     <y>450</y>
      <width>81</width>
      <height>23</height>
     </rect>
@@ -134,6 +134,32 @@
    </property>
    <property name="text">
     <string>View Team</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="seatButton">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>300</y>
+     <width>151</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Arena Seating Capacities</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="yearButton">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>490</y>
+     <width>111</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Teams by Join Year</string>
    </property>
   </widget>
  </widget>
