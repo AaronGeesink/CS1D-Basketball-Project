@@ -29,6 +29,7 @@ SOURCES += \
     viewwindow.cpp
 
 HEADERS += \
+    Map.h \
     database.h \
     editwindow.h \
     graphwindow.h \
