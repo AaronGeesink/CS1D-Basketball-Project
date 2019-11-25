@@ -125,7 +125,7 @@ void EditWindow::on_deleteSouvenirItem_clicked()
 			QString souvenirValue;
 			souvenirValue = ui->deleteLineEdit->text();
 			QSqlQuery query(QSqlDatabase::database());
-			query.prepare("DELETE FROM souvenir WHERE souvenirID='"+souvenirValue+"'");
+			query.prepare("DELETE FROM souvenirs WHERE souvenirID='"+souvenirValue+"'");
 			if(!query.exec())
 			{
 				qDebug("Failed to delete");
