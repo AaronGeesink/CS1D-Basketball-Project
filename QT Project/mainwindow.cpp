@@ -53,6 +53,7 @@ void MainWindow::on_moveToView_clicked()
 {
 	//Stacked Widget index 1: View Window
 	ui->stackedWidget->setCurrentIndex(1);
+	viewWind.populateCombo();
 }
 
 void MainWindow::on_moveToEdit_clicked()
