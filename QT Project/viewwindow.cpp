@@ -135,3 +135,18 @@ void ViewWindow::on_yearButton_clicked()
 	model->setQuery(query);
 	ui->databaseView->setModel(model);
 }
+
+void ViewWindow::on_souvenirButton_clicked()
+{
+	QString team;
+	team = ui->teamComboBox->currentText();
+
+	model = new QSqlQueryModel;
+
+	checkConnection();
+	QSqlQuery query(QSqlDatabase::database());
+
+	query.exec("select * from souvenirs WHERE teamName='"+team+"'");
+	model->setQuery(query);
+	ui->databaseView->setModel(model);
+}

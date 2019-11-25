@@ -35,6 +35,8 @@ private slots:
 
 	void on_yearButton_clicked();
 
+	void on_souvenirButton_clicked();
+
 private:
 	Ui::ViewWindow *ui;
 	QSqlQueryModel * model;	/// A model used to display SQL tables
