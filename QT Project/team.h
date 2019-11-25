@@ -19,8 +19,8 @@ enum Divisions
 
 struct Edge
 {
-	QString start;
-	QString end;
+	QString startTeam;
+	QString endTeam;
 	int distance;
 };
 
@@ -29,41 +29,40 @@ class Team
 public:
 	Team();
 
-	QString getConference();
-	QString getDivision();
+	//QString getConference();
+	//QString getDivision();
 	QString getTeamName();
 	QString getLocation();
-	QString getArenaName();
-	int getArenaCap();
-	int getJoinYear();
-	QString getCoach();
+	//QString getArenaName();
+	//int getArenaCap();
+	//int getJoinYear();
+	//QString getCoach();
 	std::vector<Edge> getEdges();
 	//Map<float, Souvenir> getSouvenirs();
 
-	void setConference(QString conference);
-	void setDivision(QString division);
+	//void setConference(QString conference);
+	//void setDivision(QString division);
 	void setTeamName(QString teamName);
 	void setLocation(QString location);
-	void setArenaName(QString arenaName);
-	void setArenaCap(int arenaCap);
-	void setJoinYear(int joinYear);
-	void setCoach(QString coach);
-	void setEdges(std::vector<Edge>);
+	//void setArenaName(QString arenaName);
+	//void setArenaCap(int arenaCap);
+	//void setJoinYear(int joinYear);
+	//void setCoach(QString coach);
+	void setEdges(std::vector<Edge> edges);
 	//void setSouvenirs(Map<float, Souvenir>);
 	//void addSouvenir(Souvenir souvenir);
 
 private:
-	QString conference;
-	QString division;
+	//QString conference;
+	//QString division;
 	QString teamName;
 	QString location;
-	QString arenaName;
-	int arenaCap;
-	int joinYear;
-	QString coach;
+	//QString arenaName;
+	//int arenaCap;
+	//int joinYear;
+	//QString coach;
 	std::vector<Edge> edges;
 	//Map<float, Souvenir> souvenirs;
-
 };
 
 #endif // TEAM_H
