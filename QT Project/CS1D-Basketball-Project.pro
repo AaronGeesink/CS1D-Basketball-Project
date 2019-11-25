@@ -23,7 +23,9 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     resultswindow.cpp \
+    souvenir.cpp \
     souvenirwindow.cpp \
+    team.cpp \
     tripselectwindow.cpp \
     tripwindow.cpp \
     viewwindow.cpp
@@ -35,7 +37,9 @@ HEADERS += \
     loginwindow.h \
     mainwindow.h \
     resultswindow.h \
+    souvenir.h \
     souvenirwindow.h \
+    team.h \
     tripselectwindow.h \
     tripwindow.h \
     viewwindow.h

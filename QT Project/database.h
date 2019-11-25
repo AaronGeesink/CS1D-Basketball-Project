@@ -4,6 +4,7 @@
 #include <QtSql>
 #include <QFile>
 #include <QDir>
+#include "team.h"
 
 /**
  * @author Garrett Geesink
@@ -19,5 +20,13 @@ void createDatabase();
  * @return bool
  */
 bool checkConnection();
+
+/**
+ * @author Aaron Geesink
+ * @brief queryTeams()
+ * Queries the SQL database for the information of every team
+ * @return std::vector<Team>
+ */
+std::vector<Team> queryTeams();
 
 #endif // DATABASE_H
