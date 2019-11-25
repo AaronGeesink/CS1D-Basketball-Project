@@ -43,9 +43,12 @@ std::vector<Team> queryTeams()
 		team.setLocation(queryLocation(teamNames[i]));
 
 		qDebug() << "Name: " << team.getTeamName()
-				 << "Location: " << team.getLocation()
-				 << "Num edges: " << team.getEdges().size()
-				 << "\n\n";
+				 << "\nLocation: " << team.getLocation()
+				 << "\nNum edges: " << team.getEdges().size()
+				 << "\nEdge 1 start: " << team.getEdges()[0].startTeam
+				 << "\nEdge 1 end:" << team.getEdges()[0].endTeam
+				 << "\nEdge 1 distance:" << team.getEdges()[0].distance
+				 << "\n";
 	}
 
 	return teams;
@@ -58,7 +61,7 @@ std::vector<QString> queryTeamNames()
 
 	checkConnection();
 	QSqlQuery query(QSqlDatabase::database());
-	query.prepare("SELECT * FROM teams WHERE active='"+active+"'");
+	query.prepare("SELECT teamName FROM teams WHERE active='"+active+"'");
 
 	if(!query.exec())
 	{
@@ -127,6 +130,7 @@ std::vector<Edge> queryEdges(QString startTeam)
 	{
 		distances.push_back(query.value(0).toInt());
 	}
+
 // construct the edges
 	for (int i = 0; i < endTeams.size(); i++)
 	{
@@ -149,7 +153,7 @@ std::vector<Souvenir> querySouvenirs(QString teamName)
 	QSqlQuery query;
 
 // Query the souvenir names for the team
-	query.prepare("SELECT souvenirName FROM souvenirs WHERE teamName = :teamName");
+	query.prepare("SELECT item FROM souvenirs WHERE teamName = :teamName");
 	query.bindValue(":teamName", teamName);
 	if(!query.exec())
 	{
@@ -196,6 +200,9 @@ QString queryLocation(QString teamName)
 	}
 	else
 	{
-		return query.value(0).toString();
+		query.next();
+		location = query.value(0).toString();
 	}
+
+	return location;
 }
