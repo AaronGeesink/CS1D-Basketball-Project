@@ -40,7 +40,6 @@ void graphAdjList::addTeamEdges()
         g->insert( std::pair<QString, vertex>(*i, *v) );
         delete v;
     }
-
 }
 
 graphAdjList::graphAdjList(std::map<QString, vertex> *newG)
@@ -139,6 +138,7 @@ void graphAdjList::DFS2(QString u, std::map<QString, bool> &visited,
     g->at(u).startTime += t;
     for (auto i = g->at(u).adjL.begin(); i!=g->at(u).adjL.end(); i++)
     {
+
         if (!visited[i->endTeam])
         {
             deDist += i->distance;
@@ -148,7 +148,6 @@ void graphAdjList::DFS2(QString u, std::map<QString, bool> &visited,
             discEdges.push_back(edge);
             qDebug() << '\n' << i->startTeam << " -> " << i->endTeam << " ("<<deDist<<") \n";
             DFS2(i->endTeam, visited, discEdges, backEdges, forwardEdges, crossEdges);
-
         }
         else
         {
@@ -189,6 +188,7 @@ void graphAdjList::check_con_DFS(QString u, std::map<QString, bool> &visited)
 }
 */
 
+
 void graphAdjList::DFS1(QString u)
 {
     std::map<QString, bool> visited;
@@ -201,23 +201,33 @@ void graphAdjList::DFS1(QString u)
     std::vector<QString> forwardEdges;
     std::vector<QString> crossEdges;
     DFS2(u, visited, discEdges, backEdges, forwardEdges, crossEdges);
+
     qDebug() << "DISCOVERY DISTANCE: " << deDist << "\n\n";
     qDebug() << "DISCOVERY EDGES:\n";
+
     for(auto de = discEdges.begin(); de!=discEdges.end(); de++)
     {
         qDebug() << "(" << *de << ") \n";
     }
+
     qDebug() << "\nBACK EDGES:\n";
+
     for(auto be = backEdges.begin(); be!=backEdges.end(); be++)
     {
         qDebug() << "(" << *be << ") \n";
     }
+
     qDebug() << "\nFORWARD EDGES:\n";
+
+
     for(auto fe = forwardEdges.begin(); fe!=forwardEdges.end(); fe++)
     {
         qDebug() << "(" << *fe << ") \n";
     }
+
     qDebug() << "\nCROSS EDGES:\n";
+
+
     for(auto ce = crossEdges.begin(); ce!=crossEdges.end(); ce++)
     {
         qDebug() << "(" << *ce << ") \n";
