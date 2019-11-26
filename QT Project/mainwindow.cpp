@@ -138,7 +138,7 @@ void MainWindow::on_moveToGraph_clicked()
     //checkConnection();
     teamGraph.sortByDist();
     teamGraph.printGraph();
-    teamGraph.DFS1("Los Angeles Lakers");
+	teamGraph.DFS1("Orlando Magic");
 
 
 
