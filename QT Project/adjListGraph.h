@@ -31,6 +31,7 @@ class graphAdjList
 {
     public:
         graphAdjList();
+        ~graphAdjList();
         graphAdjList(std::map<QString, vertex> *newG);
         void addEdge( QString v1, QString v2, int distance );
         void DFS1(QString u);
@@ -40,6 +41,7 @@ class graphAdjList
         
     
     private:
+        void addTeamEdges();
         void check_con_DFS(int u, std::vector<bool> &visited);
         void DFS2(QString u, std::map<QString, bool> &visited,
                   std::vector<QString>& discEdges, std::vector<QString>& backEdges,

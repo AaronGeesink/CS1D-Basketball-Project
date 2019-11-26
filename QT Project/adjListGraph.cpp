@@ -1,42 +1,46 @@
 #include "adjListGraph.h"
+#include "database.h"
 
 static comparator lessthan;
+
+graphAdjList::graphAdjList()
+{
+    g = new std::map<QString, vertex>;
+    addTeamEdges();
+}
+
+graphAdjList::~graphAdjList()
+{
+    delete g;
+}
 
 void graphAdjList::addEdge( QString v1, QString v2, int distance )
 {
     Edge e1{v1,v2,distance};
     Edge e2{v2,v1,distance};
-    g->at(v1).adjL.push_back(e1);
-    g->at(v2).adjL.push_back(e2);
-    g->at(v1).vertex = v1;
-    g->at(v2).vertex = v2;
+    vertex first;
+    vertex second;
+    first.adjL.push_back(e1);
+    first.vertex = v1;
+    second.adjL.push_back(e1);
+    second.vertex = v1;
+    g->insert( std::pair<QString, vertex>(v1, first) );
+    g->insert( std::pair<QString, vertex>(v2, second) );
 }
 
-/*
-std::string findName( int i )
+void graphAdjList::addTeamEdges()
 {
-    switch(i)
+
+    std::vector<QString> teams = queryTeamNames();
+    for(auto i = teams.begin(); i != teams.end(); i++)
     {
-        case Chicago: return "Chicago";
-        case Seattle: return "Seattle";
-        case Boston: return "Boston";
-        case SanFrancisco: return "San Francisco";
-        case NewYork: return "New York";
-        case LosAngeles: return "Los Angeles";
-        case Denver: return "Denver";
-        case KansasCity: return "Kansas City";
-        case Atlanta: return "Atlanta";
-        case Dallas: return "Dallas";
-        case Houston: return "Houston";
-        case Miami: return "Miami";
+        vertex *v = new vertex;
+        v->adjL = queryEdges(*i);
+        v->vertex = *i;
+        g->insert( std::pair<QString, vertex>(*i, *v) );
+        delete v;
     }
-    return "NA";
-}
-*/
 
-graphAdjList::graphAdjList()
-{
-    g = new std::map<QString, vertex>;
 }
 
 graphAdjList::graphAdjList(std::map<QString, vertex> *newG)
@@ -54,7 +58,7 @@ void graphAdjList::printGraph()
         qDebug() << "Node " << i->second.vertex << " makes an edge with \n";
         for (auto j = i->second.adjL.begin(); j!=i->second.adjL.end(); j++)
         {
-            s = j->end;
+            s = j->endTeam;
             w = j->distance;
             qDebug() << "\tNode " << s << " with weight = "
                  << w << "\n";
@@ -62,6 +66,7 @@ void graphAdjList::printGraph()
         std::cout << "\n";
     }
 }
+
 /*
 graph *graphAdjList::reverseEdges()
 {
@@ -134,28 +139,28 @@ void graphAdjList::DFS2(QString u, std::map<QString, bool> &visited,
     g->at(u).startTime += t;
     for (auto i = g->at(u).adjL.begin(); i!=g->at(u).adjL.end(); i++)
     {
-        if (!visited[i->end])
+        if (!visited[i->endTeam])
         {
             deDist += i->distance;
-            edge = i->start;
+            edge = i->startTeam;
             edge += " -> ";
-            edge += i->end;
+            edge += i->endTeam;
             discEdges.push_back(edge);
-            qDebug() << '\n' << i->start << " -> " << i->end << " ("<<deDist<<") \n";
-            DFS2(i->end, visited, discEdges, backEdges, forwardEdges, crossEdges);
+            qDebug() << '\n' << i->startTeam << " -> " << i->endTeam << " ("<<deDist<<") \n";
+            DFS2(i->endTeam, visited, discEdges, backEdges, forwardEdges, crossEdges);
 
         }
         else
         {
-            edge = i->start;
+            edge = i->startTeam;
             edge += " -> ";
-            edge += i->end;
+            edge += i->endTeam;
 
-            if(g->at(i->end).endTime == 0)
+            if(g->at(i->endTeam).endTime == 0)
             {
                 backEdges.push_back(edge);
             }
-            else if(g->at(i->start).startTime > g->at(i->end).startTime)
+            else if(g->at(i->startTeam).startTime > g->at(i->endTeam).startTime)
             {
                 crossEdges.push_back(edge);
             }
@@ -169,6 +174,7 @@ void graphAdjList::DFS2(QString u, std::map<QString, bool> &visited,
     t+=1;
     g->at(u).endTime += t;
 }
+
 /*
 void graphAdjList::check_con_DFS(QString u, std::map<QString, bool> &visited)
 {
@@ -183,8 +189,6 @@ void graphAdjList::check_con_DFS(QString u, std::map<QString, bool> &visited)
 }
 */
 
-// This function does DFSUtil() for all
-// unvisited vertices.
 void graphAdjList::DFS1(QString u)
 {
     std::map<QString, bool> visited;
@@ -197,23 +201,23 @@ void graphAdjList::DFS1(QString u)
     std::vector<QString> forwardEdges;
     std::vector<QString> crossEdges;
     DFS2(u, visited, discEdges, backEdges, forwardEdges, crossEdges);
-    std::cout << std::endl << "DISCOVERY DISTANCE: " << deDist << std::endl <<std::endl;
-    std::cout << "DISCOVERY EDGES:\n";
+    qDebug() << "DISCOVERY DISTANCE: " << deDist << "\n\n";
+    qDebug() << "DISCOVERY EDGES:\n";
     for(auto de = discEdges.begin(); de!=discEdges.end(); de++)
     {
         qDebug() << "(" << *de << ") \n";
     }
-    std::cout << "\nBACK EDGES:\n";
+    qDebug() << "\nBACK EDGES:\n";
     for(auto be = backEdges.begin(); be!=backEdges.end(); be++)
     {
         qDebug() << "(" << *be << ") \n";
     }
-    std::cout << "\nFORWARD EDGES:\n";
+    qDebug() << "\nFORWARD EDGES:\n";
     for(auto fe = forwardEdges.begin(); fe!=forwardEdges.end(); fe++)
     {
         qDebug() << "(" << *fe << ") \n";
     }
-    std::cout << "\nCROSS EDGES:\n";
+    qDebug() << "\nCROSS EDGES:\n";
     for(auto ce = crossEdges.begin(); ce!=crossEdges.end(); ce++)
     {
         qDebug() << "(" << *ce << ") \n";
