@@ -66,6 +66,7 @@ void MainWindow::moveToEdit()
 {
 	//Stacked Widget index 3: Edit Window
 	ui->stackedWidget->setCurrentIndex(3);
+	editWind.populateCombo();
 }
 
 void MainWindow::on_moveToTripSelect_clicked()

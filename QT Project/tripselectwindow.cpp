@@ -1,5 +1,6 @@
 #include "tripselectwindow.h"
 #include "ui_tripselectwindow.h"
+#include "database.h"
 
 TripSelectWindow::TripSelectWindow(QWidget *parent) :
 	QWidget(parent),
@@ -16,6 +17,7 @@ TripSelectWindow::~TripSelectWindow()
 void TripSelectWindow::on_moveToNuggetsTrip_clicked()
 {
 	emit moveToNuggetsTripClicked();
+	queryTeams();
 }
 
 void TripSelectWindow::on_moveToSpecifiedTrip_clicked()
