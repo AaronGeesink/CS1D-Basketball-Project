@@ -1,390 +1,172 @@
-#ifndef MAP_H_
-#define MAP_H_
 
-#include<string>
+#ifndef MAPH_H_
+#define MAPH_H_
+
 #include<iostream>
 
-template<typename K, typename V>
+template<typename V>
 class Position													// a (key, value) pair
 {
 
 public:
-    Position(K key, V value):_key(key), _value(value),
-                             next(nullptr), prev(nullptr){}		// Constructor
-    const K &Key(){return _key;}								// Returning the key reference
+    Position():_key(0), _free(true){}
+    Position(int key, V value):_key(key), _value(value), _free(true){}		// Constructor
+    const int &Key(){return _key;}								// Returning the key reference
     const V &Value(){return _value;}							// Returning the value reference
-    void SetKey(K key){_key = key;}								// Setting a new key
-    void SetValue(V value){_value = value;}						// setting a new value
-    bool operator==(Position<K, V> &n){
+    void SetKey(int key){_key = key;}								// Setting a new key
+    void SetValue(V value){_value = value;}						// setting a new value								// Place a value into the position
+    bool operator==(Position<V> &n){
             return n._key == this->_key && n._value == this->_value;
         }
-    bool operator!=(Position<K, V> &n)
+    bool operator!=(Position<V> &n)
         {
         return n._key != this->_key || n._value != this->_value;
         }
-    Position<K, V> *next;										// Location of the next position
-    Position<K, V> *prev;										// Location of the previous position
+    bool _free;					// true when space is free to place a new data in it
 private:
-    K _key;														// key
+
+    int _key;														// key
     V _value;													// value
 };
 
 
-template<typename K, typename V>
+template<typename V>
 class Map
 {
 public:
 
-    class iterator
-    {
-    public:
-        iterator():p(nullptr){}
-        ~iterator(){p = nullptr;}
-        Position<K, V> operator*()
-        {
-            return *p;
-        }
-        void operator++(int)
-        {
-            p = p->next;
-        }
-        void operator--(int)
-        {
-            p = p->prev;
-        }
-        bool operator!=(iterator n)
-        {
-            return n.p != this->p;
-        }
-        void operator=(iterator n)
-        {
-            this->p = n.p;
-        }
-        Position<K, V> *p;
-    };
-    Map();
-    Map(K key, V value);
+    Map(const int SIZE);							//Constructor (getting Size to create an array)
     ~Map();
-    int Size()const;
-    bool Empty();
-    iterator Find(const K& key);
-    iterator Put(const K &key, const V &value);
-    void Erase(const K& key);
-    void Erase(const V& value);
-    iterator begin();
-    iterator end();
+    int Size()const;								//Returns the size of the map
+    bool Empty();									//Returns true of the map is empty
+    Position<V> Find(const int& key);				//This function will return the position of the specified key
+    void Put(const int &key, const V &value);		//Puts a position into the map
+    void Erase(const int& key);						//This function will remove the position with the specified key
     void OutputIO();
 
 
+
 private:
-    Position<K, V> *list;
-    Position<K, V> *tail;
-    int size;
+    Position<V> *list;
+    int Hash(int key, int j = 0);
+    int _size;										//Max size of the list
+    int _filled;									//Number of positions in the list
 };
 
-template<typename K, typename V>
-Map<K,V>::Map()
+
+template<typename V>
+Map<V>::Map(const int SIZE)
 {
     list = nullptr;
-    tail = nullptr;
-    size = 0;
+    list = new  Position<V> [SIZE];
+    _size = SIZE;
+    _filled = 0;
 }
 
-template<typename K, typename V>
-Map<K,V>::~Map()
-{
-    Position<K, V> *cptr;
-    cptr = list;
 
-    while(list != nullptr)
+template<typename V>
+Map<V>::~Map()
+{
+    delete list;
+}
+
+
+template<typename V>
+void Map<V>::Put(const int &key, const V &value)
+{
+    int index = Hash(key);
+
+    if(index != -1 && list[index]._free)
     {
-        cptr = list->next;
-        delete list;
-        list = cptr;
+        list[index].SetKey(key);
+        list[index].SetValue(value);
+        list[index]._free = false;
+        _filled++;
     }
-}
-
-
-template<typename K, typename V>
-Map<K,V>::Map(K key, V value)
-{
-    list = new Position<K, V> (key, value);
-    list->prev = nullptr;
-    list->next = nullptr;
-    tail = list;
-    size = 1;
-}
-
-template<typename K, typename V>
-int Map<K,V>::Size()const
-{
-    return size;
-}
-
-template<typename K, typename V>
-bool Map<K,V>::Empty()
-{
-    return size == 0;
-}
-
-template<typename K, typename V>
-typename Map<K,V>::iterator Map<K,V>::Find(const K& key)
-{
-    bool found = false;
-    Map<K,V>::iterator i = begin();
-    Map<K,V>::iterator j = end();
-
-    std::cerr << 1 << std::endl;
-    while(i != j && !found)
+    else if (!list[index]._free)
     {
-
-        if(i.p->Key() == key)
-        {
-            found = true;
-            return i;
-        }
-        else
-        {
-            i++;
-        }
-
-    }
-
-    return i;
-}
-
-template<typename K, typename V>
-typename Map<K,V>::iterator Map<K,V>::Put(const K &key, const V &value)
-{
-    Position<K, V> *ptr;
-    Map<K,V>::iterator finder = Find(key);
-
-    if( finder != end())
-    {
-        finder.p->SetValue(value);
+        list[index].SetValue(value);
     }
     else
     {
-        ptr = new Position<K, V> (key, value) ;
-
-        if(!Empty())
-        {
-            ptr->next = tail->next;
-            ptr->prev = tail;
-            tail->next = ptr;
-            tail = ptr;
-            ptr = nullptr;
-        }
-        else
-        {
-            list = ptr;
-            ptr = nullptr;
-            list->prev = nullptr;
-            list->next = nullptr;
-            tail = list;
-        }
-        size++;
-
-
-        finder.p = tail;
-    }
-    return finder;
-}
-
-
-template<typename K, typename V>
-void Map<K,V>::Erase(const K& key)
-{
-    Position<K, V> *delPtr;
-    bool found = false;
-    delPtr = list;
-    try
-    {
-        if(Empty())
-        {
-            throw size;
-        }
-
-        while(delPtr != nullptr && !found)
-        {
-
-            if(delPtr->Key() == key)
-            {
-                found = true;
-                if(size > 1)
-                {
-                    if(delPtr == list)
-                    {
-                        list = list->next;
-                        delete list->prev;
-                        list->prev = nullptr;
-                        delPtr = nullptr;
-                    }
-                    else if(delPtr == tail)
-                    {
-                        tail = tail->prev;
-                        delete tail->next;
-                        tail->next = nullptr;
-                        delPtr = nullptr;
-                    }
-                    else
-                    {
-                        delPtr->next->prev = delPtr->prev;
-                        delPtr->prev->next = delPtr->next;
-                        delete delPtr;
-                        delPtr = nullptr;
-                    }
-                }
-                else
-                {
-                    delete list;
-                    list = nullptr;
-                    tail = nullptr;
-                    delPtr = nullptr;
-                }
-
-            }
-            if(!found)
-            {
-                delPtr = delPtr->next;
-            }
-
-        }
-        throw found;
-    }
-    catch(int e)
-    {
-        std::cerr << "There are " << e << " position in the list" << std::endl;
-    }
-    catch(bool b)
-    {
-        if(b)
-        {
-            size--;
-        }
-        else
-        {
-            std::cerr << "The key was not found\n";
-        }
+        std::cerr << "List is full \n";
     }
 
 }
 
-
-template<typename K, typename V>
-void Map<K,V>::Erase(const V& value)
+template<typename V>
+int Map<V>::Size()const
 {
-    Position<K, V> *delPtr;
-        bool found = false;
-        delPtr = list;
-        try
-        {
-            if(Empty())
-            {
-                throw size;
-            }
-
-            while(delPtr != nullptr && !found)
-            {
-
-                if(delPtr->Value() == value)
-                {
-                    found = true;
-                    if(size > 1)
-                    {
-                        if(delPtr == list)
-                        {
-                            list = list->next;
-                            delete list->prev;
-                            list->prev = nullptr;
-                            delPtr = nullptr;
-                        }
-                        else if(delPtr == tail)
-                        {
-                            tail = tail->prev;
-                            delete tail->next;
-                            tail->next = nullptr;
-                            delPtr = nullptr;
-                        }
-                        else
-                        {
-                            delPtr->next->prev = delPtr->prev;
-                            delPtr->prev->next = delPtr->next;
-                            delete delPtr;
-                            delPtr = nullptr;
-                        }
-                    }
-                    else
-                    {
-                        delete list;
-                        list = nullptr;
-                        tail = nullptr;
-                        delPtr = nullptr;
-                    }
-
-                }
-                if(!found)
-                {
-                    delPtr = delPtr->next;
-                }
-
-            }
-            throw found;
-        }
-        catch(int e)
-        {
-            std::cerr << "There are " << e << " position in the list" << std::endl;
-        }
-        catch(bool b)
-        {
-            if(b)
-            {
-                size--;
-            }
-            else
-            {
-                std::cerr << "The value was not found\n";
-            }
-        }
-
+    return _filled;
 }
 
-
-template<typename K, typename V>
-typename Map<K,V>::iterator Map<K,V>::begin()
+template<typename V>
+bool Map<V>::Empty()
 {
-    Map<K,V>::iterator i;
-
-    i.p = list;
-
-    return i;
+    return _filled == 0;
 }
 
-template<typename K, typename V>
-typename Map<K,V>::iterator Map<K,V>::end()
+template<typename V>
+int Map<V>::Hash(int key, int j)
 {
-    Map<K,V>::iterator i;
-    if(size != 0)
+    int index;
+    int h;
+    int hPrime;
+    const int HK = 2;
+
+    h = key % _size;
+    hPrime = j * (HK - (key % HK));
+    index = (h + hPrime) % _size;
+
+    if(list[index]._free || list[index].Key() == key)
     {
-        i.p = tail->next;
+        return index;
+    }
+    else if(j == _size - 1)
+    {
+        return -1;
+    }
+
+    return Hash(key, j + 1);
+}
+
+template<typename V>
+Position<V> Map<V>::Find(const int& key)
+{
+    return list[Hash(key)];
+}
+
+template<typename V>
+void Map<V>::OutputIO()
+{
+
+    for(int count = 0; count < _size; count++)
+    {
+        if(!list[count]._free)
+        {
+            std::cout << list[count].Key() << ',' << list[count].Value() << std::endl;
+        }
+    }
+}
+
+
+template<typename V>
+void Map<V>::Erase(const int& key)
+{
+    int index = Hash(key);
+
+    if(!list[index]._free)
+    {
+        list[index]._free = true;
+        list[index].SetKey(0);
+        _filled--;
     }
     else
     {
-        i.p = tail;
-    }
-
-    return i;
-}
-
-
-template<typename K, typename V>
-void Map<K,V>::OutputIO()
-{
-
-    for(Position<K, V> *delPtr = list; delPtr != nullptr; delPtr = delPtr->next)
-    {
-        std::cout << delPtr->Key()<< ": " << delPtr->Value() << std::endl;
+        std::cerr << "The position does not exist\n\n";
     }
 }
 
-#endif /* MAP_H_ */
+
+
+#endif /* MAPH_H_ */
