@@ -51,19 +51,9 @@
      <number>100</number>
     </property>
     <item>
-     <widget class="QLabel" name="label">
-      <property name="text">
-       <string>Select Teams to Visit</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="DenverNuggetsPage">
        <widget class="QLabel" name="nuggetsTitle">
@@ -95,11 +85,11 @@
           <x>380</x>
           <y>40</y>
           <width>421</width>
-          <height>451</height>
+          <height>481</height>
          </rect>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="previewButton">
         <property name="geometry">
          <rect>
           <x>70</x>
@@ -149,7 +139,7 @@ starting from the Denver nuggets</string>
           <x>140</x>
           <y>40</y>
           <width>551</width>
-          <height>451</height>
+          <height>481</height>
          </rect>
         </property>
        </widget>
@@ -168,19 +158,19 @@ starting from the Denver nuggets</string>
          <string>Detroit Pistons Trip</string>
         </property>
        </widget>
-       <widget class="QTableWidget" name="tableWidget_2">
+       <widget class="QTableWidget" name="pistonsTable">
         <property name="geometry">
          <rect>
           <x>155</x>
           <y>40</y>
           <width>541</width>
-          <height>451</height>
+          <height>481</height>
          </rect>
         </property>
        </widget>
       </widget>
       <widget class="QWidget" name="CustomShortestPage">
-       <widget class="QLabel" name="custom2Table">
+       <widget class="QLabel" name="custom2Label">
         <property name="geometry">
          <rect>
           <x>310</x>
@@ -193,13 +183,13 @@ starting from the Denver nuggets</string>
          <string>Select Custom Cities to Visit in Shortest Distance</string>
         </property>
        </widget>
-       <widget class="QTableWidget" name="custom2Table_2">
+       <widget class="QTableWidget" name="custom2Table">
         <property name="geometry">
          <rect>
           <x>150</x>
           <y>41</y>
           <width>541</width>
-          <height>451</height>
+          <height>481</height>
          </rect>
         </property>
        </widget>

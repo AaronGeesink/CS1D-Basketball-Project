@@ -43,7 +43,8 @@ std::vector<Team> queryTeams()
 		team.setTeamName(teamNames[i]);
 		team.setEdges(queryEdges(teamNames[i]));
 		team.setLocation(queryLocation(teamNames[i]));
-/*
+		teams.push_back(team);
+
 		qDebug() << "Name: " << team.getTeamName()
 				 << "\nLocation: " << team.getLocation()
 				 << "\nNum edges: " << team.getEdges().size()
@@ -51,7 +52,7 @@ std::vector<Team> queryTeams()
                  << "\nEdge 1 end:" << team.getEdges()[0].end
                  << "\nEdge 1 distance:" << team.getEdges()[0].weight
 				 << "\n";
-                 */
+
 	}
 
 	return teams;

@@ -2,6 +2,11 @@
 #define TRIPWINDOW_H
 
 #include <QWidget>
+#include <QCheckBox>
+#include <QRadioButton>
+#include <QSpinBox>
+#include "team.h"
+#include "database.h"
 
 namespace Ui {
 class TripWindow;

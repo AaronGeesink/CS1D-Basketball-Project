@@ -22,7 +22,6 @@ SOURCES += \
     loginwindow.cpp \
     main.cpp \
     mainwindow.cpp \
-    matrixgraph.cpp \
     resultswindow.cpp \
     souvenir.cpp \
     souvenirwindow.cpp \

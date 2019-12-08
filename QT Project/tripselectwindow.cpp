@@ -17,7 +17,6 @@ TripSelectWindow::~TripSelectWindow()
 void TripSelectWindow::on_moveToNuggetsTrip_clicked()
 {
 	emit moveToNuggetsTripClicked();
-	queryTeams();
 }
 
 void TripSelectWindow::on_moveToSpecifiedTrip_clicked()
