@@ -144,6 +144,7 @@ void TripWindow::on_moveToSouvenir_clicked()
 	// Denver Nuggets plan
 	if (planNumber == 0)
 	{
+		/*
 		for (auto it = loadedTeams.begin(); it != loadedTeams.end(); it++)
 		{
 			if (!(it->getTeamName() == comboValue || it->getTeamName() == "Denver Nuggets"))
@@ -152,6 +153,7 @@ void TripWindow::on_moveToSouvenir_clicked()
 			}
 		}
 		qDebug() << loadedTeams[0].getTeamName() << " --> " << loadedTeams[1].getTeamName();
+		*/
 	}
 	// custom specified plan
 	else if (planNumber == 1)
