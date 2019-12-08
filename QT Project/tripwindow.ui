@@ -63,10 +63,10 @@
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>3</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="DenverNuggetsPage">
-       <widget class="QLabel" name="label_2">
+       <widget class="QLabel" name="nuggetsTitle">
         <property name="geometry">
          <rect>
           <x>370</x>
@@ -79,9 +79,58 @@
          <string>Denver Nuggets Trip</string>
         </property>
        </widget>
+       <widget class="QComboBox" name="NuggetsCombobox">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>180</y>
+          <width>141</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QTableWidget" name="nuggetsTable">
+        <property name="geometry">
+         <rect>
+          <x>380</x>
+          <y>40</y>
+          <width>421</width>
+          <height>451</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>220</y>
+          <width>141</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Preview
+Vacation
+Plan</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="nuggetsLabel">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>110</y>
+          <width>171</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Select a City to Travel to
+starting from the Denver nuggets</string>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="CustomSpecifiedPage">
-       <widget class="QLabel" name="label_3">
+       <widget class="QLabel" name="custom1Label">
         <property name="geometry">
          <rect>
           <x>330</x>
@@ -94,9 +143,19 @@
          <string>Choose Custom Cities to Visit in order</string>
         </property>
        </widget>
+       <widget class="QTableWidget" name="custom1Table">
+        <property name="geometry">
+         <rect>
+          <x>140</x>
+          <y>40</y>
+          <width>551</width>
+          <height>451</height>
+         </rect>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="DetroitPistonsPage">
-       <widget class="QLabel" name="label_4">
+       <widget class="QLabel" name="pistonsLabel">
         <property name="geometry">
          <rect>
           <x>370</x>
@@ -109,9 +168,19 @@
          <string>Detroit Pistons Trip</string>
         </property>
        </widget>
+       <widget class="QTableWidget" name="tableWidget_2">
+        <property name="geometry">
+         <rect>
+          <x>155</x>
+          <y>40</y>
+          <width>541</width>
+          <height>451</height>
+         </rect>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="CustomShortestPage">
-       <widget class="QLabel" name="label_5">
+       <widget class="QLabel" name="custom2Table">
         <property name="geometry">
          <rect>
           <x>310</x>
@@ -122,6 +191,16 @@
         </property>
         <property name="text">
          <string>Select Custom Cities to Visit in Shortest Distance</string>
+        </property>
+       </widget>
+       <widget class="QTableWidget" name="custom2Table_2">
+        <property name="geometry">
+         <rect>
+          <x>150</x>
+          <y>41</y>
+          <width>541</width>
+          <height>451</height>
+         </rect>
         </property>
        </widget>
       </widget>
