@@ -16,9 +16,7 @@ class GraphWindow : public QWidget
 public:
 	explicit GraphWindow(QWidget *parent = nullptr);
 	~GraphWindow();
-    void displayMST(std::vector<Edge<QString>> edges);
     void displayDFS(std::vector<Edge<QString>> edges);
-    void displayBFS(std::vector<Edge<QString>> edges);
 
 private slots:
     void on_dfsBtn_clicked();
@@ -27,7 +25,8 @@ private slots:
 
 private:
 	Ui::GraphWindow *ui;
-    QString teamsAr[30];
+    MatrixGraph<QString> *graph1;
+    QString *teamsAr;
 };
 
 #endif // GRAPHWINDOW_H

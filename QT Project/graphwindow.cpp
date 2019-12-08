@@ -6,50 +6,39 @@ GraphWindow::GraphWindow(QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::GraphWindow)
 {
+    createDatabase();
     QTableWidgetItem *item1 = new QTableWidgetItem("Start");
     QTableWidgetItem *item2 = new QTableWidgetItem("End");
+    QTableWidgetItem *item3 = new QTableWidgetItem("Distance");
     ui->setupUi(this);
-    ui->mstList->setColumnCount(2);
-    ui->travList->setColumnCount(2);
-    ui->mstList->setHorizontalHeaderItem(0, item1);
-    ui->mstList->setHorizontalHeaderItem(1, item2);
+    ui->travList->setColumnCount(3);
     ui->travList->setHorizontalHeaderItem(0, item1);
     ui->travList->setHorizontalHeaderItem(1, item2);
-}
+    ui->travList->setHorizontalHeaderItem(2, item3);
+    ui->Image->setPixmap(QDir::currentPath() + "/resources/map.jpg");
 
-void GraphWindow::displayMST(std::vector<Edge<QString>> edges)
-{
-    ui->mstList->setRowCount(int(edges.size()));
-    int row = 0;
-    for(auto i: edges)
+    std::vector<QString> teams = queryTeamNames();
+    teamsAr = new QString[teams.size()];
+    int in = 0;
+    for(auto i = teams.begin(); i!=teams.end(); i++)
     {
-        QTableWidgetItem *startItem = new QTableWidgetItem(i.start);
-        QTableWidgetItem *endItem = new QTableWidgetItem(i.start);
-        ui->mstList->setItem(row, 0, startItem);
-        ui->mstList->setItem(row, 1, endItem);
-        row++;
+        teamsAr[in] = *i;
+        qDebug() << "Team name:" << teamsAr[in];
+        in++;
     }
-}
-
-void GraphWindow::displayBFS(std::vector<Edge<QString>> edges)
-{
-    ui->travList->setRowCount(int(edges.size()));
-    int row = 0;
-    for(auto i: edges)
+    graph1 = new MatrixGraph<QString>(teamsAr, teams.size());
+    for(auto i = teams.begin(); i!=teams.end(); i++)
     {
-        QTableWidgetItem *startItem = new QTableWidgetItem(i.start);
-        qDebug() << startItem;
-        QTableWidgetItem *endItem = new QTableWidgetItem(i.start);
-        qDebug() <<endItem;
-        ui->mstList->setItem(row, 0, startItem);
-        ui->mstList->setItem(row, 1, endItem);
-        row++;
+        std::vector<Edge<QString>> edges = queryEdges(*i);
+        for(auto e: edges)
+            graph1->addEdge(e.start, e.end, e.weight);
     }
 }
 
 void GraphWindow::displayDFS(std::vector<Edge<QString>> edges)
 {
-    ui->travList->setRowCount(int(edges.size()));
+    double totalDistance = 0;
+    ui->travList->setRowCount(int(edges.size())+1);
     int row = 0;
     for(auto i: edges)
     {
@@ -57,36 +46,22 @@ void GraphWindow::displayDFS(std::vector<Edge<QString>> edges)
         qDebug() << "end: " <<i.end;
         QTableWidgetItem *item1 = new QTableWidgetItem(i.start);
         QTableWidgetItem *item2 = new QTableWidgetItem(i.end);
-        //item->setText(i.start);
+        QTableWidgetItem *item3 = new QTableWidgetItem(QString::number(i.weight));
+        totalDistance += i.weight;
         ui->travList->setItem(row, 0, item1);
         ui->travList->setItem(row, 1, item2);
+        ui->travList->setItem(row, 2, item3);
         row++;
     }
+    QTableWidgetItem *lable = new QTableWidgetItem("Total Distance");
+    QTableWidgetItem *distance = new QTableWidgetItem(QString::number(totalDistance));
+    ui->travList->setItem(row, 1, lable);
+    ui->travList->setItem(row, 2, distance);
 }
 
 void GraphWindow::on_dfsBtn_clicked()
 {
-    std::vector<QString> teams = queryTeamNames();
-    //QString teamsAr[teams.size()];
-    int in = 0;
-    for(auto i = teams.begin(); i!=teams.end(); i++)
-    {
-        teamsAr[in] = *i;
-        qDebug() << "Team name:" << teamsAr[in];
-        in++;
-    }
-
-
-    qDebug() << "BFS CLICKED";
-    MatrixGraph<QString> graph1(teamsAr, 30);
-    for(auto i = teams.begin(); i!=teams.end(); i++)
-    {
-        std::vector<Edge<QString>> edges = queryEdges(*i);
-        for(auto e: edges)
-            graph1.addEdge(e.start, e.end, e.weight);
-    }
-
-    std::vector<Edge<QString>> edges = graph1.DFS("Miami Heat");
+    std::vector<Edge<QString>> edges = graph1->DFS("Miami Heat");
     qDebug() << edges.size();
     displayDFS(edges);
 
@@ -94,27 +69,7 @@ void GraphWindow::on_dfsBtn_clicked()
 
 void GraphWindow::on_bfsBtn_clicked()
 {
-    std::vector<QString> teams = queryTeamNames();
-    //QString teamsAr[teams.size()];
-    int in = 0;
-    for(auto i = teams.begin(); i!=teams.end(); i++)
-    {
-        teamsAr[in] = *i;
-        qDebug() << "Team name:" << teamsAr[in];
-        in++;
-    }
-
-
-    qDebug() << "BFS CLICKED";
-    MatrixGraph<QString> graph1(teamsAr, 30);
-    for(auto i = teams.begin(); i!=teams.end(); i++)
-    {
-        std::vector<Edge<QString>> edges = queryEdges(*i);
-        for(auto e: edges)
-            graph1.addEdge(e.start, e.end, e.weight);
-    }
-
-    std::vector<Edge<QString>> edges = graph1.BFS("Miami Heat");
+    std::vector<Edge<QString>> edges = graph1->BFS("Miami Heat");
     qDebug() << edges.size();
     displayDFS(edges);
 }
@@ -122,8 +77,9 @@ void GraphWindow::on_bfsBtn_clicked()
 
 void GraphWindow::on_mstBtn_clicked()
 {
-
-
+    std::vector<Edge<QString>> edges = graph1->kruskalMST();
+    qDebug() << edges.size();
+    displayDFS(edges);
 }
 
 GraphWindow::~GraphWindow()
