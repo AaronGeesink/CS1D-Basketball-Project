@@ -524,7 +524,7 @@ inline std::vector<Edge<T>> MatrixGraph<T>::kruskalMST()
 {
     std::vector<Edge<T>> discoveryEdges;
 
-    int totalWeight = 0;
+    double totalWeight = 0;
     sort(edges.begin(), edges.end());
     DisjointSets ds(numVertices);
 	vector< pair<double, pair<int, int> > >::iterator it;
