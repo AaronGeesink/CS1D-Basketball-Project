@@ -39,6 +39,7 @@ HEADERS += \
     loginwindow.h \
     mainwindow.h \
     Map.h \
+    matrixgraph.h \
     resultswindow.h \
     souvenir.h \
     souvenirwindow.h \
