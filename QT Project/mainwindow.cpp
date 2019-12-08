@@ -131,9 +131,10 @@ void MainWindow::moveToResults()
 
 void MainWindow::on_moveToGraph_clicked()
 {
-    /*
+
 	//Stacked Widget index 8: Graph Traversal Window
 	ui->stackedWidget->setCurrentIndex(8);
+    /*
     graphAdjList teamGraph;
     //checkConnection();
     teamGraph.sortByDist();

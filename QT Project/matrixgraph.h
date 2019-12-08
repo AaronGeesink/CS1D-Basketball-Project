@@ -135,7 +135,7 @@ void MatrixGraph<T>::addEdge(T start, T end, int weight)
     vertices[startID].edges.back().pEndVertex = &vertices[endID];
     vertices[endID].edges.back().pEndVertex = &vertices[startID];
 
-    vertices[startID].edges.back().pStartVertx = &vertices[startID];
+    vertices[startID].edges.back().pStartVertex = &vertices[startID];
     vertices[endID].edges.back().pStartVertex = &vertices[endID];
 }
 
@@ -143,7 +143,7 @@ template<typename T>
 inline std::vector<Edge<T>> MatrixGraph<T>::DFS(T start)
 {
     // set start and end time to -1 for the edge comparisons
-    for (int i = 0; i < vertices->size(); i++)
+    for (int i = 0; i < numVertices; i++)
     {
         vertices->startTime = -1;
         vertices->endTime = -1;
@@ -184,22 +184,22 @@ inline void MatrixGraph<T>::DFSDriver(T start, vector<bool> &visited, std::vecto
     {
         edges.push_back(*it);
     }
-    for (auto it = edges.begin(); it != edges.end(); it++)
-    {
-        // Get all discovery edges
-        if (!visited[it->pEndVertex->id])
+    for (int i = 0; i < edges.size(); i++)
         {
-            discoveryEdges.push_back(it);
+        // Get all discovery edges
+        if (!visited[edges[i].pEndVertex->id])
+        {
+            discoveryEdges.push_back(edges[i]);
             /*
             cout << "Discovery: " << it->start << " --> " << it->end
                 << " (" << it->weight << ")\n";
             */
 
             counter++;
-            DFSDriver(it->pEndVertex->value, visited, counter);
+            DFSDriver(edges[i].pEndVertex->value, visited, discoveryEdges, counter);
             counter++;
-            it->pEndVertex->endTime = counter;
-            dTotal += it->weight;
+            edges[i].pEndVertex->endTime = counter;
+            dTotal += edges[i].weight;
         }
         /*
         // Get all back edges
@@ -275,29 +275,30 @@ std::vector<Edge<T>> MatrixGraph<T>::BFS(T start)
 
         int numVisited = 0;
         // For every adjacent vertex to the current vertex
-        for (auto it = vertices[current].edges.begin(); it != vertices[current].edges.end(); it++)
+        //for (auto it = vertices[current].edges.begin(); it != vertices[current].edges.end(); it++)
+        for (int i = 0; i < vertices[current].edges.size(); i++)
         {
-            if (!visited[it->pEndVertex->id])
+            if (!visited[vertices[current].edges[i].pEndVertex->id])
             {
                 // Push the adjacent node to the queue
-                q.push_back(it->pEndVertex->id);
+                q.push_back(vertices[current].edges[i].pEndVertex->id);
 
                 // Set that node to be visited
-                visited[it->pEndVertex->id] = true;
+                visited[vertices[current].edges[i].pEndVertex->id] = true;
 
                 // set parent vertex
-                vertices[it->pEndVertex->id].parent = &vertices[current];
+                vertices[vertices[current].edges[i].pEndVertex->id].parent = &vertices[current];
 
                 // assign the vertex a depth for edge comparison
-                it->pEndVertex->depth = vertices[current].depth + 1;
+                vertices[current].edges[i].pEndVertex->depth = vertices[current].depth + 1;
 
                 // add to discovery distance
-                dTotal += it->weight;
+                dTotal += vertices[current].edges[i].weight;
                 /*
                 cout << "Discovery: " << it->start << " --> " << it->end
                     << " (" << it->weight << ")\n";
                 */
-                discoveryEdges.push_back(it);
+                discoveryEdges.push_back(vertices[current].edges[i]);
                 numVisited = numVisited + 1;
             }
             /*
@@ -456,8 +457,7 @@ struct DisjointSets
     DisjointSets(int n)
     {
         this->n = n;
-        parent = new int[n + 1];
-        rnk = new int[n + 1];
+        parent = new int[n + 1];        rnk = new int[n + 1];
         for (int i = 0; i <= n; i++)
         {
             rnk[i] = 0;

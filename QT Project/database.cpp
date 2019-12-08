@@ -1,4 +1,5 @@
 #include "database.h"
+#include <QDebug>
 
 void createDatabase()
 {
@@ -7,6 +8,7 @@ void createDatabase()
 	db = QSqlDatabase::database();
 	// Load database from file
 	const QString DB_PATH = QDir::currentPath() + "/resources/database.db";
+    qDebug() << "PATH" << DB_PATH;
 	db.setDatabaseName(DB_PATH);
 }
 
@@ -41,7 +43,7 @@ std::vector<Team> queryTeams()
 		team.setTeamName(teamNames[i]);
 		team.setEdges(queryEdges(teamNames[i]));
 		team.setLocation(queryLocation(teamNames[i]));
-
+/*
 		qDebug() << "Name: " << team.getTeamName()
 				 << "\nLocation: " << team.getLocation()
 				 << "\nNum edges: " << team.getEdges().size()
@@ -49,6 +51,7 @@ std::vector<Team> queryTeams()
                  << "\nEdge 1 end:" << team.getEdges()[0].end
                  << "\nEdge 1 distance:" << team.getEdges()[0].weight
 				 << "\n";
+                 */
 	}
 
 	return teams;
@@ -76,7 +79,7 @@ std::vector<QString> queryTeamNames()
 }
 
 
-Edge<QString> queryEdges(QString start, QString end)
+Edge<QString> queryEdge(QString start, QString end)
 {
 	QSqlQuery query;
 	int distance = 0;
