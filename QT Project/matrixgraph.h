@@ -488,19 +488,7 @@ inline std::vector<Edge<T>> MatrixGraph<T>::kruskalMST()
 {
     std::vector<Edge<T>> discoveryEdges;
 
-    for (int i = 0; i < numVertices; i++)
-    {
-        for (int j = 0; j < vertices[i].edges.size(); j++)
-        {
-            discoveryEdges.push_back(vertices[i].edges[j]);
-        }
-    }
-
-    int mst_wt = 0;
-
-    // this sort comparator doesn't work for some reason
-    sort(discoveryEdges.begin(), discoveryEdges.end(), compareEdgeWeight<T>());
-
+    int totalWeight = 0;
     sort(edges.begin(), edges.end());
     DisjointSets ds(numVertices);
     vector< pair<int, pair<int, int> > >::iterator it;
@@ -518,15 +506,17 @@ inline std::vector<Edge<T>> MatrixGraph<T>::kruskalMST()
             // Current edge will be in the MST
             // so add it to discovery edges
             // cout << vertices[u].value << " -- " << vertices[v].value << ": " << it->first << endl;
-            discoveryEdges.push_back(it);
+
+            Edge<T> edge = { vertices[u].value, vertices[v].value, it->first };
+            discoveryEdges.push_back(edge);
 
             // Update MST weight
-            mst_wt += it->first;
+            totalWeight += it->first;
 
             // Merge two sets
             ds.merge(set_u, set_v);
         }
     }
 
-    return mst_wt;
-}
+    return discoveryEdges;
+};
