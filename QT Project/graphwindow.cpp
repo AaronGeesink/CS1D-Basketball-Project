@@ -44,6 +44,7 @@ void GraphWindow::displayDFS(std::vector<Edge<QString>> edges)
     {
         qDebug() << "start: " << i.start;
         qDebug() << "end: " <<i.end;
+        qDebug() << "weight: " <<i.weight;
         QTableWidgetItem *item1 = new QTableWidgetItem(i.start);
         QTableWidgetItem *item2 = new QTableWidgetItem(i.end);
         QTableWidgetItem *item3 = new QTableWidgetItem(QString::number(i.weight));

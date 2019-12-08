@@ -15,7 +15,7 @@ struct Edge
 {
 	T start;
 	T end;
-	int weight;
+    double weight;
 	Vertex<T>* pEndVertex;
 	Vertex<T>* pStartVertex;
 };
@@ -65,7 +65,7 @@ public:
     MatrixGraph(T elements[], int size);
 
 	// Function to insert a new edge 
-	void addEdge(T start, T end, int weight);
+    void addEdge(T start, T end, double weight);
 
 	// function to call DFS from the client
 	std::vector<Edge<T>> DFS(T start);
@@ -104,7 +104,7 @@ MatrixGraph<T>::MatrixGraph(T elements[], int size)
 
 // Function to add an edge to the MatrixGraph
 template <typename T>
-void MatrixGraph<T>::addEdge(T start, T end, int weight)
+void MatrixGraph<T>::addEdge(T start, T end, double weight)
 {
     int startID = 0;
     int endID = 0;

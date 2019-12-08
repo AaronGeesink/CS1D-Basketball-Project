@@ -106,7 +106,7 @@ std::vector<Edge<QString>> queryEdges(QString startTeam)
     std::vector<Edge<QString>> edges;
     Edge<QString> edge;
 	std::vector<QString> endTeams;
-	std::vector<int> distances;
+    std::vector<double> distances;
 
 	QSqlQuery query;
 
@@ -131,7 +131,7 @@ std::vector<Edge<QString>> queryEdges(QString startTeam)
 	}
 	while(query.next())
 	{
-		distances.push_back(query.value(0).toInt());
+        distances.push_back(query.value(0).toDouble());
 	}
 
 // construct the edges
