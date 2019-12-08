@@ -64,6 +64,9 @@ public:
 	// constructor to create the initial adjacency matrix 
     MatrixGraph(T elements[], int size);
 
+	// deconstructor for the graph
+	~MatrixGraph();
+
 	// Function to insert a new edge 
     void addEdge(T start, T end, double weight);
 
@@ -78,6 +81,9 @@ public:
 
 	// Function to calculate the minimum spanning tree using Kruskal's algorithm
 	std::vector<Edge<T>> kruskalMST();
+
+	// function to clear the graph of all of it's data.
+	void clear();
 
 	// Function to display the adjacency matrix for the graph
 	void displayGraph();
@@ -99,8 +105,38 @@ MatrixGraph<T>::MatrixGraph(T elements[], int size)
         {
             adj[row][column] = 0;
         }
-    }
+	}
 }
+
+template<typename T>
+MatrixGraph<T>::~MatrixGraph()
+{
+	for (int i = 0; i < numVertices; i++)
+	{
+		delete [] adj[i];
+	}
+
+	delete [] vertices;
+	delete [] edges;
+
+	numVertices = 0;
+	numEdges = 0;
+}
+
+template<typename T>
+inline void MatrixGraph<T>::clear()
+{
+	for (int i = 0; i < numVertices; i++)
+	{
+		delete [] adj[i];
+	}
+
+	delete [] vertices;
+	delete [] edges;
+
+	numVertices = 0;
+	numEdges = 0;
+};
 
 // Function to add an edge to the MatrixGraph
 template <typename T>
@@ -518,5 +554,5 @@ inline std::vector<Edge<T>> MatrixGraph<T>::kruskalMST()
         }
     }
 
-    return discoveryEdges;
-};
+	return discoveryEdges;
+}

@@ -5,6 +5,7 @@
 #include <QCheckBox>
 #include <QRadioButton>
 #include <QSpinBox>
+#include <QComboBox>
 #include "team.h"
 #include "database.h"
 
@@ -38,8 +39,13 @@ private slots:
 
 	void on_moveToSouvenir_clicked();
 
+	void on_NuggetsCombobox_currentIndexChanged(const QString &arg1);
+
 private:
 	Ui::TripWindow *ui;
+	std::vector<Team> loadedTeams;
+	int planNumber;
+	QString comboValue;
 };
 
 #endif // TRIPWINDOW_H

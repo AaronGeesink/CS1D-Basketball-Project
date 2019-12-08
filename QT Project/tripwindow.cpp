@@ -15,10 +15,20 @@ TripWindow::~TripWindow()
 
 void TripWindow::setNuggetsTrip()
 {
-	std::vector<Team> teams = queryTeams();
+	loadedTeams.clear();
+	planNumber = 0;
+
+	std::vector<QString> teamNames = queryTeamNames();
+
+
+	for (auto it = teamNames.begin(); it != teamNames.end(); it++)
+	{
+		if (*it == "Denver Nuggets")
+			teamNames.erase(it);
+	}
 
 	// Table Setup
-	ui->nuggetsTable->setRowCount(teams.size());
+	ui->nuggetsTable->setRowCount(loadedTeams.size());
 	ui->nuggetsTable->setColumnCount(3);
 
 	ui->nuggetsTable->setHorizontalHeaderItem(0, new QTableWidgetItem("Start"));
@@ -27,16 +37,20 @@ void TripWindow::setNuggetsTrip()
 
 	ui->nuggetsTable->setSelectionMode(QAbstractItemView::NoSelection);
 
+	for(int i = 0; i < teamNames.size(); ++i)
+		ui->NuggetsCombobox->addItem(teamNames[i]);
+
 	ui->stackedWidget->setCurrentIndex(0);
 }
 
 void TripWindow::setSpecifiedTrip()
 {
-	std::vector<Team> teams = queryTeams();
-	qDebug() << teams.size();
+	loadedTeams.clear();
+	loadedTeams = queryTeams();
+	planNumber = 1;
 
 	// Table Setup
-	ui->custom1Table->setRowCount(teams.size());
+	ui->custom1Table->setRowCount(loadedTeams.size());
 	ui->custom1Table->setColumnCount(4);
 
 	ui->custom1Table->setHorizontalHeaderItem(0, new QTableWidgetItem("Name"));
@@ -47,10 +61,10 @@ void TripWindow::setSpecifiedTrip()
 	ui->custom1Table->setSelectionMode(QAbstractItemView::NoSelection);
 
 	QLabel *name;
-	for (int i = 0; i < teams.size(); i++)
+	for (int i = 0; i < loadedTeams.size(); i++)
 	{
 		name = new QLabel();
-		name->setText(teams[i].getTeamName());
+		name->setText(loadedTeams[i].getTeamName());
 		ui->custom1Table->setCellWidget(i, 0, name);
 
 		ui->custom1Table->setCellWidget(i, 1, new QCheckBox());
@@ -63,11 +77,12 @@ void TripWindow::setSpecifiedTrip()
 
 void TripWindow::setPistonsTrip()
 {
-	std::vector<Team> teams = queryTeams();
-	qDebug() << teams.size();
+	loadedTeams.clear();
+	loadedTeams = queryTeams();
+	planNumber = 2;
 
 	// Table Setup
-	ui->pistonsTable->setRowCount(teams.size());
+	ui->pistonsTable->setRowCount(loadedTeams.size());
 	ui->pistonsTable->setColumnCount(3);
 
 	ui->pistonsTable->setHorizontalHeaderItem(0, new QTableWidgetItem("Start Team"));
@@ -77,10 +92,10 @@ void TripWindow::setPistonsTrip()
 	ui->pistonsTable->setSelectionMode(QAbstractItemView::NoSelection);
 
 	QLabel *name;
-	for (int i = 0; i < teams.size(); i++)
+	for (int i = 0; i < loadedTeams.size(); i++)
 	{
 		name = new QLabel();
-		name->setText(teams[i].getTeamName());
+		name->setText(loadedTeams[i].getTeamName());
 		ui->pistonsTable->setCellWidget(i, 0, name);
 		//ui->pistonsTable->setCellWidget(i, 1, new QCheckBox());
 		//ui->pistonsTable->setCellWidget(i, 2, new QRadioButton());
@@ -91,10 +106,12 @@ void TripWindow::setPistonsTrip()
 
 void TripWindow::setShortestTrip()
 {
-	std::vector<Team> teams = queryTeams();
+	loadedTeams.clear();
+	loadedTeams = queryTeams();
+	planNumber = 3;
 
 	// Table Setup
-	ui->custom2Table->setRowCount(teams.size());
+	ui->custom2Table->setRowCount(loadedTeams.size());
 	ui->custom2Table->setColumnCount(3);
 
 	ui->custom2Table->setHorizontalHeaderItem(0, new QTableWidgetItem("Name"));
@@ -104,10 +121,10 @@ void TripWindow::setShortestTrip()
 	ui->custom2Table->setSelectionMode(QAbstractItemView::NoSelection);
 
 	QLabel *name;
-	for (int i = 0; i < teams.size(); i++)
+	for (int i = 0; i < loadedTeams.size(); i++)
 	{
 		name = new QLabel();
-		name->setText(teams[i].getTeamName());
+		name->setText(loadedTeams[i].getTeamName());
 		ui->custom2Table->setCellWidget(i, 0, name);
 
 		ui->custom2Table->setCellWidget(i, 1, new QCheckBox());
@@ -124,5 +141,38 @@ void TripWindow::on_moveToTripSelect_clicked()
 
 void TripWindow::on_moveToSouvenir_clicked()
 {
+	// Denver Nuggets plan
+	if (planNumber == 0)
+	{
+		for (auto it = loadedTeams.begin(); it != loadedTeams.end(); it++)
+		{
+			if (!(it->getTeamName() == comboValue || it->getTeamName() == "Denver Nuggets"))
+			{
+				loadedTeams.erase(it);
+			}
+		}
+		qDebug() << loadedTeams[0].getTeamName() << " --> " << loadedTeams[1].getTeamName();
+	}
+	// custom specified plan
+	else if (planNumber == 1)
+	{
+
+	}
+	// Detroit Pistons Plan
+	else if (planNumber == 2)
+	{
+
+	}
+	// Custom Shortest plan
+	else if (planNumber == 3)
+	{
+
+	}
+
 	emit moveToSouvenirClicked();
+}
+
+void TripWindow::on_NuggetsCombobox_currentIndexChanged(const QString &arg1)
+{
+	comboValue = arg1;
 }

@@ -52,7 +52,6 @@ std::vector<Team> queryTeams()
                  << "\nEdge 1 end:" << team.getEdges()[0].end
                  << "\nEdge 1 distance:" << team.getEdges()[0].weight
 				 << "\n";
-
 	}
 
 	return teams;

@@ -6,18 +6,6 @@
 #include "souvenir.h"
 #include "matrixgraph.h"
 
-/*
-enum Conferences
-{
-	Eastern, Western
-};
-
-enum Divisions
-{
-	Atlantic, Central, Southeast, Northwest, Pacific, Southwest
-};
-*/
-
 class Team
 {
 public:
