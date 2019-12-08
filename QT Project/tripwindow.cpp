@@ -25,37 +25,66 @@ void TripWindow::setNuggetsTrip()
 	ui->nuggetsTable->setHorizontalHeaderItem(1, new QTableWidgetItem("End"));
 	ui->nuggetsTable->setHorizontalHeaderItem(2, new QTableWidgetItem("Distance"));
 
-	ui->nuggetsTable->setSelectionMode(QAbstractItemView::NoSelection);
+    ui->nuggetsTable->setSelectionMode(QAbstractItemView::NoSelection);
 
 	ui->stackedWidget->setCurrentIndex(0);
+}
+
+
+void TripWindow::addItem(int row, int col)
+{
+    ui->custom1OrderedTable->setRowCount(customTableIndex+1);
+    qDebug() << "item pressed: " << row << " " << col;
+    QTableWidgetItem *item = ui->custom1Table->item(row,col);
+    ui->custom1OrderedTable->setItem(customTableIndex, 0, new QTableWidgetItem(*item));
+    ui->custom1Table->removeRow(row);
+    customTableIndex++;
+}
+
+void TripWindow::removeItem(int row, int col)
+{
+    ui->custom1Table->setRowCount(ui->custom1Table->rowCount()+1);
+    qDebug() << "item pressed: " << row << " " << col;
+    QTableWidgetItem *item = ui->custom1OrderedTable->item(row,col);
+    ui->custom1Table->setItem(ui->custom1Table->rowCount()-1, 0, new QTableWidgetItem(*item));
+    ui->custom1OrderedTable->removeRow(row);
+    customTableIndex--;
 }
 
 void TripWindow::setSpecifiedTrip()
 {
 	std::vector<Team> teams = queryTeams();
 	qDebug() << teams.size();
-
 	// Table Setup
 	ui->custom1Table->setRowCount(teams.size());
-	ui->custom1Table->setColumnCount(4);
+    //ui->custom1OrderedTable->setRowCount(teams.size());
+    ui->custom1Table->setColumnCount(1);
+    ui->custom1OrderedTable->setColumnCount(1);
 
 	ui->custom1Table->setHorizontalHeaderItem(0, new QTableWidgetItem("Name"));
-	ui->custom1Table->setHorizontalHeaderItem(1, new QTableWidgetItem("Teams to Add"));
-	ui->custom1Table->setHorizontalHeaderItem(2, new QTableWidgetItem("Starting City"));
-	ui->custom1Table->setHorizontalHeaderItem(3, new QTableWidgetItem("Order to Visit"));
-
-	ui->custom1Table->setSelectionMode(QAbstractItemView::NoSelection);
-
-	QLabel *name;
+    //ui->custom1Table->setHorizontalHeaderItem(1, new QTableWidgetItem("Teams to Add"));
+    ui->custom1OrderedTable->setHorizontalHeaderItem(0, new QTableWidgetItem("Name"));
+    //ui->custom1OrderedTable->setHorizontalHeaderItem(1, new QTableWidgetItem("Remove"));
+    //ui->custom1Table->setHorizontalHeaderItem(2, new QTableWidgetItem("Starting City"));
+    //ui->custom1Table->setHorizontalHeaderItem(3, new QTableWidgetItem("Order to Visit"));
+            //->setSelectionMode(QAbstractItemView::NoSelection);
+    QObject::connect(ui->custom1Table, SIGNAL(cellPressed(int, int)), this, SLOT(addItem(int,int)));
+    QObject::connect(ui->custom1OrderedTable, SIGNAL(cellPressed(int, int)), this, SLOT(removeItem(int,int)));
+    //QLabel *name;
 	for (int i = 0; i < teams.size(); i++)
 	{
-		name = new QLabel();
-		name->setText(teams[i].getTeamName());
-		ui->custom1Table->setCellWidget(i, 0, name);
-
-		ui->custom1Table->setCellWidget(i, 1, new QCheckBox());
-		ui->custom1Table->setCellWidget(i, 2, new QRadioButton());
-		ui->custom1Table->setCellWidget(i, 3, new QSpinBox());
+        //name = new QLabel();
+        //name->setText(teams[i].getTeamName());
+        //ui->custom1Table->setCellWidget(i, 0, name);
+        //QTableWidgetItem *it = ;
+        //it->setText(teams[i].getTeamName());
+        ui->custom1Table->setItem(i, 0, new QTableWidgetItem);
+        ui->custom1Table->item(i,0)->setText(teams[i].getTeamName());
+        //delete it;
+        //addBox = new QCheckBox;
+        //ui->custom1Table->setCellWidget(i, 1, addBox);
+        //ui->custom1Table->setCellWidget(i, 2, new QRadioButton());
+        //ui->custom1Table->setCellWidget(i, 3, new QSpinBox());
 	}
 
 	ui->stackedWidget->setCurrentIndex(1);
@@ -69,7 +98,6 @@ void TripWindow::setPistonsTrip()
 	// Table Setup
 	ui->pistonsTable->setRowCount(teams.size());
 	ui->pistonsTable->setColumnCount(3);
-
 	ui->pistonsTable->setHorizontalHeaderItem(0, new QTableWidgetItem("Start Team"));
 	ui->pistonsTable->setHorizontalHeaderItem(1, new QTableWidgetItem("End Team"));
 	ui->pistonsTable->setHorizontalHeaderItem(2, new QTableWidgetItem("Distance"));

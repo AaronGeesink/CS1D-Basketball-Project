@@ -53,7 +53,7 @@
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>3</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="DenverNuggetsPage">
        <widget class="QLabel" name="nuggetsTitle">
@@ -123,25 +123,46 @@ starting from the Denver nuggets</string>
        <widget class="QLabel" name="custom1Label">
         <property name="geometry">
          <rect>
-          <x>330</x>
-          <y>10</y>
-          <width>181</width>
-          <height>16</height>
+          <x>110</x>
+          <y>20</y>
+          <width>201</width>
+          <height>20</height>
          </rect>
         </property>
         <property name="text">
          <string>Choose Custom Cities to Visit in order</string>
         </property>
        </widget>
-       <widget class="QTableWidget" name="custom1Table">
+       <widget class="QLabel" name="custom1Label_3">
         <property name="geometry">
          <rect>
-          <x>140</x>
+          <x>530</x>
+          <y>20</y>
+          <width>201</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Cities to visit in order</string>
+        </property>
+       </widget>
+       <widget class="QWidget" name="horizontalLayoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
           <y>40</y>
-          <width>551</width>
+          <width>811</width>
           <height>481</height>
          </rect>
         </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QTableWidget" name="custom1Table"/>
+         </item>
+         <item>
+          <widget class="QTableWidget" name="custom1OrderedTable"/>
+         </item>
+        </layout>
        </widget>
       </widget>
       <widget class="QWidget" name="DetroitPistonsPage">

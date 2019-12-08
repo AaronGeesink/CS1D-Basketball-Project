@@ -32,6 +32,9 @@ signals:
 	void moveToTripSelectClicked();
 
 	void moveToSouvenirClicked();
+public slots:
+    void addItem(int row, int col);
+    void removeItem(int row, int col);
 
 private slots:
 	void on_moveToTripSelect_clicked();
@@ -40,6 +43,7 @@ private slots:
 
 private:
 	Ui::TripWindow *ui;
+    int customTableIndex = 0;
 };
 
 #endif // TRIPWINDOW_H
