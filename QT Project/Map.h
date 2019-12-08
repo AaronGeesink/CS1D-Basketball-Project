@@ -15,13 +15,14 @@ public:
     const V &Value(){return _value;}							// Returning the value reference
     void SetKey(int key){_key = key;}								// Setting a new key
     void SetValue(V value){_value = value;}						// setting a new value								// Place a value into the position
-    bool operator==(Position<V> &n){
-            return n._key == this->_key && n._value == this->_value;
-        }
+	bool operator==(Position<V> &n)
+	{
+		return n._key == this->_key && n._value == this->_value;
+	}
     bool operator!=(Position<V> &n)
-        {
-        return n._key != this->_key || n._value != this->_value;
-        }
+	{
+		return n._key != this->_key || n._value != this->_value;
+	}
     bool _free;					// true when space is free to place a new data in it
 private:
 
@@ -43,8 +44,6 @@ public:
     void Put(const int &key, const V &value);		//Puts a position into the map
     void Erase(const int& key);						//This function will remove the position with the specified key
     void OutputIO();
-
-
 
 private:
     Position<V> *list;
