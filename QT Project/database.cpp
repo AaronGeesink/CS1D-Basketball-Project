@@ -82,7 +82,7 @@ std::vector<QString> queryTeamNames()
 Edge<QString> queryEdge(QString start, QString end)
 {
 	QSqlQuery query;
-	int distance = 0;
+    double distance = 0;
     Edge<QString> edge;
 
 	query.prepare("SELECT distance FROM distances WHERE startTeam = :startTeam and endTeam = :endTeam");
@@ -94,7 +94,7 @@ Edge<QString> queryEdge(QString start, QString end)
 	}
 	while(query.next())
 	{
-		distance = query.value(0).toInt();
+        distance = query.value(0).toDouble();
         edge.weight = distance;
         edge.end = end;
 	}
