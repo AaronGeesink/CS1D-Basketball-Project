@@ -55,7 +55,7 @@ private:
 	int numEdges;	// Number of edges 
 	int** adj;	// Adjacency matrix
 	Vertex<T>* vertices;	// Vertices of the graph
-	vector<pair<int,pair<int, int>>> edges;	// ids for the graph's edges
+	vector<pair<double,pair<int, int>>> edges;	// ids for the graph's edges
 
 	// Driver Function to calculate the depth first search traversal
 	void DFSDriver(T start, vector<bool> &visited, std::vector<Edge<T>>& discoveryEdges, int counter = 0);
@@ -491,7 +491,7 @@ inline std::vector<Edge<T>> MatrixGraph<T>::kruskalMST()
     int totalWeight = 0;
     sort(edges.begin(), edges.end());
     DisjointSets ds(numVertices);
-    vector< pair<int, pair<int, int> > >::iterator it;
+	vector< pair<double, pair<int, int> > >::iterator it;
 
     for (it = edges.begin(); it != edges.end(); it++)
     {
