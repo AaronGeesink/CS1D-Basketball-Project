@@ -4,6 +4,7 @@
 #include <QString>
 #include <vector>
 #include "souvenir.h"
+#include "matrixgraph.h"
 
 /*
 enum Conferences
@@ -16,13 +17,6 @@ enum Divisions
 	Atlantic, Central, Southeast, Northwest, Pacific, Southwest
 };
 */
-
-struct Edge
-{
-	QString startTeam;
-	QString endTeam;
-	int distance;
-};
 
 class Team
 {
@@ -37,7 +31,7 @@ public:
 	//int getArenaCap();
 	//int getJoinYear();
 	//QString getCoach();
-	std::vector<Edge> getEdges();
+    std::vector<Edge<QString>> getEdges();
 	//Map<float, Souvenir> getSouvenirs();
 
 	//void setConference(QString conference);
@@ -48,7 +42,7 @@ public:
 	//void setArenaCap(int arenaCap);
 	//void setJoinYear(int joinYear);
 	//void setCoach(QString coach);
-	void setEdges(std::vector<Edge> edges);
+    void setEdges(std::vector<Edge<QString>> edges);
 	//void setSouvenirs(Map<float, Souvenir>);
 	//void addSouvenir(Souvenir souvenir);
 
@@ -61,7 +55,7 @@ private:
 	//int arenaCap;
 	//int joinYear;
 	//QString coach;
-	std::vector<Edge> edges;
+    std::vector<Edge<QString>> edges;
 	//Map<float, Souvenir> souvenirs;
 };
 

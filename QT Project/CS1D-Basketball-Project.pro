@@ -16,13 +16,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    adjListGraph.cpp \
     database.cpp \
     editwindow.cpp \
     graphwindow.cpp \
     loginwindow.cpp \
     main.cpp \
     mainwindow.cpp \
+    matrixgraph.cpp \
     resultswindow.cpp \
     souvenir.cpp \
     souvenirwindow.cpp \
@@ -32,7 +32,6 @@ SOURCES += \
     viewwindow.cpp
 
 HEADERS += \
-    adjListGraph.h \
     database.h \
     editwindow.h \
     graphwindow.h \

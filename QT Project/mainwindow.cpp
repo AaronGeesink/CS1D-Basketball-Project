@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "adjListGraph.h"
 #include "database.h"
 
 
@@ -132,6 +131,7 @@ void MainWindow::moveToResults()
 
 void MainWindow::on_moveToGraph_clicked()
 {
+    /*
 	//Stacked Widget index 8: Graph Traversal Window
 	ui->stackedWidget->setCurrentIndex(8);
     graphAdjList teamGraph;
@@ -139,6 +139,7 @@ void MainWindow::on_moveToGraph_clicked()
     teamGraph.sortByDist();
     teamGraph.printGraph();
 	teamGraph.DFS1("Orlando Magic");
+    */
 
 
 

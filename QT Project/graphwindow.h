@@ -3,8 +3,7 @@
 
 #include <QWidget>
 #include <vector>
-#include "team.h"
-
+#include "database.h"
 
 namespace Ui {
 class GraphWindow;
@@ -17,12 +16,19 @@ class GraphWindow : public QWidget
 public:
 	explicit GraphWindow(QWidget *parent = nullptr);
 	~GraphWindow();
-    void displayMST(std::vector<Edge> edges);
-    void displayDFS(std::vector<Edge> edges);
-    void displayBFS(std::vector<Edge> edges);
+    void displayMST(std::vector<Edge<QString>> edges);
+    void displayDFS(std::vector<Edge<QString>> edges);
+    void displayBFS(std::vector<Edge<QString>> edges);
+
+private slots:
+    void on_dfsBtn_clicked();
+    void on_bfsBtn_clicked();
+    void on_mstBtn_clicked();
 
 private:
 	Ui::GraphWindow *ui;
+    QString teamsAr[30];
+
 };
 
 #endif // GRAPHWINDOW_H

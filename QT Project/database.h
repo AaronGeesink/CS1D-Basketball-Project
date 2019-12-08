@@ -45,7 +45,7 @@ std::vector<QString> queryTeamNames();
  * @param QString start, QString end
  * @return Edge
  */
-Edge queryEdge(QString start, QString end);
+Edge<QString> queryEdge(QString start, QString end);
 
 /**
  * @author Aaron Geesink
@@ -54,7 +54,7 @@ Edge queryEdge(QString start, QString end);
  * @param QString teamName
  * @return Edge
  */
-std::vector<Edge> queryEdges(QString startTeam);
+std::vector<Edge<QString>> queryEdges(QString startTeam);
 
 /**
  * @author Aaron Geesink

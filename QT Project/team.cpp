@@ -13,7 +13,7 @@ QString Team::getLocation()
 	return location;
 }
 
-std::vector<Edge> Team::getEdges()
+std::vector<Edge<QString>> Team::getEdges()
 {
 	return edges;
 }
@@ -28,7 +28,7 @@ void Team::setLocation(QString location)
 	this->location = location;
 }
 
-void Team::setEdges(std::vector<Edge> edges)
+void Team::setEdges(std::vector<Edge<QString>> edges)
 {
 	this->edges = edges;
 }

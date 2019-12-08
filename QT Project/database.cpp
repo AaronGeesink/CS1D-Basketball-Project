@@ -45,9 +45,9 @@ std::vector<Team> queryTeams()
 		qDebug() << "Name: " << team.getTeamName()
 				 << "\nLocation: " << team.getLocation()
 				 << "\nNum edges: " << team.getEdges().size()
-				 << "\nEdge 1 start: " << team.getEdges()[0].startTeam
-				 << "\nEdge 1 end:" << team.getEdges()[0].endTeam
-				 << "\nEdge 1 distance:" << team.getEdges()[0].distance
+                 << "\nEdge 1 start: " << team.getEdges()[0].start
+                 << "\nEdge 1 end:" << team.getEdges()[0].end
+                 << "\nEdge 1 distance:" << team.getEdges()[0].weight
 				 << "\n";
 	}
 
@@ -76,11 +76,11 @@ std::vector<QString> queryTeamNames()
 }
 
 
-Edge queryEdges(QString start, QString end)
+Edge<QString> queryEdges(QString start, QString end)
 {
 	QSqlQuery query;
 	int distance = 0;
-	Edge edge;
+    Edge<QString> edge;
 
 	query.prepare("SELECT distance FROM distances WHERE startTeam = :startTeam and endTeam = :endTeam");
 	query.bindValue(":startTeam", start);
@@ -92,16 +92,16 @@ Edge queryEdges(QString start, QString end)
 	while(query.next())
 	{
 		distance = query.value(0).toInt();
-		edge.distance = distance;
-		edge.endTeam = end;
+        edge.weight = distance;
+        edge.end = end;
 	}
 	return edge;
 }
 
-std::vector<Edge> queryEdges(QString startTeam)
+std::vector<Edge<QString>> queryEdges(QString startTeam)
 {
-	std::vector<Edge> edges;
-	Edge edge;
+    std::vector<Edge<QString>> edges;
+    Edge<QString> edge;
 	std::vector<QString> endTeams;
 	std::vector<int> distances;
 
@@ -134,9 +134,9 @@ std::vector<Edge> queryEdges(QString startTeam)
 // construct the edges
 	for (int i = 0; i < endTeams.size(); i++)
 	{
-		edge.startTeam = startTeam;
-		edge.endTeam = endTeams[i];
-		edge.distance = distances[i];
+        edge.start = startTeam;
+        edge.end = endTeams[i];
+        edge.weight = distances[i];
 		edges.push_back(edge);
 	}
 
