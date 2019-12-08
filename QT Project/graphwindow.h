@@ -28,7 +28,6 @@ private slots:
 private:
 	Ui::GraphWindow *ui;
     QString teamsAr[30];
-
 };
 
 #endif // GRAPHWINDOW_H
