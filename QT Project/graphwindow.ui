@@ -105,7 +105,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>DFS/BFS Traversal</string>
+    <string>DFS, BFS, and MST</string>
    </property>
   </widget>
   <widget class="QWidget" name="horizontalLayoutWidget">
