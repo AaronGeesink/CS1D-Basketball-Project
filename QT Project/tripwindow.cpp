@@ -362,6 +362,12 @@ void TripWindow::on_moveToSouvenir_clicked()
 			*/
         }
 
+		if (notVisited.size() <= 0)
+		{
+			QMessageBox::information(this, tr("Input Error"), tr("Please Select more that 1 Team to visit"));
+			return;
+		}
+
 
         struct testNode
         {
@@ -473,6 +479,12 @@ void TripWindow::on_moveToSouvenir_clicked()
 			//qDebug() << "Team: " << i.getTeamName();
         }
         loadedTeams = visited;
+	}
+
+	if (loadedTeams.size() <= 0)
+	{
+		QMessageBox::information(this, tr("Input Error"), tr("Please Select more that 1 Team to visit"));
+		return;
 	}
 
 	emit moveToSouvenirClicked();

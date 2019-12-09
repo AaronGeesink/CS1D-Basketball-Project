@@ -6,6 +6,7 @@
 #include <QRadioButton>
 #include <QSpinBox>
 #include <QComboBox>
+#include <QMessageBox>
 #include "team.h"
 #include "database.h"
 
