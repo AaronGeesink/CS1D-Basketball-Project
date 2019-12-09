@@ -6,6 +6,7 @@
 #include <QDir>
 #include <QDebug>
 #include "team.h"
+//#include "map.h"
 
 /**
  * @author Garrett Geesink
@@ -21,6 +22,8 @@ void createDatabase();
  * @return bool
  */
 bool checkConnection();
+
+Team queryTeam(QString teamName);
 
 /**
  * @author Aaron Geesink
@@ -45,7 +48,7 @@ std::vector<QString> queryTeamNames();
  * @param QString start, QString end
  * @return Edge
  */
-Edge queryEdge(QString start, QString end);
+Edge<QString> queryEdge(QString start, QString end);
 
 /**
  * @author Aaron Geesink
@@ -54,7 +57,7 @@ Edge queryEdge(QString start, QString end);
  * @param QString teamName
  * @return Edge
  */
-std::vector<Edge> queryEdges(QString startTeam);
+std::vector<Edge<QString>> queryEdges(QString startTeam);
 
 /**
  * @author Aaron Geesink
@@ -63,7 +66,11 @@ std::vector<Edge> queryEdges(QString startTeam);
  * @param QString teamName
  * @return std::vector<Souvenir>
  */
-std::vector<Souvenir> querySouvenirs(QString teamName);
+std::map<int, Souvenir> querySouvenirs(QString teamName);
+
+Souvenir querySouvenir(int souvenirID);
+
+std::vector<int> queryKeys(QString teamName);
 
 /**
  * @author Aaron Geesink

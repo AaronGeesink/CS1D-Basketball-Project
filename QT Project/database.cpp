@@ -1,4 +1,5 @@
 #include "database.h"
+#include <QDebug>
 
 void createDatabase()
 {
@@ -7,6 +8,7 @@ void createDatabase()
 	db = QSqlDatabase::database();
 	// Load database from file
 	const QString DB_PATH = QDir::currentPath() + "/resources/database.db";
+	qDebug() << "PATH" << DB_PATH;
 	db.setDatabaseName(DB_PATH);
 }
 
@@ -29,6 +31,25 @@ bool checkConnection()
 	}
 }
 
+Team queryTeam(QString teamName)
+{
+	Team team;
+
+	team.setTeamName(teamName);
+	team.setEdges(queryEdges(teamName));
+	team.setLocation(queryLocation(teamName));
+	team.setSouvenirs(querySouvenirs(teamName));
+	team.setKeys(queryKeys(teamName));
+/*
+	qDebug() << "Name: " << team.getTeamName()
+			 << "\nLocation: " << team.getLocation()
+			 << "\nNum edges: " << team.getEdges().size()
+			 << "\nNum souvenirs: " << team.getSouvenirs().size()
+			 << "\n";
+*/
+	return team;
+}
+
 std::vector<Team> queryTeams()
 {
 	std::vector<Team> teams;
@@ -41,14 +62,19 @@ std::vector<Team> queryTeams()
 		team.setTeamName(teamNames[i]);
 		team.setEdges(queryEdges(teamNames[i]));
 		team.setLocation(queryLocation(teamNames[i]));
-
+		team.setSouvenirs(querySouvenirs(teamNames[i]));
+		team.setKeys(queryKeys(teamNames[i]));
+		teams.push_back(team);
+/*
 		qDebug() << "Name: " << team.getTeamName()
 				 << "\nLocation: " << team.getLocation()
 				 << "\nNum edges: " << team.getEdges().size()
-				 << "\nEdge 1 start: " << team.getEdges()[0].startTeam
-				 << "\nEdge 1 end:" << team.getEdges()[0].endTeam
-				 << "\nEdge 1 distance:" << team.getEdges()[0].distance
+				 << "\nNum souvenirs: " << team.getSouvenirs().Size()
+                 << "\nEdge 1 start: " << team.getEdges()[0].start
+                 << "\nEdge 1 end:" << team.getEdges()[0].end
+                 << "\nEdge 1 distance:" << team.getEdges()[0].weight
 				 << "\n";
+*/
 	}
 
 	return teams;
@@ -76,11 +102,11 @@ std::vector<QString> queryTeamNames()
 }
 
 
-Edge queryEdges(QString start, QString end)
+Edge<QString> queryEdge(QString start, QString end)
 {
 	QSqlQuery query;
-	int distance = 0;
-	Edge edge;
+    double distance = 0;
+    Edge<QString> edge;
 
 	query.prepare("SELECT distance FROM distances WHERE startTeam = :startTeam and endTeam = :endTeam");
 	query.bindValue(":startTeam", start);
@@ -91,19 +117,19 @@ Edge queryEdges(QString start, QString end)
 	}
 	while(query.next())
 	{
-		distance = query.value(0).toInt();
-		edge.distance = distance;
-		edge.endTeam = end;
+        distance = query.value(0).toDouble();
+        edge.weight = distance;
+        edge.end = end;
 	}
 	return edge;
 }
 
-std::vector<Edge> queryEdges(QString startTeam)
+std::vector<Edge<QString>> queryEdges(QString startTeam)
 {
-	std::vector<Edge> edges;
-	Edge edge;
+    std::vector<Edge<QString>> edges;
+    Edge<QString> edge;
 	std::vector<QString> endTeams;
-	std::vector<int> distances;
+    std::vector<double> distances;
 
 	QSqlQuery query;
 
@@ -128,15 +154,15 @@ std::vector<Edge> queryEdges(QString startTeam)
 	}
 	while(query.next())
 	{
-		distances.push_back(query.value(0).toInt());
+        distances.push_back(query.value(0).toDouble());
 	}
 
 // construct the edges
 	for (int i = 0; i < endTeams.size(); i++)
 	{
-		edge.startTeam = startTeam;
-		edge.endTeam = endTeams[i];
-		edge.distance = distances[i];
+        edge.start = startTeam;
+        edge.end = endTeams[i];
+        edge.weight = distances[i];
 		edges.push_back(edge);
 	}
 
@@ -144,11 +170,11 @@ std::vector<Edge> queryEdges(QString startTeam)
 }
 
 
-std::vector<Souvenir> querySouvenirs(QString teamName)
+std::map<int, Souvenir> querySouvenirs(QString teamName)
 {
-	std::vector<Souvenir> souvenirs;
 	std::vector<QString> souvenirNames;
 	std::vector<float> souvenirPrices;
+	std::vector<int> souvenirIDs;
 
 	QSqlQuery query;
 
@@ -176,13 +202,28 @@ std::vector<Souvenir> querySouvenirs(QString teamName)
 		souvenirPrices.push_back(query.value(0).toDouble());
 	}
 
-// construct the souvenirs
-	for (int i = 0; i < souvenirNames.size(); i++)
+// Query the souvenir ids for the team
+	query.prepare("SELECT souvenirID FROM souvenirs WHERE teamName = :teamName");
+	query.bindValue(":teamName", teamName);
+	if(!query.exec())
 	{
-		Souvenir souvenir(souvenirNames[i], souvenirPrices[i]);
-		souvenirs.push_back(souvenir);
+		qDebug() << "Failed to query from SQL Database";
+	}
+	while(query.next())
+	{
+		souvenirIDs.push_back(query.value(0).toInt());
 	}
 
+// construct the souvenirs
+
+	std::map<int, Souvenir> souvenirs;
+	for (int i = 0; i < souvenirNames.size(); i++)
+	{
+		Souvenir souvenir(souvenirNames[i], souvenirPrices[i], souvenirIDs[i]);
+		souvenirs.insert({souvenirIDs[i], souvenir});
+		//qDebug() << "souvenir: " << souvenirs.at(souvenirIDs[i]).getName() << souvenirs.at(souvenirIDs[i]).getID() << souvenirIDs[i];
+	}
+    //qDebug() << souvenirs.size();
 	return souvenirs;
 }
 
@@ -205,4 +246,60 @@ QString queryLocation(QString teamName)
 	}
 
 	return location;
+}
+
+std::vector<int> queryKeys(QString teamName)
+{
+	QSqlQuery query;
+	std::vector<int> keys;
+
+// Query the souvenir ids for the team
+	query.prepare("SELECT souvenirID FROM souvenirs WHERE teamName = :teamName");
+	query.bindValue(":teamName", teamName);
+	if(!query.exec())
+	{
+		qDebug() << "Failed to query from SQL Database";
+	}
+	while(query.next())
+	{
+		keys.push_back(query.value(0).toInt());
+	}
+	return keys;
+}
+
+Souvenir querySouvenir(int souvenirID)
+{
+	QString souvenirName;
+	float souvenirPrice;
+
+	QSqlQuery query;
+
+// Query the souvenir names for the team
+	query.prepare("SELECT item FROM souvenirs WHERE souvenirID = :souvenirID");
+	query.bindValue(":souvenirID", souvenirID);
+	if(!query.exec())
+	{
+		qDebug() << "Failed to query from SQL Database";
+	}
+	while(query.next())
+	{
+		souvenirName = query.value(0).toString();
+	}
+
+// Query the souvenir prices for the team
+	query.prepare("SELECT price FROM souvenirs WHERE souvenirID = :souvenirID");
+	query.bindValue(":souvenirID", souvenirID);
+	if(!query.exec())
+	{
+		qDebug() << "Failed to query from SQL Database";
+	}
+	while(query.next())
+	{
+		souvenirPrice = query.value(0).toDouble();
+	}
+
+// construct the souvenir
+
+	Souvenir souvenir(souvenirName, souvenirPrice, souvenirID);
+	return souvenir;
 }

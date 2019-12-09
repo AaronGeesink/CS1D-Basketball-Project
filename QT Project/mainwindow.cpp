@@ -1,5 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "database.h"
+
 
 MainWindow::MainWindow(QWidget *parent) :
 	QWidget(parent),
@@ -117,18 +119,23 @@ void MainWindow::moveToTrip()
 
 void MainWindow::moveToSouvenir()
 {
+	souvenirWind.setSouvenirSelection(tripWind.getLoadedTeams());
+
 	//Stacked Widget index 6: Souvenir Window
 	ui->stackedWidget->setCurrentIndex(6);
 }
 
 void MainWindow::moveToResults()
 {
+	resultsWind.setResults(souvenirWind.getLoadedTeams());
+
 	//Stacked Widget index 7: Results Window
 	ui->stackedWidget->setCurrentIndex(7);
 }
 
 void MainWindow::on_moveToGraph_clicked()
 {
+
 	//Stacked Widget index 8: Graph Traversal Window
 	ui->stackedWidget->setCurrentIndex(8);
 }

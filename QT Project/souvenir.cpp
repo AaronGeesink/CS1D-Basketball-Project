@@ -3,8 +3,8 @@
 Souvenir::Souvenir() : name {""}, price{0}, quantity{0}
 {	}
 
-Souvenir::Souvenir(QString name, double price, int quantity)
-	: name {name}, price{price}, quantity{quantity}
+Souvenir::Souvenir(QString name, double price, int id, int quantity)
+	: name {name}, price{price}, id{id}, quantity{quantity}
 {	}
 
 Souvenir::~Souvenir()
@@ -13,6 +13,7 @@ Souvenir::~Souvenir()
 void Souvenir::setQuantity(int quantity)
 {
 	this->quantity = quantity;
+	//qDebug() << this->quantity;
 }
 
 double Souvenir::getPrice()
@@ -20,9 +21,29 @@ double Souvenir::getPrice()
 	return price;
 }
 
+double Souvenir::getPrice() const
+{
+	return price;
+}
+
 QString Souvenir::getName()
 {
 	return name;
+}
+
+const QString Souvenir::getName() const
+{
+	return name;
+}
+
+int Souvenir::getID()
+{
+	return id;
+}
+
+void Souvenir::setID(int id)
+{
+	this->id = id;
 }
 
 int Souvenir::getQuantity()

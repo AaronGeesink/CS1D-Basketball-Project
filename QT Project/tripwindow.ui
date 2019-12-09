@@ -51,22 +51,15 @@
      <number>100</number>
     </property>
     <item>
-     <widget class="QLabel" name="label">
-      <property name="text">
-       <string>Select Teams to Visit</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item>
      <widget class="QStackedWidget" name="stackedWidget">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(29, 29, 29, 150);</string>
+      </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="DenverNuggetsPage">
-       <widget class="QLabel" name="label_2">
+       <widget class="QLabel" name="nuggetsTitle">
         <property name="geometry">
          <rect>
           <x>370</x>
@@ -79,24 +72,95 @@
          <string>Denver Nuggets Trip</string>
         </property>
        </widget>
-      </widget>
-      <widget class="QWidget" name="CustomSpecifiedPage">
-       <widget class="QLabel" name="label_3">
+       <widget class="QComboBox" name="NuggetsCombobox">
         <property name="geometry">
          <rect>
-          <x>330</x>
-          <y>10</y>
-          <width>181</width>
-          <height>16</height>
+          <x>70</x>
+          <y>180</y>
+          <width>141</width>
+          <height>22</height>
          </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="nuggetsLabel">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>110</y>
+          <width>171</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Select a City to Travel to
+starting from the Denver nuggets</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="CustomSpecifiedPage">
+       <widget class="QLabel" name="custom1Label">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>20</y>
+          <width>201</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);</string>
         </property>
         <property name="text">
          <string>Choose Custom Cities to Visit in order</string>
         </property>
        </widget>
+       <widget class="QLabel" name="custom1Label_2">
+        <property name="geometry">
+         <rect>
+          <x>530</x>
+          <y>20</y>
+          <width>201</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="text">
+         <string>Cities to visit in order</string>
+        </property>
+       </widget>
+       <widget class="QWidget" name="horizontalLayoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>40</y>
+          <width>811</width>
+          <height>481</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QTableWidget" name="custom1Table">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgba(20, 20, 20, 190);
+gridline-color: rgba(200, 200, 200, 255);</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QTableWidget" name="custom1OrderedTable">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgba(20, 20, 20, 190);
+gridline-color: rgba(200, 200, 200, 255);</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
       </widget>
       <widget class="QWidget" name="DetroitPistonsPage">
-       <widget class="QLabel" name="label_4">
+       <widget class="QLabel" name="pistonsLabel">
         <property name="geometry">
          <rect>
           <x>370</x>
@@ -105,23 +169,87 @@
           <height>16</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255,255,255)</string>
+        </property>
         <property name="text">
          <string>Detroit Pistons Trip</string>
         </property>
        </widget>
-      </widget>
-      <widget class="QWidget" name="CustomShortestPage">
-       <widget class="QLabel" name="label_5">
+       <widget class="QTableWidget" name="pistonsTable">
         <property name="geometry">
          <rect>
-          <x>310</x>
-          <y>10</y>
-          <width>231</width>
-          <height>16</height>
+          <x>155</x>
+          <y>40</y>
+          <width>541</width>
+          <height>481</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgba(20, 20, 20, 190);
+gridline-color: rgba(200, 200, 200, 255);</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="CustomShortestPage">
+       <widget class="QLabel" name="custom2Label">
+        <property name="geometry">
+         <rect>
+          <x>510</x>
+          <y>0</y>
+          <width>281</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);</string>
+        </property>
         <property name="text">
-         <string>Select Custom Cities to Visit in Shortest Distance</string>
+         <string>Cities to visit, (select first city to visit first)</string>
+        </property>
+       </widget>
+       <widget class="QWidget" name="horizontalLayoutWidget_2">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>20</y>
+          <width>811</width>
+          <height>481</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_7">
+         <item>
+          <widget class="QTableWidget" name="custom2Table">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgba(20, 20, 20, 190);
+gridline-color: rgba(200, 200, 200, 255);</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QTableWidget" name="custom2OrderedTable">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgba(20, 20, 20, 190);
+gridline-color: rgba(200, 200, 200, 255);</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QLabel" name="custom2Label_2">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>0</y>
+          <width>201</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="text">
+         <string>Choose Custom Cities to Visit in order</string>
         </property>
        </widget>
       </widget>
@@ -136,6 +264,10 @@
           <width>150</width>
           <height>50</height>
          </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: qlineargradient(spread:pad, x1:1, y1:0.523, x2:0, y2:0.494, stop:0 rgba(0, 0, 0, 255), stop:0.897727 rgba(57, 57, 57, 255))</string>
         </property>
         <property name="text">
          <string>Back to Vacation Select</string>
@@ -163,6 +295,10 @@
           <height>50</height>
          </size>
         </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color:qlineargradient(spread:pad, x1:0, y1:0.506, x2:1, y2:0.511045, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(52, 52, 52, 255))</string>
+        </property>
         <property name="text">
          <string>Purchase Souvenirs</string>
         </property>
@@ -172,6 +308,24 @@
     </item>
    </layout>
   </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>-2</x>
+     <y>5</y>
+     <width>1201</width>
+     <height>711</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>../build-CS1D-Basketball-Project-Desktop-Debug/resources/nba.jpg</pixmap>
+   </property>
+  </widget>
+  <zorder>label</zorder>
+  <zorder>verticalLayoutWidget</zorder>
  </widget>
  <resources/>
  <connections/>
