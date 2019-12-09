@@ -6,6 +6,7 @@
 #include <QDir>
 #include <QDebug>
 #include "team.h"
+//#include "map.h"
 
 /**
  * @author Garrett Geesink
@@ -65,7 +66,9 @@ std::vector<Edge<QString>> queryEdges(QString startTeam);
  * @param QString teamName
  * @return std::vector<Souvenir>
  */
-std::vector<Souvenir> querySouvenirs(QString teamName);
+std::map<int, Souvenir> querySouvenirs(QString teamName);
+
+std::vector<int> queryKeys(QString teamName);
 
 /**
  * @author Aaron Geesink

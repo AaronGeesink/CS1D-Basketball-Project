@@ -66,8 +66,7 @@ void TripWindow::removeItem(int row, int col)
 
 void TripWindow::setSpecifiedTrip()
 {
-	loadedTeams.clear();
-	loadedTeams = queryTeams();
+    loadedTeams.clear();
 	planNumber = 1;
 
 	std::vector<Team> teams = queryTeams();
@@ -138,7 +137,6 @@ void TripWindow::setPistonsTrip()
 void TripWindow::setShortestTrip()
 {
 	loadedTeams.clear();
-	loadedTeams = queryTeams();
 	planNumber = 3;
 
 	// Table Setup
@@ -163,6 +161,11 @@ void TripWindow::setShortestTrip()
 	}
 
 	ui->stackedWidget->setCurrentIndex(3);
+}
+
+std::vector<Team> &TripWindow::getLoadedTeams()
+{
+	return loadedTeams;
 }
 
 void TripWindow::on_moveToTripSelect_clicked()
