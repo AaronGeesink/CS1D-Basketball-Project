@@ -16,7 +16,7 @@ ResultsWindow::~ResultsWindow()
 
 void ResultsWindow::setResults(std::vector<Team> &loadedTeams)
 {
-	/*
+/*
 	qDebug() << "number of teams: " << loadedTeams.size();
 	for (int i = 0; i < loadedTeams.size(); i++)
 	{
@@ -29,7 +29,7 @@ void ResultsWindow::setResults(std::vector<Team> &loadedTeams)
 					 << '\n';
 		}
 	}
-	*/
+*/
 	// setup for the distance table
 	ui->travelTable->clear();
 	ui->travelTable->setRowCount(loadedTeams.size());
@@ -148,6 +148,7 @@ void ResultsWindow::setResults(std::vector<Team> &loadedTeams)
 	int souvenirsLoaded = 0;
 	double grandTotal = 0;
 	std::vector<double> souvenirTotals;
+	pushback = false;
 
 	for (int i = 0; i < loadedTeams.size(); i++)
 	{
@@ -156,11 +157,11 @@ void ResultsWindow::setResults(std::vector<Team> &loadedTeams)
 		{
 			if (loadedTeams[i].getSouvenirs()[loadedTeams[i].getKeys()[j]].getQuantity() > 0)
 			{
+				pushback = true;
+
 				label = new QLabel();
 				label->setText(loadedTeams[i].getTeamName());
 				ui->souvenirTable->setCellWidget(souvenirsLoaded, 0, label);
-
-
 
 				// set the name of the food
 				label = new QLabel();
@@ -187,7 +188,11 @@ void ResultsWindow::setResults(std::vector<Team> &loadedTeams)
 				souvenirsLoaded++;
 			}
 		}
-		souvenirTotals.push_back(souvenirTotal);
+		if (pushback)
+		{
+			souvenirTotals.push_back(souvenirTotal);
+			pushback = false;
+		}
 	}
 
 	label = new QLabel();

@@ -51,7 +51,7 @@ void TripWindow::setNuggetsTrip()
 void TripWindow::addItem1(int row, int col)
 {
     ui->custom1OrderedTable->setRowCount(customTableIndex1+1);
-    qDebug() << "item pressed: " << row << " " << col;
+	//qDebug() << "item pressed: " << row << " " << col;
     QTableWidgetItem *item = ui->custom1Table->item(row,col);
     ui->custom1OrderedTable->setItem(customTableIndex1, 0, new QTableWidgetItem(*item));
     ui->custom1Table->removeRow(row);
@@ -61,7 +61,7 @@ void TripWindow::addItem1(int row, int col)
 void TripWindow::removeItem1(int row, int col)
 {
     ui->custom1Table->setRowCount(ui->custom1Table->rowCount()+1);
-    qDebug() << "item pressed: " << row << " " << col;
+	//qDebug() << "item pressed: " << row << " " << col;
     QTableWidgetItem *item = ui->custom1OrderedTable->item(row,col);
     ui->custom1Table->setItem(ui->custom1Table->rowCount()-1, 0, new QTableWidgetItem(*item));
     ui->custom1OrderedTable->removeRow(row);
@@ -71,7 +71,7 @@ void TripWindow::removeItem1(int row, int col)
 void TripWindow::addItem2(int row, int col)
 {
     ui->custom2OrderedTable->setRowCount(customTableIndex2+1);
-    qDebug() << "item pressed: " << row << " " << col;
+	//qDebug() << "item pressed: " << row << " " << col;
     QTableWidgetItem *item = ui->custom2Table->item(row,col);
     ui->custom2OrderedTable->setItem(customTableIndex2, 0, new QTableWidgetItem(*item));
     ui->custom2Table->removeRow(row);
@@ -81,7 +81,7 @@ void TripWindow::addItem2(int row, int col)
 void TripWindow::removeItem2(int row, int col)
 {
     ui->custom2Table->setRowCount(ui->custom2Table->rowCount()+1);
-    qDebug() << "item pressed: " << row << " " << col;
+	//qDebug() << "item pressed: " << row << " " << col;
     QTableWidgetItem *item = ui->custom2OrderedTable->item(row,col);
     ui->custom2Table->setItem(ui->custom2Table->rowCount()-1, 0, new QTableWidgetItem(*item));
     ui->custom2OrderedTable->removeRow(row);
@@ -100,7 +100,7 @@ void TripWindow::setSpecifiedTrip()
     ui->custom1Table->setSelectionMode(QAbstractItemView::NoSelection);
     ui->custom1OrderedTable->setSelectionMode(QAbstractItemView::NoSelection);
 	std::vector<Team> teams = queryTeams();
-	qDebug() << teams.size();
+
 	// Table Setup
 	ui->custom1Table->setRowCount(teams.size());
     //ui->custom1OrderedTable->setRowCount(teams.size());
@@ -159,7 +159,7 @@ void TripWindow::setShortestTrip()
     ui->custom2Table->setSelectionMode(QAbstractItemView::NoSelection);
     ui->custom2OrderedTable->setSelectionMode(QAbstractItemView::NoSelection);
     std::vector<Team> teams = queryTeams();
-    qDebug() << teams.size();
+
     // Table Setup
     ui->custom2Table->setRowCount(teams.size());
     //ui->custom1OrderedTable->setRowCount(teams.size());
@@ -198,11 +198,13 @@ void TripWindow::on_moveToSouvenir_clicked()
 		loadedTeams.push_back(queryTeam("Denver Nuggets"));
 		loadedTeams.push_back(queryTeam(comboValue));
 
-		qDebug() << loadedTeams[0].getTeamName() << " --> " << loadedTeams[1].getTeamName();
+		//qDebug() << loadedTeams[0].getTeamName() << " --> " << loadedTeams[1].getTeamName();
 	}
 	// custom specified plan
 	else if (planNumber == 1)
 	{
+		loadedTeams.clear();
+
         for(int i = 0; i<ui->custom1OrderedTable->rowCount();i++)
         {
             loadedTeams.push_back(queryTeam(ui->custom1OrderedTable->item(i,0)->text()));
@@ -221,6 +223,8 @@ void TripWindow::on_moveToSouvenir_clicked()
 	// Detroit Pistons Plan
 	else if (planNumber == 2)
 	{
+		loadedTeams.clear();
+
         std::vector<Team> visited;
         std::vector<Team> notVisited = queryTeams();
         std::vector<Vertex<QString>> astarVertex;
@@ -254,7 +258,7 @@ void TripWindow::on_moveToSouvenir_clicked()
         for(auto i = teams.begin(); i!=teams.end(); i++)
         {
             teamsAr[in] = *i;
-            qDebug() << "Team name:" << teamsAr[in];
+			//qDebug() << "Team name:" << teamsAr[in];
             in++;
         }
         graph1 = new MatrixGraph<QString>(teamsAr, teams.size());
@@ -331,19 +335,22 @@ void TripWindow::on_moveToSouvenir_clicked()
         }
         }
         for (auto i : visited) {
-            qDebug() << "Team: " << i.getTeamName();
+			//qDebug() << "Team: " << i.getTeamName();
         }
         loadedTeams = visited;
 	}
 	// Custom Shortest plan
 	else if (planNumber == 3)
 	{
+		loadedTeams.clear();
+
         std::vector<Team> visited;
         std::vector<Team> notVisited;
         std::vector<Vertex<QString>> astarVertex;
         for(int i = 0; i<ui->custom2OrderedTable->rowCount();i++)
         {
             notVisited.push_back(queryTeam(ui->custom2OrderedTable->item(i,0)->text()));
+			/*
             qDebug() << notVisited[i].getTeamName();
             for(auto i: notVisited[i].getEdges())
             {
@@ -352,6 +359,7 @@ void TripWindow::on_moveToSouvenir_clicked()
                 qDebug() << "weight: " << i.weight;
             }
             qDebug() << "\n\n";
+			*/
         }
 
 
@@ -385,7 +393,7 @@ void TripWindow::on_moveToSouvenir_clicked()
         for(auto i = teams.begin(); i!=teams.end(); i++)
         {
             teamsAr[in] = *i;
-            qDebug() << "Team name:" << teamsAr[in];
+			//qDebug() << "Team name:" << teamsAr[in];
             in++;
         }
         graph1 = new MatrixGraph<QString>(teamsAr, teams.size());
@@ -462,7 +470,7 @@ void TripWindow::on_moveToSouvenir_clicked()
         }
         }
         for (auto i : visited) {
-            qDebug() << "Team: " << i.getTeamName();
+			//qDebug() << "Team: " << i.getTeamName();
         }
         loadedTeams = visited;
 	}

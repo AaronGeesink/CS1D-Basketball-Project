@@ -83,21 +83,6 @@ void SouvenirWindow::loadSouvenirQuantities()
 			souvenirsLoaded++;
 		}
 	}
-/*
-	for (auto it = loadedTeams->begin(); it != loadedTeams->end(); ++it)
-	{
-		for (unsigned int j = 0; j < it->getSouvenirs().size(); j++)
-		{
-			QSpinBox *spinBox = qobject_cast<QSpinBox *>(ui->souvenirTable->cellWidget(souvenirsLoaded, 3));
-			if (spinBox)
-			{
-				it->getSouvenirs()[j].setQuantity(spinBox->value());
-				//qDebug() << it->getSouvenirs()[j].getQuantity();
-			}
-			souvenirsLoaded++;
-		}
-	}
-*/
 }
 
 std::vector<Team> &SouvenirWindow::getLoadedTeams()

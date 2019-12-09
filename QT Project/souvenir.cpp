@@ -13,7 +13,7 @@ Souvenir::~Souvenir()
 void Souvenir::setQuantity(int quantity)
 {
 	this->quantity = quantity;
-	qDebug() << this->quantity;
+	//qDebug() << this->quantity;
 }
 
 double Souvenir::getPrice()

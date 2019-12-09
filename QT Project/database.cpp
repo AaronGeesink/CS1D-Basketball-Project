@@ -8,7 +8,7 @@ void createDatabase()
 	db = QSqlDatabase::database();
 	// Load database from file
 	const QString DB_PATH = QDir::currentPath() + "/resources/database.db";
-    qDebug() << "PATH" << DB_PATH;
+	qDebug() << "PATH" << DB_PATH;
 	db.setDatabaseName(DB_PATH);
 }
 
@@ -40,13 +40,13 @@ Team queryTeam(QString teamName)
 	team.setLocation(queryLocation(teamName));
 	team.setSouvenirs(querySouvenirs(teamName));
 	team.setKeys(queryKeys(teamName));
-
+/*
 	qDebug() << "Name: " << team.getTeamName()
 			 << "\nLocation: " << team.getLocation()
 			 << "\nNum edges: " << team.getEdges().size()
 			 << "\nNum souvenirs: " << team.getSouvenirs().size()
 			 << "\n";
-
+*/
 	return team;
 }
 
@@ -221,7 +221,7 @@ std::map<int, Souvenir> querySouvenirs(QString teamName)
 	{
 		Souvenir souvenir(souvenirNames[i], souvenirPrices[i], souvenirIDs[i]);
 		souvenirs.insert({souvenirIDs[i], souvenir});
-		qDebug() << "souvenir: " << souvenirs.at(souvenirIDs[i]).getName() << souvenirs.at(souvenirIDs[i]).getID() << souvenirIDs[i];
+		//qDebug() << "souvenir: " << souvenirs.at(souvenirIDs[i]).getName() << souvenirs.at(souvenirIDs[i]).getID() << souvenirIDs[i];
 	}
     //qDebug() << souvenirs.size();
 	return souvenirs;

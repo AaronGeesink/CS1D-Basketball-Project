@@ -23,7 +23,7 @@ GraphWindow::GraphWindow(QWidget *parent) :
     for(auto i = teams.begin(); i!=teams.end(); i++)
     {
         teamsAr[in] = *i;
-        qDebug() << "Team name:" << teamsAr[in];
+		//qDebug() << "Team name:" << teamsAr[in];
         in++;
     }
     graph1 = new MatrixGraph<QString>(teamsAr, teams.size());
@@ -42,11 +42,11 @@ void GraphWindow::displayDFS(std::vector<Edge<QString>> edges)
     int row = 0;
     for(auto i: edges)
     {
-        qDebug() << "start: " << i.start;
-        qDebug() << "end: " <<i.end;
-        qDebug() << "weight: " <<i.weight;
+		//qDebug() << "start: " << i.start;
+		//qDebug() << "end: " <<i.end;
+		//qDebug() << "weight: " <<i.weight;
         QTableWidgetItem *item1 = new QTableWidgetItem(i.start);
-        QTableWidgetItem *item2 = new QTableWidgetItem(i.end);
+		QTableWidgetItem *item2 = new QTableWidgetItem(i.end);
         QTableWidgetItem *item3 = new QTableWidgetItem(QString::number(i.weight));
         totalDistance += i.weight;
         ui->travList->setItem(row, 0, item1);
@@ -62,16 +62,16 @@ void GraphWindow::displayDFS(std::vector<Edge<QString>> edges)
 
 void GraphWindow::on_dfsBtn_clicked()
 {
-    std::vector<Edge<QString>> edges = graph1->DFS("Miami Heat");
-    qDebug() << edges.size();
+	std::vector<Edge<QString>> edges = graph1->DFS("Orlando Magic");
+	//qDebug() << edges.size();
     displayDFS(edges);
 
 }
 
 void GraphWindow::on_bfsBtn_clicked()
 {
-    std::vector<Edge<QString>> edges = graph1->BFS("Miami Heat");
-    qDebug() << edges.size();
+	std::vector<Edge<QString>> edges = graph1->BFS("Los Angeles Lakers");
+	//qDebug() << edges.size();
     displayDFS(edges);
 }
 
@@ -79,7 +79,7 @@ void GraphWindow::on_bfsBtn_clicked()
 void GraphWindow::on_mstBtn_clicked()
 {
     std::vector<Edge<QString>> edges = graph1->kruskalMST();
-    qDebug() << edges.size();
+	//qDebug() << edges.size();
     displayDFS(edges);
 }
 
