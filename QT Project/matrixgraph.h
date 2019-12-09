@@ -10,6 +10,12 @@ using namespace std;
 template <typename T>
 struct Vertex;
 
+/**
+ *@author Aaron Geesink
+ *@brief Edge struct
+ * A struct which contains a single edge on the graph
+ *@date December 2019
+ */
 template <typename T>
 struct Edge
 {
@@ -20,7 +26,12 @@ struct Edge
 	Vertex<T>* pStartVertex;
 };
 
-// comparator functor to compare weights of 2 edges
+/**
+ *@author Aaron Geesink
+ *@brief compareEdgeWeight struct
+ * Comparator functor to compare weights of 2 edges
+ *@date December 2019
+ */
 template <typename T>
 struct compareEdgeWeight
 {
@@ -34,58 +45,115 @@ struct compareEdgeWeight
 	}
 };
 
+/**
+ *@author Aaron Geesink
+ *@brief Vertex struct
+ * A struct which contains a vertex edge on the graph
+ *@date December 2019
+ */
 template <typename T>
 struct Vertex
 {
-    T value;	// data stored in the vertex
-    vector<Edge<T>> edges;	// edges of the vertex
-    Vertex<T>* parent;	// pointer to parent vertex in current traversal
-    int id;		// id for easy retrieval
-    int startTime = -1;		// start time for determining DFS edges
-    int endTime = -1;	// end timefor determining DFS edges
-    int depth;	// depth for determining BFS edge
-    int cost;	// cost for A-Star Pathfinding
+	T value;	/// data stored in the vertex
+	vector<Edge<T>> edges;	/// edges of the vertex
+	Vertex<T>* parent;	/// pointer to parent vertex in current traversal
+	int id;		/// id for easy retrieval
+	int startTime = -1;		/// start time for determining DFS edges
+	int endTime = -1;	/// end timefor determining DFS edges
+	int depth;	/// depth for determining BFS edge
+	int cost;	/// cost for A-Star Pathfinding
 };
 
+/**
+ *@author Aaron & Garrett Geesink
+ *@brief MatrixGraph class
+ * This is the graph class used to instantiate and perform traversals on graphs
+ *@date December 2019
+ */
 template <typename T>
 class MatrixGraph 
 {
 private:
-	int numVertices;	// Number of vertex 
-	int numEdges;	// Number of edges 
-	int** adj;	// Adjacency matrix
-	Vertex<T>* vertices;	// Vertices of the graph
-	vector<pair<double,pair<int, int>>> edges;	// ids for the graph's edges
+	int numVertices;	/// Number of vertex
+	int numEdges;	/// Number of edges
+	int** adj;	/// Adjacency matrix
+	Vertex<T>* vertices;	/// Vertices of the graph
+	vector<pair<double,pair<int, int>>> edges;	/// ids for the graph's edges
 
 	// Driver Function to calculate the depth first search traversal
 	void DFSDriver(T start, vector<bool> &visited, std::vector<Edge<T>>& discoveryEdges, int counter = 0);
 
 public:
-	// constructor to create the initial adjacency matrix 
+	/**
+	 * @author Aaron Geesink
+	 * @brief MatrixGraph(T elements[], int size)
+	 * Constructor to create the initial adjacency matrix
+	 * @param T elements[], int size
+	 */
     MatrixGraph(T elements[], int size);
 
-	// deconstructor for the graph
+	/**
+	 * @author Aaron Geesink
+	 * @brief ~MatrixGraph()
+	 * deconstructor for a graph
+	 */
 	~MatrixGraph();
 
-	// Function to insert a new edge 
+	/**
+	 * @author Aaron Geesink
+	 * @brief addEdge(T start, T end, double weight)
+	 * Function to insert a new edge
+	 * @param T start, T end, double weight
+	 */
     void addEdge(T start, T end, double weight);
 
-	// function to call DFS from the client
+	/**
+	 * @author Aaron & Garrett Geesink
+	 * @brief DFS(T start)
+	 * function to call DFS from the client
+	 * @param T start
+	 * @return std::vector<Edge<T>>
+	 */
 	std::vector<Edge<T>> DFS(T start);
 
-	// Function to calculate the breadth first search traversal
+	/**
+	 * @author Aaron Geesink
+	 * @brief BFS(T start)
+	 * Function to calculate the breadth first search traversal
+	 * @param T start
+	 * @return std::vector<Edge<T>>
+	 */
 	std::vector<Edge<T>> BFS(T start);
 
-	// Function to calculate the aStar path from start to target
+	/**
+	 * @author Aaron & Garrett Geesink
+	 * @brief aStar(T start, T target)
+	 * Function to calculate the aStar path from start to target
+	 * @param T start, T target
+	 * @return std::vector<Vertex<T>>
+	 */
 	std::vector<Vertex<T>> aStar(T start, T target);
 
-	// Function to calculate the minimum spanning tree using Kruskal's algorithm
+	/**
+	 * @author Aaron Geesink
+	 * @brief kruskalMST()
+	 * Function to calculate the minimum spanning tree using Kruskal's algorithm
+	 * @return std::vector<Edge<T>>
+	 */
 	std::vector<Edge<T>> kruskalMST();
 
-	// function to clear the graph of all of it's data.
+	/**
+	 * @author Aaron Geesink
+	 * @brief clear()
+	 * function to clear the graph of all of it's data.
+	 */
 	void clear();
 
-	// Function to display the adjacency matrix for the graph
+	/**
+	 * @author Aaron Geesink
+	 * @brief displayGraph()
+	 * Function to display the adjacency matrix for the graph
+	 */
 	void displayGraph();
 };
 

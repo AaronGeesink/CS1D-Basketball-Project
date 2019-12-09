@@ -4,6 +4,12 @@
 #include <QString>
 #include <QDebug>
 
+/**
+ *@author Aaron Geesink
+ *@brief Souvenir class
+ * This is the Souvenir class used to instantiate, store, and perform calculations on souvenirs
+ *@date December 2019
+ */
 class Souvenir
 {
 public:
