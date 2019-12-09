@@ -4,6 +4,7 @@
 #include <QWidget>
 #include "Team.h"
 #include "QSpinBox"
+#include "qDebug"
 
 namespace Ui {
 class SouvenirWindow;

@@ -127,7 +127,7 @@ void MainWindow::moveToSouvenir()
 
 void MainWindow::moveToResults()
 {
-	//resultsWind.set
+	resultsWind.setResults(souvenirWind.getLoadedTeams());
 
 	//Stacked Widget index 7: Results Window
 	ui->stackedWidget->setCurrentIndex(7);

@@ -18,7 +18,7 @@ std::vector<Edge<QString>> Team::getEdges()
 	return edges;
 }
 
-std::map<int, Souvenir> Team::getSouvenirs()
+std::map<int, Souvenir>& Team::getSouvenirs()
 {
 	return souvenirs;
 }
@@ -26,6 +26,39 @@ std::map<int, Souvenir> Team::getSouvenirs()
 std::vector<int> Team::getKeys()
 {
 	return keys;
+}
+
+int Team::getNumNonZeroSouvenirs()
+{
+	int numNonZeroSouvenirs = 0;
+	for (unsigned int i = 0; i < keys.size(); i++)
+	{
+		int key = keys[i];
+
+		//qDebug() << key;
+		//qDebug() << souvenirs.at(key).getQuantity();
+
+		if (souvenirs.at(key).getQuantity() > 0)
+		{
+			//qDebug() << key;
+			++numNonZeroSouvenirs;
+		}
+	}
+	return numNonZeroSouvenirs;
+}
+
+std::vector<Souvenir>& Team::getNonZeroSouvenirs()
+{
+	std::vector<Souvenir> nonZeroSouvenirs;
+	for (unsigned int i = 0; i < keys.size(); i++)
+	{
+		int key = keys[i];
+		if (souvenirs[key].getQuantity() > 0)
+		{
+			nonZeroSouvenirs.push_back(souvenirs[key]);
+		}
+	}
+	return nonZeroSouvenirs;
 }
 
 void Team::setTeamName(QString teamName)

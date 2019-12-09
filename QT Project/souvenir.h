@@ -2,6 +2,7 @@
 #define SOUVENIR_H
 
 #include <QString>
+#include <QDebug>
 
 class Souvenir
 {

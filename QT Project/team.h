@@ -22,8 +22,17 @@ public:
 	//int getJoinYear();
 	//QString getCoach();
     std::vector<Edge<QString>> getEdges();
-	std::map<int, Souvenir> getSouvenirs();
+	std::map<int, Souvenir>& getSouvenirs();
 	std::vector<int> getKeys();
+	int getNumNonZeroSouvenirs();
+
+	/**
+	 * @author Aaron Geesink
+	 * @brief getNumNonZeroFoods()
+	 * This method returns a vector of food items purchased
+	 * @return vector<Food>
+	 */
+	std::vector<Souvenir>& getNonZeroSouvenirs();
 
 	//void setConference(QString conference);
 	//void setDivision(QString division);
