@@ -53,7 +53,7 @@
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="DenverNuggetsPage">
        <widget class="QLabel" name="nuggetsTitle">
@@ -133,7 +133,7 @@ starting from the Denver nuggets</string>
          <string>Choose Custom Cities to Visit in order</string>
         </property>
        </widget>
-       <widget class="QLabel" name="custom1Label_3">
+       <widget class="QLabel" name="custom1Label_2">
         <property name="geometry">
          <rect>
           <x>530</x>
@@ -194,24 +194,45 @@ starting from the Denver nuggets</string>
        <widget class="QLabel" name="custom2Label">
         <property name="geometry">
          <rect>
-          <x>310</x>
-          <y>10</y>
-          <width>231</width>
-          <height>16</height>
+          <x>510</x>
+          <y>0</y>
+          <width>281</width>
+          <height>20</height>
          </rect>
         </property>
         <property name="text">
-         <string>Select Custom Cities to Visit in Shortest Distance</string>
+         <string>Cities to visit, (select first city to visit first)</string>
         </property>
        </widget>
-       <widget class="QTableWidget" name="custom2Table">
+       <widget class="QWidget" name="horizontalLayoutWidget_2">
         <property name="geometry">
          <rect>
-          <x>150</x>
-          <y>41</y>
-          <width>541</width>
+          <x>0</x>
+          <y>20</y>
+          <width>811</width>
           <height>481</height>
          </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_7">
+         <item>
+          <widget class="QTableWidget" name="custom2Table"/>
+         </item>
+         <item>
+          <widget class="QTableWidget" name="custom2OrderedTable"/>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QLabel" name="custom2Label_2">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>0</y>
+          <width>201</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Choose Custom Cities to Visit in order</string>
         </property>
        </widget>
       </widget>

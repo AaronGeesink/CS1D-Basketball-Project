@@ -42,8 +42,10 @@ signals:
 
 	void moveToSouvenirClicked();
 public slots:
-    void addItem(int row, int col);
-    void removeItem(int row, int col);
+    void addItem1(int row, int col);
+    void removeItem1(int row, int col);
+    void addItem2(int row, int col);
+    void removeItem2(int row, int col);
 
 private slots:
 	void on_moveToTripSelect_clicked();
@@ -55,7 +57,8 @@ private slots:
 private:
 	Ui::TripWindow *ui;
 	std::vector<Team> loadedTeams;
-    int customTableIndex = 0;
+    int customTableIndex1 = 0;
+    int customTableIndex2 = 0;
 	int planNumber;
 	QString comboValue;
 };
