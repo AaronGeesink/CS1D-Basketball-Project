@@ -2,7 +2,7 @@
 #define SOUVENIRWINDOW_H
 
 #include <QWidget>
-#include "Team.h"
+#include "team.h"
 
 namespace Ui {
 class SouvenirWindow;

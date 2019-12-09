@@ -185,6 +185,18 @@ void TripWindow::on_moveToSouvenir_clicked()
 	// custom specified plan
 	else if (planNumber == 1)
 	{
+        for(int i = 0; i<ui->custom1OrderedTable->rowCount();i++)
+        {
+            loadedTeams.push_back(queryTeam(ui->custom1OrderedTable->item(i,0)->text()));
+            qDebug() << loadedTeams[i].getTeamName();
+            for(auto i: loadedTeams[i].getEdges())
+            {
+                qDebug() << "start: " << i.start;
+                qDebug() << "end: " << i.end;
+                qDebug() << "weight: " << i.weight;
+            }
+            qDebug() << "\n\n";
+        }
 
 	}
 	// Detroit Pistons Plan
