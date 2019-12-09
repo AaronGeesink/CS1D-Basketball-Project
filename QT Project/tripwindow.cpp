@@ -201,7 +201,119 @@ void TripWindow::on_moveToSouvenir_clicked()
 	// Detroit Pistons Plan
 	else if (planNumber == 2)
 	{
+        std::vector<Team> visited;
+        std::vector<Team> notVisited = queryTeams();
+        std::vector<Vertex<QString>> astarVertex;
+        struct testNode
+        {
+            QString start;
+            QString end;
+            double weight;
+        };
 
+        struct comparator
+        {
+            bool operator()(const testNode & n1, const testNode & n2) const
+            {
+                if (n1.weight < n2.weight)
+                    return true;
+                if (n2.weight < n1.weight)
+                    return false;
+                return true;
+            }
+        };
+
+
+        std::vector<testNode> testNodes;
+
+        // Construct graph
+        std::vector<QString> teams = queryTeamNames();
+        MatrixGraph<QString> *graph1;
+        QString* teamsAr = new QString[teams.size()];
+        int in = 0;
+        for(auto i = teams.begin(); i!=teams.end(); i++)
+        {
+            teamsAr[in] = *i;
+            qDebug() << "Team name:" << teamsAr[in];
+            in++;
+        }
+        graph1 = new MatrixGraph<QString>(teamsAr, teams.size());
+        for(auto i = teams.begin(); i!=teams.end(); i++)
+        {
+            std::vector<Edge<QString>> edges = queryEdges(*i);
+            for(auto e: edges)
+                graph1->addEdge(e.start, e.end, e.weight);
+        }
+
+        visited.push_back(queryTeam("Detroit Pistons"));
+
+        for(auto i = notVisited.begin(); i != notVisited.end(); i++)
+            if(i->getTeamName() == "Detroit Pistons")
+            {
+                notVisited.erase(i);
+                break;
+            }
+        for(int k = 0; k!=visited.size(); k++)
+        {
+        for(auto i = notVisited.begin(); i!=notVisited.end(); i++)
+        {
+            //find cost of each node
+            astarVertex = graph1->aStar(visited[k].getTeamName(), i->getTeamName());
+            double pathCost = 0;
+            for (int i = astarVertex.size() - 2; i >= 0; i--)
+            {
+                for (int j = 0; j < astarVertex[i].edges.size(); j++)
+                {
+                    if (astarVertex[i].edges[j].pEndVertex->value == astarVertex[i].parent->value)
+                    {
+                        //cout << " --> " << astarVertex[i].value << " (" << astarVertex[i].edges[j].weight << ")";
+                        pathCost += astarVertex[i].edges[j].weight;
+                    }
+                }
+            }
+
+            testNode node;
+            node.start = visited[k].getTeamName();
+            node.end = i->getTeamName();
+            node.weight = pathCost;
+            testNodes.push_back(node);
+        }
+        std::sort(testNodes.begin(), testNodes.end(), comparator());
+
+        for(auto i: testNodes)
+        {
+            bool stop = true;
+            for(auto k: visited)
+            {
+                if(k.getTeamName() == i.end)
+                {
+                    stop = false;
+                }
+            }
+            if(stop)
+            {
+                visited.push_back(queryTeam(i.end));
+                break;
+            }
+        }
+        for(auto i = notVisited.begin(); i!=notVisited.end(); i++)
+        {
+            if(i->getTeamName() == visited.back().getTeamName())
+            {
+                notVisited.erase(i);
+                break;
+            }
+        }
+        for(auto i: testNodes)
+        {
+            //qDebug() << "start: " << i.start << ", end: "<< i.end;
+            //qDebug() << "distance: " << i.weight;
+        }
+        }
+        for (auto i : visited) {
+            qDebug() << "Team: " << i.getTeamName();
+        }
+        loadedTeams = visited;
 	}
 	// Custom Shortest plan
 	else if (planNumber == 3)
