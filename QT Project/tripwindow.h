@@ -29,6 +29,8 @@ public:
 
 	void setShortestTrip();
 
+	std::vector<Team> loadedTeams;
+
 signals:
 	void moveToTripSelectClicked();
 
@@ -47,7 +49,6 @@ private slots:
 private:
 	Ui::TripWindow *ui;
     int customTableIndex = 0;
-	std::vector<Team> loadedTeams;
 	int planNumber;
 	QString comboValue;
 };

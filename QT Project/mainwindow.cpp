@@ -119,6 +119,8 @@ void MainWindow::moveToTrip()
 
 void MainWindow::moveToSouvenir()
 {
+	souvenirWind.loadedTeams = tripWind.loadedTeams;
+
 	//Stacked Widget index 6: Souvenir Window
 	ui->stackedWidget->setCurrentIndex(6);
 }

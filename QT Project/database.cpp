@@ -31,6 +31,17 @@ bool checkConnection()
 	}
 }
 
+Team queryTeam(QString teamName)
+{
+	Team team;
+
+	team.setTeamName(teamName);
+	team.setEdges(queryEdges(teamName));
+	team.setLocation(queryLocation(teamName));
+
+	return team;
+}
+
 std::vector<Team> queryTeams()
 {
 	std::vector<Team> teams;
@@ -44,7 +55,7 @@ std::vector<Team> queryTeams()
 		team.setEdges(queryEdges(teamNames[i]));
 		team.setLocation(queryLocation(teamNames[i]));
 		teams.push_back(team);
-
+		/*
 		qDebug() << "Name: " << team.getTeamName()
 				 << "\nLocation: " << team.getLocation()
 				 << "\nNum edges: " << team.getEdges().size()
@@ -52,6 +63,7 @@ std::vector<Team> queryTeams()
                  << "\nEdge 1 end:" << team.getEdges()[0].end
                  << "\nEdge 1 distance:" << team.getEdges()[0].weight
 				 << "\n";
+		*/
 	}
 
 	return teams;

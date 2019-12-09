@@ -2,6 +2,7 @@
 #define SOUVENIRWINDOW_H
 
 #include <QWidget>
+#include "Team.h"
 
 namespace Ui {
 class SouvenirWindow;
@@ -14,6 +15,8 @@ class SouvenirWindow : public QWidget
 public:
 	explicit SouvenirWindow(QWidget *parent = nullptr);
 	~SouvenirWindow();
+
+	std::vector<Team> loadedTeams;
 
 signals:
 	void moveToTripClicked();

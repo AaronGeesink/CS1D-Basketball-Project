@@ -22,6 +22,8 @@ void createDatabase();
  */
 bool checkConnection();
 
+Team queryTeam(QString teamName);
+
 /**
  * @author Aaron Geesink
  * @brief queryTeams()
