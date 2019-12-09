@@ -18,7 +18,7 @@ public:
 	 *@brief Souvenir(QString name, double price, int quantity = 0)
 	 * Overloaded constructor
 	 */
-	Souvenir(QString name, double price, int quantity = 0);
+	Souvenir(QString name, double price, int id, int quantity = 0);
 
 	/**
 	 *@author Aaron Geesink
@@ -45,11 +45,31 @@ public:
 
 	/**
 	 *@author Aaron Geesink
+	 *@brief getPrice() const
+	 * Returns the price of a Souvenir item
+	 * @return const double
+	 */
+	 double getPrice() const;
+
+	/**
+	 *@author Aaron Geesink
 	 *@brief getName()
 	 * Returns the name of a Souvenir item
 	 * @return Qstring
 	 */
 	QString getName();
+
+	/**
+	 *@author Aaron Geesink
+	 *@brief getName() const
+	 * Returns the name of a Souvenir item
+	 * @return const Qstring
+	 */
+	const QString getName() const;
+
+	int getID();
+
+	void setID(int id);
 
 	/**
 	 *@author Aaron Geesink
@@ -101,6 +121,7 @@ private:
 	QString name;	/// The name of the Souvenir item
 	double price;	/// The price of a Souvenir item
 	int quantity;	/// The quantity of Souvenir purchased
+	int id;			/// the database id of the souvenir
 };
 
 #endif // SOUVENIR_H

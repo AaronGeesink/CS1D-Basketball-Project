@@ -119,7 +119,7 @@ void MainWindow::moveToTrip()
 
 void MainWindow::moveToSouvenir()
 {
-	souvenirWind.loadedTeams = tripWind.loadedTeams;
+	souvenirWind.setSouvenirSelection(tripWind.getLoadedTeams());
 
 	//Stacked Widget index 6: Souvenir Window
 	ui->stackedWidget->setCurrentIndex(6);
@@ -127,6 +127,8 @@ void MainWindow::moveToSouvenir()
 
 void MainWindow::moveToResults()
 {
+	//resultsWind.set
+
 	//Stacked Widget index 7: Results Window
 	ui->stackedWidget->setCurrentIndex(7);
 }
@@ -136,16 +138,6 @@ void MainWindow::on_moveToGraph_clicked()
 
 	//Stacked Widget index 8: Graph Traversal Window
 	ui->stackedWidget->setCurrentIndex(8);
-    /*
-    graphAdjList teamGraph;
-    //checkConnection();
-    teamGraph.sortByDist();
-    teamGraph.printGraph();
-	teamGraph.DFS1("Orlando Magic");
-    */
-
-
-
 }
 
 

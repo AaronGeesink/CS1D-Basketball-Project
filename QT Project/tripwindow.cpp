@@ -165,6 +165,11 @@ void TripWindow::setShortestTrip()
 	ui->stackedWidget->setCurrentIndex(3);
 }
 
+std::vector<Team> &TripWindow::getLoadedTeams()
+{
+	return loadedTeams;
+}
+
 void TripWindow::on_moveToTripSelect_clicked()
 {
 	emit moveToTripSelectClicked();

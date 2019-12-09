@@ -3,8 +3,10 @@
 
 #include <QString>
 #include <vector>
+#include <map>
 #include "souvenir.h"
 #include "matrixgraph.h"
+//#include "map.h"
 
 class Team
 {
@@ -20,7 +22,8 @@ public:
 	//int getJoinYear();
 	//QString getCoach();
     std::vector<Edge<QString>> getEdges();
-	//Map<float, Souvenir> getSouvenirs();
+	std::map<int, Souvenir> getSouvenirs();
+	std::vector<int> getKeys();
 
 	//void setConference(QString conference);
 	//void setDivision(QString division);
@@ -31,8 +34,10 @@ public:
 	//void setJoinYear(int joinYear);
 	//void setCoach(QString coach);
     void setEdges(std::vector<Edge<QString>> edges);
-	//void setSouvenirs(Map<float, Souvenir>);
-	//void addSouvenir(Souvenir souvenir);
+	void setSouvenirs(std::map<int, Souvenir> souvenirs);
+	void setKeys(std::vector<int> keys);
+
+	void addSouvenir(Souvenir souvenir);
 
 private:
 	//QString conference;
@@ -44,7 +49,8 @@ private:
 	//int joinYear;
 	//QString coach;
     std::vector<Edge<QString>> edges;
-	//Map<float, Souvenir> souvenirs;
+	std::map<int, Souvenir> souvenirs;
+	std::vector<int> keys;
 };
 
 #endif // TEAM_H

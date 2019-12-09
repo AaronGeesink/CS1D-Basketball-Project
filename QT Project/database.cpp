@@ -38,6 +38,14 @@ Team queryTeam(QString teamName)
 	team.setTeamName(teamName);
 	team.setEdges(queryEdges(teamName));
 	team.setLocation(queryLocation(teamName));
+	team.setSouvenirs(querySouvenirs(teamName));
+	team.setKeys(queryKeys(teamName));
+
+	qDebug() << "Name: " << team.getTeamName()
+			 << "\nLocation: " << team.getLocation()
+			 << "\nNum edges: " << team.getEdges().size()
+			 << "\nNum souvenirs: " << team.getSouvenirs().size()
+			 << "\n";
 
 	return team;
 }
@@ -54,16 +62,19 @@ std::vector<Team> queryTeams()
 		team.setTeamName(teamNames[i]);
 		team.setEdges(queryEdges(teamNames[i]));
 		team.setLocation(queryLocation(teamNames[i]));
+		team.setSouvenirs(querySouvenirs(teamNames[i]));
+		team.setKeys(queryKeys(teamNames[i]));
 		teams.push_back(team);
-		/*
+/*
 		qDebug() << "Name: " << team.getTeamName()
 				 << "\nLocation: " << team.getLocation()
 				 << "\nNum edges: " << team.getEdges().size()
+				 << "\nNum souvenirs: " << team.getSouvenirs().Size()
                  << "\nEdge 1 start: " << team.getEdges()[0].start
                  << "\nEdge 1 end:" << team.getEdges()[0].end
                  << "\nEdge 1 distance:" << team.getEdges()[0].weight
 				 << "\n";
-		*/
+*/
 	}
 
 	return teams;
@@ -159,11 +170,11 @@ std::vector<Edge<QString>> queryEdges(QString startTeam)
 }
 
 
-std::vector<Souvenir> querySouvenirs(QString teamName)
+std::map<int, Souvenir> querySouvenirs(QString teamName)
 {
-	std::vector<Souvenir> souvenirs;
 	std::vector<QString> souvenirNames;
 	std::vector<float> souvenirPrices;
+	std::vector<int> souvenirIDs;
 
 	QSqlQuery query;
 
@@ -191,13 +202,27 @@ std::vector<Souvenir> querySouvenirs(QString teamName)
 		souvenirPrices.push_back(query.value(0).toDouble());
 	}
 
-// construct the souvenirs
-	for (int i = 0; i < souvenirNames.size(); i++)
+// Query the souvenir ids for the team
+	query.prepare("SELECT souvenirID FROM souvenirs WHERE teamName = :teamName");
+	query.bindValue(":teamName", teamName);
+	if(!query.exec())
 	{
-		Souvenir souvenir(souvenirNames[i], souvenirPrices[i]);
-		souvenirs.push_back(souvenir);
+		qDebug() << "Failed to query from SQL Database";
+	}
+	while(query.next())
+	{
+		souvenirIDs.push_back(query.value(0).toInt());
 	}
 
+// construct the souvenirs
+
+	std::map<int, Souvenir> souvenirs;
+	for (int i = 0; i < souvenirNames.size(); i++)
+	{
+		Souvenir souvenir(souvenirNames[i], souvenirPrices[i], souvenirIDs[i]);
+		souvenirs.insert({souvenirIDs[i], souvenir});
+	}
+	qDebug() << souvenirs.size();
 	return souvenirs;
 }
 
@@ -220,4 +245,23 @@ QString queryLocation(QString teamName)
 	}
 
 	return location;
+}
+
+std::vector<int> queryKeys(QString teamName)
+{
+	QSqlQuery query;
+	std::vector<int> keys;
+
+// Query the souvenir ids for the team
+	query.prepare("SELECT souvenirID FROM souvenirs WHERE teamName = :teamName");
+	query.bindValue(":teamName", teamName);
+	if(!query.exec())
+	{
+		qDebug() << "Failed to query from SQL Database";
+	}
+	while(query.next())
+	{
+		keys.push_back(query.value(0).toInt());
+	}
+	return keys;
 }
