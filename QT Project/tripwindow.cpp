@@ -198,7 +198,7 @@ void TripWindow::on_moveToSouvenir_clicked()
 		loadedTeams.push_back(queryTeam("Denver Nuggets"));
 		loadedTeams.push_back(queryTeam(comboValue));
 
-		//qDebug() << loadedTeams[0].getTeamName() << " --> " << loadedTeams[1].getTeamName();
+		qDebug() << loadedTeams[0].getTeamName() << " --> " << loadedTeams[1].getTeamName();
 	}
 	// custom specified plan
 	else if (planNumber == 1)

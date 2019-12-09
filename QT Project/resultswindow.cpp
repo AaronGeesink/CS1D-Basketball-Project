@@ -16,7 +16,7 @@ ResultsWindow::~ResultsWindow()
 
 void ResultsWindow::setResults(std::vector<Team> &loadedTeams)
 {
-/*
+
 	qDebug() << "number of teams: " << loadedTeams.size();
 	for (int i = 0; i < loadedTeams.size(); i++)
 	{
@@ -29,7 +29,7 @@ void ResultsWindow::setResults(std::vector<Team> &loadedTeams)
 					 << '\n';
 		}
 	}
-*/
+
 	// setup for the distance table
 	ui->travelTable->clear();
 	ui->travelTable->setRowCount(loadedTeams.size());
@@ -111,6 +111,10 @@ void ResultsWindow::setResults(std::vector<Team> &loadedTeams)
     {
         QString startTeam = i->getTeamName();
         QString endTeam = (i+1)->getTeamName();
+
+		qDebug() << "Start: " << startTeam;
+		qDebug() << "End: " << endTeam;
+
         astarVertex = graph1->aStar(startTeam, endTeam);
         intermediateDistance = 0;
         for (int i = astarVertex.size() - 2; i >= 0; i--)
