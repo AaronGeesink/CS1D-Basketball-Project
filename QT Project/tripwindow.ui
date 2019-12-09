@@ -52,8 +52,11 @@
     </property>
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(29, 29, 29, 150);</string>
+      </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="DenverNuggetsPage">
        <widget class="QLabel" name="nuggetsTitle">
@@ -76,16 +79,6 @@
           <y>180</y>
           <width>141</width>
           <height>22</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QTableWidget" name="nuggetsTable">
-        <property name="geometry">
-         <rect>
-          <x>380</x>
-          <y>40</y>
-          <width>421</width>
-          <height>481</height>
          </rect>
         </property>
        </widget>
@@ -129,6 +122,9 @@ starting from the Denver nuggets</string>
           <height>20</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);</string>
+        </property>
         <property name="text">
          <string>Choose Custom Cities to Visit in order</string>
         </property>
@@ -141,6 +137,9 @@ starting from the Denver nuggets</string>
           <width>201</width>
           <height>20</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);</string>
         </property>
         <property name="text">
          <string>Cities to visit in order</string>
@@ -157,10 +156,20 @@ starting from the Denver nuggets</string>
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
-          <widget class="QTableWidget" name="custom1Table"/>
+          <widget class="QTableWidget" name="custom1Table">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgba(20, 20, 20, 190);
+gridline-color: rgba(200, 200, 200, 255);</string>
+           </property>
+          </widget>
          </item>
          <item>
-          <widget class="QTableWidget" name="custom1OrderedTable"/>
+          <widget class="QTableWidget" name="custom1OrderedTable">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgba(20, 20, 20, 190);
+gridline-color: rgba(200, 200, 200, 255);</string>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>
@@ -175,6 +184,9 @@ starting from the Denver nuggets</string>
           <height>16</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255,255,255)</string>
+        </property>
         <property name="text">
          <string>Detroit Pistons Trip</string>
         </property>
@@ -188,6 +200,10 @@ starting from the Denver nuggets</string>
           <height>481</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgba(20, 20, 20, 190);
+gridline-color: rgba(200, 200, 200, 255);</string>
+        </property>
        </widget>
       </widget>
       <widget class="QWidget" name="CustomShortestPage">
@@ -199,6 +215,9 @@ starting from the Denver nuggets</string>
           <width>281</width>
           <height>20</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);</string>
         </property>
         <property name="text">
          <string>Cities to visit, (select first city to visit first)</string>
@@ -215,10 +234,20 @@ starting from the Denver nuggets</string>
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout_7">
          <item>
-          <widget class="QTableWidget" name="custom2Table"/>
+          <widget class="QTableWidget" name="custom2Table">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgba(20, 20, 20, 190);
+gridline-color: rgba(200, 200, 200, 255);</string>
+           </property>
+          </widget>
          </item>
          <item>
-          <widget class="QTableWidget" name="custom2OrderedTable"/>
+          <widget class="QTableWidget" name="custom2OrderedTable">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgba(20, 20, 20, 190);
+gridline-color: rgba(200, 200, 200, 255);</string>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>
@@ -230,6 +259,9 @@ starting from the Denver nuggets</string>
           <width>201</width>
           <height>20</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);</string>
         </property>
         <property name="text">
          <string>Choose Custom Cities to Visit in order</string>
@@ -247,6 +279,10 @@ starting from the Denver nuggets</string>
           <width>150</width>
           <height>50</height>
          </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: qlineargradient(spread:pad, x1:1, y1:0.523, x2:0, y2:0.494, stop:0 rgba(0, 0, 0, 255), stop:0.897727 rgba(57, 57, 57, 255))</string>
         </property>
         <property name="text">
          <string>Back to Vacation Select</string>
@@ -274,6 +310,10 @@ starting from the Denver nuggets</string>
           <height>50</height>
          </size>
         </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color:qlineargradient(spread:pad, x1:0, y1:0.506, x2:1, y2:0.511045, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(52, 52, 52, 255))</string>
+        </property>
         <property name="text">
          <string>Purchase Souvenirs</string>
         </property>
@@ -283,6 +323,24 @@ starting from the Denver nuggets</string>
     </item>
    </layout>
   </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>-2</x>
+     <y>5</y>
+     <width>1201</width>
+     <height>711</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>../build-CS1D-Basketball-Project-Desktop-Debug/resources/nba.jpg</pixmap>
+   </property>
+  </widget>
+  <zorder>label</zorder>
+  <zorder>verticalLayoutWidget</zorder>
  </widget>
  <resources/>
  <connections/>

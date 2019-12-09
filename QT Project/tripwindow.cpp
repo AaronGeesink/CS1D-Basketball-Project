@@ -32,14 +32,14 @@ void TripWindow::setNuggetsTrip()
 	}
 
 	// Table Setup
-	ui->nuggetsTable->setRowCount(loadedTeams.size());
+    /*ui->nuggetsTable->setRowCount(loadedTeams.size());
 	ui->nuggetsTable->setColumnCount(3);
 
 	ui->nuggetsTable->setHorizontalHeaderItem(0, new QTableWidgetItem("Start"));
 	ui->nuggetsTable->setHorizontalHeaderItem(1, new QTableWidgetItem("End"));
 	ui->nuggetsTable->setHorizontalHeaderItem(2, new QTableWidgetItem("Distance"));
 
-    ui->nuggetsTable->setSelectionMode(QAbstractItemView::NoSelection);
+    ui->nuggetsTable->setSelectionMode(QAbstractItemView::NoSelection);*/
 
 	for(int i = 0; i < teamNames.size(); ++i)
 		ui->NuggetsCombobox->addItem(teamNames[i]);
