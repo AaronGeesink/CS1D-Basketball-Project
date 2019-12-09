@@ -31,7 +31,7 @@ std::vector<int> Team::getKeys()
 int Team::getNumNonZeroSouvenirs()
 {
 	int numNonZeroSouvenirs = 0;
-	for (unsigned int i = 0; i < keys.size(); i++)
+    for (unsigned int i = 0; i < keys.size(); i++)
 	{
 		int key = keys[i];
 

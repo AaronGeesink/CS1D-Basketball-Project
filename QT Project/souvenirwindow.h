@@ -2,9 +2,9 @@
 #define SOUVENIRWINDOW_H
 
 #include <QWidget>
-#include "Team.h"
+#include "team.h"
 #include "QSpinBox"
-#include "qDebug"
+#include <QDebug>
 
 namespace Ui {
 class SouvenirWindow;

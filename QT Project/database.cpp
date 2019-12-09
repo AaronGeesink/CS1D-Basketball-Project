@@ -221,8 +221,9 @@ std::map<int, Souvenir> querySouvenirs(QString teamName)
 	{
 		Souvenir souvenir(souvenirNames[i], souvenirPrices[i], souvenirIDs[i]);
 		souvenirs.insert({souvenirIDs[i], souvenir});
+        qDebug() << "souvenir: " << souvenirs.at(souvenirIDs[i]).getName() << souvenirs.at(souvenirIDs[i]).getID() << souvenirIDs[i];
 	}
-	qDebug() << souvenirs.size();
+    //qDebug() << souvenirs.size();
 	return souvenirs;
 }
 
