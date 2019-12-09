@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QtSql>
+#include <QDebug>
 #include "database.h"
 
 namespace Ui {
@@ -95,6 +96,7 @@ private slots:
 private:
 	Ui::ViewWindow *ui;
 	QSqlQueryModel * model;	/// A model used to display SQL tables
+	int totalCap;		/// The total seating capacity
 };
 
 #endif // VIEWWINDOW_H

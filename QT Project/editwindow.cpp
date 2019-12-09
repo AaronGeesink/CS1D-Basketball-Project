@@ -61,9 +61,10 @@ void EditWindow::on_loadSouvenirs_clicked()
 	model->setTable("souvenirs");
 	model->setEditStrategy(QSqlTableModel::OnManualSubmit);
 	model->select();
-	model->setHeaderData(0, Qt::Horizontal, tr("Team"));
-	model->setHeaderData(1, Qt::Horizontal, tr("Item"));
-	model->setHeaderData(2, Qt::Horizontal, tr("Price"));
+	model->setHeaderData(0, Qt::Horizontal, tr("ID"));
+	model->setHeaderData(1, Qt::Horizontal, tr("Team"));
+	model->setHeaderData(2, Qt::Horizontal, tr("Item"));
+	model->setHeaderData(3, Qt::Horizontal, tr("Price"));
 
 	ui->databaseView->verticalHeader()->setVisible(false);
 	ui->databaseView->setModel(model);
