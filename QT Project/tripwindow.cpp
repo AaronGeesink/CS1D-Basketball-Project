@@ -6,6 +6,10 @@ TripWindow::TripWindow(QWidget *parent) :
 	ui(new Ui::TripWindow)
 {
 	ui->setupUi(this);
+    QObject::connect(ui->custom1Table, SIGNAL(cellPressed(int, int)), this, SLOT(addItem1(int,int)));
+    QObject::connect(ui->custom1OrderedTable, SIGNAL(cellPressed(int, int)), this, SLOT(removeItem1(int,int)));
+    QObject::connect(ui->custom2Table, SIGNAL(cellPressed(int, int)), this, SLOT(addItem2(int,int)));
+    QObject::connect(ui->custom2OrderedTable, SIGNAL(cellPressed(int, int)), this, SLOT(removeItem2(int,int)));
 }
 
 TripWindow::~TripWindow()
@@ -89,6 +93,10 @@ void TripWindow::setSpecifiedTrip()
     loadedTeams.clear();
 	planNumber = 1;
 
+    ui->custom1OrderedTable->setRowCount(0);
+    customTableIndex1 = 0;
+    ui->custom1Table->clearContents();
+    ui->custom1OrderedTable->clearContents();
     ui->custom1Table->setSelectionMode(QAbstractItemView::NoSelection);
     ui->custom1OrderedTable->setSelectionMode(QAbstractItemView::NoSelection);
 	std::vector<Team> teams = queryTeams();
@@ -101,8 +109,7 @@ void TripWindow::setSpecifiedTrip()
 
 	ui->custom1Table->setHorizontalHeaderItem(0, new QTableWidgetItem("Name"));
     ui->custom1OrderedTable->setHorizontalHeaderItem(0, new QTableWidgetItem("Name"));
-    QObject::connect(ui->custom1Table, SIGNAL(cellPressed(int, int)), this, SLOT(addItem1(int,int)));
-    QObject::connect(ui->custom1OrderedTable, SIGNAL(cellPressed(int, int)), this, SLOT(removeItem1(int,int)));
+
     //QLabel *name;
 	for (int i = 0; i < teams.size(); i++)
 	{
@@ -145,6 +152,10 @@ void TripWindow::setShortestTrip()
     loadedTeams.clear();
     planNumber = 3;
 
+    ui->custom2OrderedTable->setRowCount(0);
+    customTableIndex2 = 0;
+    ui->custom2Table->clearContents();
+    ui->custom2OrderedTable->clearContents();
     ui->custom2Table->setSelectionMode(QAbstractItemView::NoSelection);
     ui->custom2OrderedTable->setSelectionMode(QAbstractItemView::NoSelection);
     std::vector<Team> teams = queryTeams();
@@ -157,8 +168,7 @@ void TripWindow::setShortestTrip()
 
     ui->custom2Table->setHorizontalHeaderItem(0, new QTableWidgetItem("Name"));
     ui->custom2OrderedTable->setHorizontalHeaderItem(0, new QTableWidgetItem("Name"));
-    QObject::connect(ui->custom2Table, SIGNAL(cellPressed(int, int)), this, SLOT(addItem2(int,int)));
-    QObject::connect(ui->custom2OrderedTable, SIGNAL(cellPressed(int, int)), this, SLOT(removeItem2(int,int)));
+
     //QLabel *name;
     for (int i = 0; i < teams.size(); i++)
     {
