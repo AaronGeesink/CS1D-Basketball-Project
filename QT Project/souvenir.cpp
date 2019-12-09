@@ -55,7 +55,7 @@ double Souvenir::calculateTotal()
 {
 	return price * quantity;
 }
-
+/*
 Souvenir &Souvenir::operator=(Souvenir other)
 {
 	std::swap(name, other.name);
@@ -89,3 +89,4 @@ Souvenir::Souvenir(Souvenir &&other)
 	other.price = 0;
 	other.quantity = 0;
 }
+*/

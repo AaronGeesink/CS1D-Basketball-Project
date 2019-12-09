@@ -18,7 +18,7 @@ std::vector<Edge<QString>> Team::getEdges()
 	return edges;
 }
 
-std::map<int, Souvenir>& Team::getSouvenirs()
+HashMap<int, Souvenir>& Team::getSouvenirs()
 {
 	return souvenirs;
 }
@@ -43,8 +43,16 @@ void Team::setEdges(std::vector<Edge<QString>> edges)
 	this->edges = edges;
 }
 
-void Team::setSouvenirs(std::map<int, Souvenir> souvenirs)
+void Team::setSouvenirs(HashMap<int, Souvenir> souvenirs)
 {
+	for (int i = 0; i < souvenirs.getSize(); i++)
+	{
+		Souvenir souvenir;
+		qDebug() << getKeys()[i];
+		souvenirs.get(getKeys()[i], souvenir);
+		qDebug() << souvenir.getName();
+	}
+
 	this->souvenirs = souvenirs;
 }
 
@@ -55,5 +63,5 @@ void Team::setKeys(std::vector<int> keys)
 
 void Team::addSouvenir(Souvenir souvenir)
 {
-	souvenirs.insert({souvenir.getID(), souvenir});
+	souvenirs.put(souvenir.getID(), souvenir);
 }

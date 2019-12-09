@@ -100,7 +100,7 @@ public:
 	 * An copy assignment for Souvenir items
 	 * @return Souvenir &
 	 */
-	Souvenir& operator=(Souvenir other);
+	//Souvenir& operator=(Souvenir other);
 
 	/**
 	 *@author Aaron Geesink
@@ -108,21 +108,21 @@ public:
 	 * A move assignment for Souvenir items
 	 * @return Souvenir&
 	 */
-	Souvenir& operator=(Souvenir&& other);
+	//Souvenir& operator=(Souvenir&& other);
 
 	/**
 	 *@author Aaron Geesink
 	 *@brief Souvenir(const Souvenir& other);
 	 * A copy constructor for Souvenir items
 	 */
-	Souvenir(const Souvenir& other);
+	//Souvenir(const Souvenir& other);
 
 	/**
 	 *@author Aaron Geesink
 	 *@brief Souvenir(const Souvenir& other);
 	 * A copy assignment for Souvenir items
 	 */
-	Souvenir(Souvenir&& other);
+	//Souvenir(Souvenir&& other);
 
 private:
 	QString name;	/// The name of the Souvenir item

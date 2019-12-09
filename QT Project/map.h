@@ -1,171 +1,170 @@
-
 #ifndef MAPH_H_
 #define MAPH_H_
+#define TABLE_SIZE 10
 
 #include<iostream>
 
-template<typename V>
-class Position													// a (key, value) pair
-{
-
+// Hash node class template
+template <typename K, typename V>
+class HashNode {
 public:
-	Position():_key(0), _free(true){}
-	Position(int key, V value):_key(key), _value(value), _free(true){}		// Constructor
-	const int &Key(){return _key;}								// Returning the key reference
-	const V &Value(){return _value;}							// Returning the value reference
-	void SetKey(int key){_key = key;}								// Setting a new key
-	void SetValue(V value){_value = value;}						// setting a new value								// Place a value into the position
-	bool operator==(Position<V> &n)
-	{
-		return n._key == this->_key && n._value == this->_value;
+	HashNode(const K &key, const V &value) :
+	key(key), value(value), next(NULL) {
 	}
-	bool operator!=(Position<V> &n)
-	{
-		return n._key != this->_key || n._value != this->_value;
+
+	K getKey() const {
+		return key;
 	}
-	bool _free;					// true when space is free to place a new data in it
-private:
 
-	int _key;														// key
-	V _value;													// value
-};
+	V getValue() const {
+		return value;
+	}
 
+	void setValue(V value) {
+		HashNode::value = value;
+	}
 
-template<typename V>
-class Map
-{
-public:
+	HashNode *getNext() const {
+		return next;
+	}
 
-	Map(const int SIZE);							//Constructor (getting Size to create an array)
-	~Map();
-	int Size()const;								//Returns the size of the map
-	bool Empty();									//Returns true of the map is empty
-	Position<V> Find(const int& key);				//This function will return the position of the specified key
-	void Put(const int &key, const V &value);		//Puts a position into the map
-	void Erase(const int& key);						//This function will remove the position with the specified key
-	void OutputIO();
+	void setNext(HashNode *next) {
+		HashNode::next = next;
+	}
 
 private:
-	Position<V> *list;
-	int Hash(int key, int j = 0);
-	int _size;										//Max size of the list
-	int _filled;									//Number of positions in the list
+	// key-value pair
+	K key;
+	V value;
+	// next bucket with the same key
+	HashNode *next;
 };
 
-
-template<typename V>
-Map<V>::Map(const int SIZE)
-{
-	list = nullptr;
-	list = new  Position<V> [SIZE];
-	_size = SIZE;
-	_filled = 0;
-}
-
-
-template<typename V>
-Map<V>::~Map()
-{
-	delete list;
-}
-
-
-template<typename V>
-void Map<V>::Put(const int &key, const V &value)
-{
-	int index = Hash(key);
-
-	if(index != -1 && list[index]._free)
+// Default hash function class
+template <typename K>
+struct KeyHash {
+	int operator()(const K& key) const
 	{
-		list[index].SetKey(key);
-		list[index].SetValue(value);
-		list[index]._free = false;
-		_filled++;
+		return key % TABLE_SIZE;
 	}
-	else if (!list[index]._free)
-	{
-		list[index].SetValue(value);
-	}
-	else
-	{
-		std::cerr << "List is full \n";
+};
+
+// Hash map class template
+template <typename K, typename V, typename F = KeyHash<K>>
+class HashMap {
+public:
+	HashMap() {
+		// construct zero initialized hash table of size
+		table = new HashNode<K, V> *[TABLE_SIZE]();
 	}
 
-}
-
-template<typename V>
-int Map<V>::Size()const
-{
-	return _filled;
-}
-
-template<typename V>
-bool Map<V>::Empty()
-{
-	return _filled == 0;
-}
-
-template<typename V>
-int Map<V>::Hash(int key, int j)
-{
-	int index;
-	int h;
-	int hPrime;
-	const int HK = 2;
-
-	h = key % _size;
-	hPrime = j * (HK - (key % HK));
-	index = (h + hPrime) % _size;
-
-	if(list[index]._free || list[index].Key() == key)
+	HashMap(const HashMap<K, V, F> &other)
 	{
-		return index;
-	}
-	else if(j == _size - 1)
-	{
-		return -1;
-	}
+		this->size = other.size;
 
-	return Hash(key, j + 1);
-}
-
-template<typename V>
-Position<V> Map<V>::Find(const int& key)
-{
-	return list[Hash(key)];
-}
-
-template<typename V>
-void Map<V>::OutputIO()
-{
-
-	for(int count = 0; count < _size; count++)
-	{
-		if(!list[count]._free)
+		for (int i = 0; i < TABLE_SIZE; ++i)
 		{
-			std::cout << list[count].Key() << ',' << list[count].Value() << std::endl;
+			*(table[i]) = other.*(table[i]);
+		}
+
+	}
+
+	~HashMap() {
+		// destroy all buckets one by one
+		for (int i = 0; i < TABLE_SIZE; ++i) {
+			HashNode<K, V> *entry = table[i];
+			while (entry != NULL) {
+				HashNode<K, V> *prev = entry;
+				entry = entry->getNext();
+				delete prev;
+			}
+			table[i] = NULL;
+		}
+		// destroy the hash table
+		delete [] table;
+	}
+
+	bool get(int key, V &value) {
+		int hashValue = hashFunc(key);
+		qDebug() << hashFunc(key) << "\n";
+		HashNode<K, V> *entry = table[hashValue];
+
+		qDebug() << key << "\n";
+		while (entry != NULL) {
+			qDebug() << entry->getKey()  << "\n";
+			if (entry->getKey() == key) {
+				value = entry->getValue();
+				return true;
+			}
+			entry = entry->getNext();
+		}
+		return false;
+	}
+
+	void put(const int key, const V &value) {
+		int hashValue = hashFunc(key);
+		qDebug() << key;
+		qDebug() << hashValue;
+		HashNode<K, V> *prev = NULL;
+		HashNode<K, V> *entry = table[hashValue];
+
+		while (entry != NULL && entry->getKey() != key) {
+			prev = entry;
+			entry = entry->getNext();
+		}
+
+		if (entry == NULL) {
+			entry = new HashNode<K, V>(key, value);
+			if (prev == NULL) {
+				// insert as first bucket
+				table[hashValue] = entry;
+				size++;
+			} else {
+				prev->setNext(entry);
+				size++;
+			}
+		} else {
+			// just update the value
+			entry->setValue(value);
 		}
 	}
-}
 
+	void remove(const K &key) {
+		unsigned long hashValue = hashFunc(key);
+		HashNode<K, V> *prev = NULL;
+		HashNode<K, V> *entry = table[hashValue];
 
-template<typename V>
-void Map<V>::Erase(const int& key)
-{
-	int index = Hash(key);
+		while (entry != NULL && entry->getKey() != key) {
+			prev = entry;
+			entry = entry->getNext();
+		}
 
-	if(!list[index]._free)
-	{
-		list[index]._free = true;
-		list[index].SetKey(0);
-		_filled--;
+		if (entry == NULL) {
+			// key not found
+			return;
+		}
+		else {
+			if (prev == NULL) {
+				// remove first bucket of the list
+				table[hashValue] = entry->getNext();
+			} else {
+				prev->setNext(entry->getNext());
+			}
+			delete entry;
+			size--;
+		}
 	}
-	else
+
+	int getSize()
 	{
-		std::cerr << "The position does not exist\n\n";
+		return size;
 	}
-}
 
-
+private:
+	// hash table
+	HashNode<K, V> **table;
+	F hashFunc;
+	int size = 0;
+};
 
 #endif /* MAPH_H_ */

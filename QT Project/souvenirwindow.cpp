@@ -23,7 +23,7 @@ void SouvenirWindow::setSouvenirSelection(std::vector<Team> &loadedTeams)
 	int numSouvenirs = 0;
 	for (unsigned int i = 0; i < loadedTeams.size(); i++)
 	{
-		numSouvenirs = numSouvenirs + loadedTeams[i].getSouvenirs().size();
+		numSouvenirs = numSouvenirs + loadedTeams[i].getSouvenirs().getSize();
 	}
 
 	ui->souvenirTable->setRowCount(numSouvenirs);
@@ -38,6 +38,7 @@ void SouvenirWindow::setSouvenirSelection(std::vector<Team> &loadedTeams)
 
 	QLabel *label;
 	int foodsLoaded = 0;
+	Souvenir souvenir;
 
 	for (unsigned int i = 0; i < loadedTeams.size(); i++)
 	{
@@ -51,12 +52,14 @@ void SouvenirWindow::setSouvenirSelection(std::vector<Team> &loadedTeams)
 			int key = loadedTeams[i].getKeys()[j];
 			// set the name of the souvenir
 			label = new QLabel();
-			label->setText(loadedTeams[i].getSouvenirs()[key].getName());
+			loadedTeams[i].getSouvenirs().get(key, souvenir);
+			label->setText(souvenir.getName());
 			ui->souvenirTable->setCellWidget(foodsLoaded, 1, label);
 
 			// set the price of the souvenir
 			label = new QLabel();
-			label->setText("$" + QString::number(loadedTeams[i].getSouvenirs()[key].getPrice()));
+			loadedTeams[i].getSouvenirs().get(key, souvenir);
+			label->setText("$" + QString::number(souvenir.getPrice()));
 			ui->souvenirTable->setCellWidget(foodsLoaded, 2, label);
 
 			// add QLineEdit objects for quantity input
@@ -70,6 +73,7 @@ void SouvenirWindow::setSouvenirSelection(std::vector<Team> &loadedTeams)
 void SouvenirWindow::loadSouvenirQuantities()
 {
 	int souvenirsLoaded = 0;
+	Souvenir souvenir;
 
 	for (int i = 0; i < loadedTeams->size(); i++)
 	{
@@ -78,7 +82,8 @@ void SouvenirWindow::loadSouvenirQuantities()
 			QSpinBox *spinBox = qobject_cast<QSpinBox *>(ui->souvenirTable->cellWidget(souvenirsLoaded, 3));
 			if (spinBox)
 			{
-				(*loadedTeams)[i].getSouvenirs()[loadedTeams->at(i).getKeys()[j]].setQuantity(spinBox->value());
+				(*loadedTeams)[i].getSouvenirs().get(loadedTeams->at(i).getKeys()[j], souvenir);
+				//(*loadedTeams)[i].getSouvenirs()[loadedTeams->at(i).getKeys()[j]].setQuantity(spinBox->value());
 			}
 			souvenirsLoaded++;
 		}

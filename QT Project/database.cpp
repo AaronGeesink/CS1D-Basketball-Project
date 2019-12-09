@@ -38,15 +38,25 @@ Team queryTeam(QString teamName)
 	team.setTeamName(teamName);
 	team.setEdges(queryEdges(teamName));
 	team.setLocation(queryLocation(teamName));
-	team.setSouvenirs(querySouvenirs(teamName));
 	team.setKeys(queryKeys(teamName));
-/*
+	team.setSouvenirs(querySouvenirs(teamName));
+
 	qDebug() << "Name: " << team.getTeamName()
 			 << "\nLocation: " << team.getLocation()
 			 << "\nNum edges: " << team.getEdges().size()
-			 << "\nNum souvenirs: " << team.getSouvenirs().size()
+			 << "\nNum souvenirs: " << team.getSouvenirs().getSize()
 			 << "\n";
-*/
+
+	Souvenir souvenir;
+	for(int i = 0; i < team.getSouvenirs().getSize(); i++)
+	{
+		qDebug() << team.getKeys()[i];
+		team.getSouvenirs().get(team.getKeys()[i], souvenir);
+		qDebug() << "\nName: " << souvenir.getName()
+				 << "\nID: " << souvenir.getID()
+				 << "\nPrice: " << souvenir.getPrice()
+				 << "\nQuantity" << souvenir.getQuantity();
+	}
 	return team;
 }
 
@@ -62,8 +72,8 @@ std::vector<Team> queryTeams()
 		team.setTeamName(teamNames[i]);
 		team.setEdges(queryEdges(teamNames[i]));
 		team.setLocation(queryLocation(teamNames[i]));
-		team.setSouvenirs(querySouvenirs(teamNames[i]));
 		team.setKeys(queryKeys(teamNames[i]));
+		team.setSouvenirs(querySouvenirs(teamNames[i]));
 		teams.push_back(team);
 /*
 		qDebug() << "Name: " << team.getTeamName()
@@ -170,7 +180,7 @@ std::vector<Edge<QString>> queryEdges(QString startTeam)
 }
 
 
-std::map<int, Souvenir> querySouvenirs(QString teamName)
+HashMap<int, Souvenir> querySouvenirs(QString teamName)
 {
 	std::vector<QString> souvenirNames;
 	std::vector<float> souvenirPrices;
@@ -216,11 +226,13 @@ std::map<int, Souvenir> querySouvenirs(QString teamName)
 
 // construct the souvenirs
 
-	std::map<int, Souvenir> souvenirs;
+	HashMap<int, Souvenir> souvenirs;
+	qDebug() << "size: " << souvenirNames.size();
 	for (int i = 0; i < souvenirNames.size(); i++)
 	{
 		Souvenir souvenir(souvenirNames[i], souvenirPrices[i], souvenirIDs[i]);
-		souvenirs.insert({souvenirIDs[i], souvenir});
+		qDebug() << souvenirIDs[i];
+		souvenirs.put(souvenirIDs[i], souvenir);
 		//qDebug() << "souvenir: " << souvenirs.at(souvenirIDs[i]).getName() << souvenirs.at(souvenirIDs[i]).getID() << souvenirIDs[i];
 	}
     //qDebug() << souvenirs.size();
@@ -262,6 +274,7 @@ std::vector<int> queryKeys(QString teamName)
 	}
 	while(query.next())
 	{
+		qDebug() << "key: " << query.value(0).toInt();
 		keys.push_back(query.value(0).toInt());
 	}
 	return keys;

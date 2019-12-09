@@ -5,6 +5,7 @@
 #include "team.h"
 #include "QSpinBox"
 #include <QDebug>
+#include "map.h"
 
 namespace Ui {
 class SouvenirWindow;
