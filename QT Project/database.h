@@ -68,6 +68,8 @@ std::vector<Edge<QString>> queryEdges(QString startTeam);
  */
 std::map<int, Souvenir> querySouvenirs(QString teamName);
 
+Souvenir querySouvenir(int souvenirID);
+
 std::vector<int> queryKeys(QString teamName);
 
 /**

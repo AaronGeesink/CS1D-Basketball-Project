@@ -16,8 +16,20 @@ ResultsWindow::~ResultsWindow()
 
 void ResultsWindow::setResults(std::vector<Team> &loadedTeams)
 {
-	qDebug() << "num souvenirs: " << loadedTeams[0].getSouvenirs()[0].getQuantity();
-	qDebug() << "num nonZero souvenirs: " << loadedTeams[0].getNumNonZeroSouvenirs();
+	/*
+	qDebug() << "number of teams: " << loadedTeams.size();
+	for (int i = 0; i < loadedTeams.size(); i++)
+	{
+		for (int j = 0; j < loadedTeams[i].getKeys().size(); j++)
+		{
+			qDebug() << "\nTeam: " << loadedTeams[i].getTeamName()
+					 << "\nSouvenir: " << loadedTeams[i].getSouvenirs()[loadedTeams[i].getKeys()[j]].getName()
+					 << "\nPrice: " << loadedTeams[i].getSouvenirs()[loadedTeams[i].getKeys()[j]].getPrice()
+					 << "\Quantity: " << loadedTeams[i].getSouvenirs()[loadedTeams[i].getKeys()[j]].getQuantity()
+					 << '\n';
+		}
+	}
+	*/
 	// setup for the distance table
 	ui->travelTable->clear();
 	ui->travelTable->setRowCount(loadedTeams.size());
@@ -33,16 +45,24 @@ void ResultsWindow::setResults(std::vector<Team> &loadedTeams)
 	int numSouvenirs = 0;
 	std::vector<QString> souvenirTeams;
 
-	for (unsigned int i = 0; i < loadedTeams.size(); i++)
+	bool pushback = true;
+
+	for (int i = 0; i < loadedTeams.size(); i++)
 	{
-		if (loadedTeams[i].getNumNonZeroSouvenirs() > 0)
+		for (int j = 0; j < loadedTeams[i].getKeys().size(); j++)
 		{
-			qDebug() << "Souvenir number: " << souvenirTeams.size();
-			numSouvenirs = numSouvenirs + loadedTeams[i].getNumNonZeroSouvenirs();
-			souvenirTeams.push_back(loadedTeams[i].getTeamName());
+			if (loadedTeams[i].getSouvenirs()[loadedTeams[i].getKeys()[j]].getQuantity() > 0)
+			{
+				numSouvenirs = numSouvenirs + loadedTeams[i].getSouvenirs()[loadedTeams[i].getKeys()[j]].getQuantity();
+				if (pushback)
+				{
+					souvenirTeams.push_back(loadedTeams[i].getTeamName());
+					pushback = false;
+				}
+			}
 		}
+		pushback = true;
 	}
-	//qDebug() << "Souvenir number: " << souvenirTeams.size();
 
 	ui->souvenirTable->setRowCount(numSouvenirs + souvenirTeams.size() + 2);
 	ui->souvenirTable->setColumnCount(5);
@@ -70,7 +90,7 @@ void ResultsWindow::setResults(std::vector<Team> &loadedTeams)
     for(auto i = teams.begin(); i!=teams.end(); i++)
     {
         teamsAr[in] = *i;
-        qDebug() << "Team name:" << teamsAr[in];
+		//qDebug() << "Team name:" << teamsAr[in];
         in++;
     }
     graph1 = new MatrixGraph<QString>(teamsAr, teams.size());
@@ -119,56 +139,55 @@ void ResultsWindow::setResults(std::vector<Team> &loadedTeams)
     ui->travelTable->item(counter, 1)->setText("Total:");
     ui->travelTable->item(counter, 2)->setText(QString::number(totalDistance));
 
-    qDebug() <<"Distance: " << totalDistance;
+	//qDebug() <<"Distance: " << totalDistance;
 
 
 
-	// Displaying data to the food table
+	// Displaying data to the souvenir table
 	QLabel *label;
 	int souvenirsLoaded = 0;
 	double grandTotal = 0;
 	std::vector<double> souvenirTotals;
 
-	for (unsigned int i = 0; i < loadedTeams.size(); i++)
+	for (int i = 0; i < loadedTeams.size(); i++)
 	{
-		// set the name of the city if a food was purchases there
-		if (loadedTeams[i].getNumNonZeroSouvenirs() > 0)
+		double souvenirTotal = 0;
+		for (int j = 0; j < loadedTeams[i].getKeys().size(); j++)
 		{
-			qDebug() << souvenirsLoaded;
-			label = new QLabel();
-			label->setText(loadedTeams[i].getTeamName());
-			ui->souvenirTable->setCellWidget(souvenirsLoaded, 0, label);
-
-			double souvenirTotal = 0;
-
-			for (unsigned int j = 0; j < loadedTeams[i].getNonZeroSouvenirs().size(); j++)
+			if (loadedTeams[i].getSouvenirs()[loadedTeams[i].getKeys()[j]].getQuantity() > 0)
 			{
+				label = new QLabel();
+				label->setText(loadedTeams[i].getTeamName());
+				ui->souvenirTable->setCellWidget(souvenirsLoaded, 0, label);
+
+
+
 				// set the name of the food
 				label = new QLabel();
-				label->setText(loadedTeams[i].getNonZeroSouvenirs()[j].getName());
+				label->setText(loadedTeams[i].getSouvenirs()[loadedTeams[i].getKeys()[j]].getName());
 				ui->souvenirTable->setCellWidget(souvenirsLoaded, 1, label);
 
 				// set the price for an individual food item
 				label = new QLabel();
-				label->setText("$" + QString::number(loadedTeams[i].getNonZeroSouvenirs()[j].getPrice()));
+				label->setText("$" + QString::number(loadedTeams[i].getSouvenirs()[loadedTeams[i].getKeys()[j]].getPrice()));
 				ui->souvenirTable->setCellWidget(souvenirsLoaded, 2, label);
 
 				// set the quantity purchases
 				label = new QLabel();
-				label->setText("x" + QString::number(loadedTeams[i].getNonZeroSouvenirs()[j].getQuantity()));
+				label->setText("x" + QString::number(loadedTeams[i].getSouvenirs()[loadedTeams[i].getKeys()[j]].getQuantity()));
 				ui->souvenirTable->setCellWidget(souvenirsLoaded, 3, label);
 
 				// display total Price for the food items
 				label = new QLabel();
-				label->setText("$" + QString::number(loadedTeams[i].getNonZeroSouvenirs()[j].calculateTotal()));
+				label->setText("$" + QString::number(loadedTeams[i].getSouvenirs()[loadedTeams[i].getKeys()[j]].calculateTotal()));
 				ui->souvenirTable->setCellWidget(souvenirsLoaded, 4, label);
 
-				grandTotal = grandTotal + loadedTeams[i].getNonZeroSouvenirs()[j].calculateTotal();
-				souvenirTotal = souvenirTotal + loadedTeams[i].getNonZeroSouvenirs()[j].calculateTotal();
+				grandTotal = grandTotal + loadedTeams[i].getSouvenirs()[loadedTeams[i].getKeys()[j]].calculateTotal();
+				souvenirTotal = souvenirTotal + loadedTeams[i].getSouvenirs()[loadedTeams[i].getKeys()[j]].calculateTotal();
 				souvenirsLoaded++;
 			}
-			souvenirTotals.push_back(souvenirTotal);
 		}
+		souvenirTotals.push_back(souvenirTotal);
 	}
 
 	label = new QLabel();

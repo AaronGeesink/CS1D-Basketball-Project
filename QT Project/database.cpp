@@ -221,7 +221,7 @@ std::map<int, Souvenir> querySouvenirs(QString teamName)
 	{
 		Souvenir souvenir(souvenirNames[i], souvenirPrices[i], souvenirIDs[i]);
 		souvenirs.insert({souvenirIDs[i], souvenir});
-        qDebug() << "souvenir: " << souvenirs.at(souvenirIDs[i]).getName() << souvenirs.at(souvenirIDs[i]).getID() << souvenirIDs[i];
+		qDebug() << "souvenir: " << souvenirs.at(souvenirIDs[i]).getName() << souvenirs.at(souvenirIDs[i]).getID() << souvenirIDs[i];
 	}
     //qDebug() << souvenirs.size();
 	return souvenirs;
@@ -265,4 +265,41 @@ std::vector<int> queryKeys(QString teamName)
 		keys.push_back(query.value(0).toInt());
 	}
 	return keys;
+}
+
+Souvenir querySouvenir(int souvenirID)
+{
+	QString souvenirName;
+	float souvenirPrice;
+
+	QSqlQuery query;
+
+// Query the souvenir names for the team
+	query.prepare("SELECT item FROM souvenirs WHERE souvenirID = :souvenirID");
+	query.bindValue(":souvenirID", souvenirID);
+	if(!query.exec())
+	{
+		qDebug() << "Failed to query from SQL Database";
+	}
+	while(query.next())
+	{
+		souvenirName = query.value(0).toString();
+	}
+
+// Query the souvenir prices for the team
+	query.prepare("SELECT price FROM souvenirs WHERE souvenirID = :souvenirID");
+	query.bindValue(":souvenirID", souvenirID);
+	if(!query.exec())
+	{
+		qDebug() << "Failed to query from SQL Database";
+	}
+	while(query.next())
+	{
+		souvenirPrice = query.value(0).toDouble();
+	}
+
+// construct the souvenir
+
+	Souvenir souvenir(souvenirName, souvenirPrice, souvenirID);
+	return souvenir;
 }

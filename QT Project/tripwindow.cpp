@@ -206,6 +206,7 @@ void TripWindow::on_moveToSouvenir_clicked()
         for(int i = 0; i<ui->custom1OrderedTable->rowCount();i++)
         {
             loadedTeams.push_back(queryTeam(ui->custom1OrderedTable->item(i,0)->text()));
+			/*
             qDebug() << loadedTeams[i].getTeamName();
             for(auto i: loadedTeams[i].getEdges())
             {
@@ -214,6 +215,7 @@ void TripWindow::on_moveToSouvenir_clicked()
                 qDebug() << "weight: " << i.weight;
             }
             qDebug() << "\n\n";
+			*/
         }
 	}
 	// Detroit Pistons Plan
