@@ -197,7 +197,6 @@ void TripWindow::on_moveToSouvenir_clicked()
             }
             qDebug() << "\n\n";
         }
-
 	}
 	// Detroit Pistons Plan
 	else if (planNumber == 2)
