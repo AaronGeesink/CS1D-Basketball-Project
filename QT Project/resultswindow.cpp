@@ -1,5 +1,6 @@
 #include "resultswindow.h"
 #include "ui_resultswindow.h"
+#include "database.h"
 
 ResultsWindow::ResultsWindow(QWidget *parent) :
 	QWidget(parent),
@@ -61,43 +62,67 @@ void ResultsWindow::setResults(std::vector<Team> &loadedTeams)
 	//City city = getStartingCity(loadedTeams);
 	QString current;
 
-	int totalDistance = 0;
-/*
-	for (int i = 0; i < loadedTeams.size() - 1; i++)
-	{
-		for (int j = 0; j < visited.size(); j++)
-		{
-			city.removeCityDistance(visited[j]);
-		}
+    // Construct graph
+    std::vector<QString> teams = queryTeamNames();
+    MatrixGraph<QString> *graph1;
+    QString* teamsAr = new QString[teams.size()];
+    int in = 0;
+    for(auto i = teams.begin(); i!=teams.end(); i++)
+    {
+        teamsAr[in] = *i;
+        qDebug() << "Team name:" << teamsAr[in];
+        in++;
+    }
+    graph1 = new MatrixGraph<QString>(teamsAr, teams.size());
+    for(auto i = teams.begin(); i!=teams.end(); i++)
+    {
+        std::vector<Edge<QString>> edges = queryEdges(*i);
+        for(auto e: edges)
+            graph1->addEdge(e.start, e.end, e.weight);
+    }
+    /******************************************************/
+    std::vector<Vertex<QString>> astarVertex;
+    QString startTeam;
+    QString endTeam;
+    int counter = 0;
+    double totalDistance = 0;
+    double intermediateDistance;
+    for(auto i = loadedTeams.begin(); i!=loadedTeams.end()-1;i++)
+    {
+        QString startTeam = i->getTeamName();
+        QString endTeam = (i+1)->getTeamName();
+        astarVertex = graph1->aStar(startTeam, endTeam);
+        intermediateDistance = 0;
+        for (int i = astarVertex.size() - 2; i >= 0; i--)
+        {
+            for (int j = 0; j < astarVertex[i].edges.size(); j++)
+            {
+                if (astarVertex[i].edges[j].pEndVertex->value == astarVertex[i].parent->value)
+                {
+                    //cout << " --> " << astarVertex[i].value << " (" << astarVertex[i].edges[j].weight << ")";
+                    intermediateDistance += astarVertex[i].edges[j].weight;
+                }
+            }
+        }
+        totalDistance += intermediateDistance;
+        ui->travelTable->setItem(counter, 0, new QTableWidgetItem);
+        ui->travelTable->setItem(counter, 1, new QTableWidgetItem);
+        ui->travelTable->setItem(counter, 2, new QTableWidgetItem);
+        ui->travelTable->item(counter, 0)->setText(startTeam);
+        ui->travelTable->item(counter, 1)->setText(endTeam);
+        ui->travelTable->item(counter, 2)->setText(QString::number(intermediateDistance));
+        counter++;
+    }
+    ui->travelTable->setItem(counter, 0, new QTableWidgetItem);
+    ui->travelTable->setItem(counter, 1, new QTableWidgetItem);
+    ui->travelTable->setItem(counter, 2, new QTableWidgetItem);
+    ui->travelTable->item(counter, 1)->setText("Total:");
+    ui->travelTable->item(counter, 2)->setText(QString::number(totalDistance));
 
-		name = new QLabel();
-		name->setText(city.getName());
-		ui->travelTable->setCellWidget(i, 0, name);
+    qDebug() <<"Distance: " << totalDistance;
 
-		name = new QLabel();
-		name->setText(city.getShortestDistance().endCity);
-		ui->travelTable->setCellWidget(i, 1, name);
 
-		name = new QLabel();
-		name->setText(QString::number(city.getShortestDistance().distance));
-		ui->travelTable->setCellWidget(i, 2, name);
-		totalDistance = totalDistance + city.getShortestDistance().distance;
 
-		visited.push_back(city.getShortestDistance().endCity);
-		if (i == 0)
-			visited.push_back(city.getName());
-
-		city = getClosestCity(loadedTeams, city.getShortestDistance().endCity);
-	}
-
-	name = new QLabel();
-	name->setText("Total Distance: ");
-	ui->travelTable->setCellWidget(numCities - 1, 1, name);
-
-	name = new QLabel();
-	name->setText(QString::number(totalDistance));
-	ui->travelTable->setCellWidget(numCities - 1, 2, name);
-*/
 	// Displaying data to the food table
 	QLabel *label;
 	int souvenirsLoaded = 0;
