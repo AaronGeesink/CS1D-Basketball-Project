@@ -65,9 +65,9 @@ std::vector<Edge<QString>> queryEdges(QString startTeam);
  * @brief querySouvenirs(QString teamName)
  * Queries the SQL database for a team's souvenirs.
  * @param QString teamName
- * @return std::map<int, Souvenir>
+ * @return Map<Souvenir>
  */
-std::map<int, Souvenir> querySouvenirs(QString teamName);
+Map<Souvenir> querySouvenirs(QString teamName);
 
 /**
  * @author Aaron Geesink

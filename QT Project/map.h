@@ -3,6 +3,7 @@
 #define MAPH_H_
 
 #include<iostream>
+#include <QDebug>
 
 template<typename V>
 class Position													// a (key, value) pair
@@ -11,10 +12,14 @@ class Position													// a (key, value) pair
 public:
 	Position():_key(0), _free(true){}
 	Position(int key, V value):_key(key), _value(value), _free(true){}		// Constructor
-	const int &Key(){return _key;}								// Returning the key reference
-	const V &Value(){return _value;}							// Returning the value reference
+	const int &Key() const{return _key;}								// Returning the key reference
+	int &Key(){return _key;}								// Returning the key reference
+	const V &Value() const {return _value;}							// Returning the value reference
+	V &Value(){return _value;}										// Returning the value reference
 	void SetKey(int key){_key = key;}								// Setting a new key
-	void SetValue(V value){_value = value;}						// setting a new value								// Place a value into the position
+	void SetKey(const int key) const {_key = key;}								// Setting a new key
+	void SetValue(V value){_value = value;}						// setting a new value
+	void SetValue(const V value) const {_value = value;}						// setting a new value
 	bool operator==(Position<V> &n)
 	{
 		return n._key == this->_key && n._value == this->_value;
@@ -37,6 +42,10 @@ class Map
 public:
 
 	Map(const int SIZE);							//Constructor (getting Size to create an array)
+	Map(const Map<V>& other);
+	Map(Map<V>&& other);
+	Map<V>& operator=(const Map<V>& other);
+	Map<V>& operator=(Map<V>&& other);
 	~Map();
 	int Size()const;								//Returns the size of the map
 	bool Empty();									//Returns true of the map is empty
@@ -62,6 +71,70 @@ Map<V>::Map(const int SIZE)
 	_filled = 0;
 }
 
+template<typename V>
+Map<V>::Map(const Map<V> &other)
+{
+	qDebug() << "copy";
+
+	_size = other._size;
+	_filled = other._filled;
+
+	for (int i = 0; i < other._size; i++)
+	{
+		this->list[i] = other.list[i];
+	}
+}
+
+template<typename V>
+Map<V>::Map(Map<V> &&other)
+{
+	qDebug() << "move";
+
+	_size = other._size;
+	_filled = other._filled;
+	list = other.list;
+
+	other.list = nullptr;
+	other._size = 0;
+	other._filled = 0;
+}
+
+template<typename V>
+Map<V> &Map<V>::operator=(const Map<V> &other)
+{
+	qDebug() << "copy";
+
+	_size = other._size;
+	_filled = other._filled;
+
+	Position<V> *_list = new Position<V>[other._size];
+
+	for (int i = 0; i < other._size(); i++)
+	{
+		*(_list)[i].setKey(other.*(list)[i].Key());
+		*(_list)[i].setValue(other.*(list)[i].Value());
+	}
+
+	delete [] this->list;
+	this->list = _list;
+
+	return *this;
+}
+
+template<typename V>
+Map<V> &Map<V>::operator=(Map<V> &&other)
+{
+	qDebug() << "move";
+
+	delete [] this->list;
+
+	this->list = other.list;
+
+	_size = other._size;
+	_filled = other._filled;
+
+	return *this;
+}
 
 template<typename V>
 Map<V>::~Map()

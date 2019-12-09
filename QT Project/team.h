@@ -6,7 +6,7 @@
 #include <map>
 #include "souvenir.h"
 #include "matrixgraph.h"
-//#include "map.h"
+#include "map.h"
 
 /**
  *@author Aaron Geesink
@@ -53,7 +53,7 @@ public:
 	 * This method returns a map of souvenirs for a team
 	 * @return map<int, Souvenir>&
 	 */
-	std::map<int, Souvenir>& getSouvenirs();
+	Map<Souvenir>& getSouvenirs();
 
 	/**
 	 * @author Aaron Geesink
@@ -97,11 +97,11 @@ public:
 
 	/**
 	 * @author Aaron Geesink
-	 * @brief setSouvenirs(std::map<int, Souvenir> souvenirs)
+	 * @brief setSouvenirs(Map<Souvenir> souvenirs)
 	 * Sets the souvenirs for a team to a map of Souvenir objects
-	 * @param std::map<int, Souvenir> souvenirs
+	 * @param Map<Souvenir> souvenirs
 	 */
-	void setSouvenirs(std::map<int, Souvenir> souvenirs);
+	void setSouvenirs(Map<Souvenir> souvenirs);
 
 	/**
 	 * @author Aaron Geesink
@@ -123,7 +123,8 @@ private:
 	QString teamName;		/// The name of a Team
 	QString location;		/// The location of a team
 	std::vector<Edge<QString>> edges;	/// The edges surrounding a team
-	std::map<int, Souvenir> souvenirs;	/// The souvenirs for a team
+	//Map<Souvenir> souvenirs;	/// The souvenirs for a team
+	Map<Souvenir> souvenirs;
 	std::vector<int> keys;				/// Keys for a team's souvenir vector
 };
 

@@ -40,13 +40,17 @@ Team queryTeam(QString teamName)
 	team.setLocation(queryLocation(teamName));
 	team.setSouvenirs(querySouvenirs(teamName));
 	team.setKeys(queryKeys(teamName));
-/*
+
 	qDebug() << "Name: " << team.getTeamName()
 			 << "\nLocation: " << team.getLocation()
 			 << "\nNum edges: " << team.getEdges().size()
-			 << "\nNum souvenirs: " << team.getSouvenirs().size()
-			 << "\n";
-*/
+			 << "\nNum souvenirs: " << team.getSouvenirs().Size();
+	qDebug() << "\nSouvenir 1: " << team.getSouvenirs().Find(team.getKeys()[0]).Value().getName();
+	qDebug() << "\nSouvenir 2: " << team.getSouvenirs().Find(team.getKeys()[1]).Value().getName();
+	qDebug() << "\nSouvenir 3: " << team.getSouvenirs().Find(team.getKeys()[2]).Value().getName();
+	qDebug() << "\nSouvenir 4: " << team.getSouvenirs().Find(team.getKeys()[3]).Value().getName();
+	qDebug() << "\n";
+
 	return team;
 }
 
@@ -65,7 +69,7 @@ std::vector<Team> queryTeams()
 		team.setSouvenirs(querySouvenirs(teamNames[i]));
 		team.setKeys(queryKeys(teamNames[i]));
 		teams.push_back(team);
-/*
+
 		qDebug() << "Name: " << team.getTeamName()
 				 << "\nLocation: " << team.getLocation()
 				 << "\nNum edges: " << team.getEdges().size()
@@ -74,7 +78,7 @@ std::vector<Team> queryTeams()
                  << "\nEdge 1 end:" << team.getEdges()[0].end
                  << "\nEdge 1 distance:" << team.getEdges()[0].weight
 				 << "\n";
-*/
+
 	}
 
 	return teams;
@@ -170,7 +174,7 @@ std::vector<Edge<QString>> queryEdges(QString startTeam)
 }
 
 
-std::map<int, Souvenir> querySouvenirs(QString teamName)
+Map<Souvenir> querySouvenirs(QString teamName)
 {
 	std::vector<QString> souvenirNames;
 	std::vector<float> souvenirPrices;
@@ -216,14 +220,15 @@ std::map<int, Souvenir> querySouvenirs(QString teamName)
 
 // construct the souvenirs
 
-	std::map<int, Souvenir> souvenirs;
+	Map<Souvenir> souvenirs(4);
 	for (int i = 0; i < souvenirNames.size(); i++)
 	{
 		Souvenir souvenir(souvenirNames[i], souvenirPrices[i], souvenirIDs[i]);
-		souvenirs.insert({souvenirIDs[i], souvenir});
-		//qDebug() << "souvenir: " << souvenirs.at(souvenirIDs[i]).getName() << souvenirs.at(souvenirIDs[i]).getID() << souvenirIDs[i];
+		//souvenirs.insert({souvenirIDs[i], souvenir});
+		souvenirs.Put(souvenirIDs[i], souvenir);
+		qDebug() << "\nsouvenir: " << souvenirs.Find(souvenirIDs[i]).Value().getName();
 	}
-    //qDebug() << souvenirs.size();
+	qDebug() << souvenirs.Size();
 	return souvenirs;
 }
 
