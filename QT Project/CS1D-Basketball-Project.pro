@@ -31,9 +31,12 @@ SOURCES += \
     viewwindow.cpp
 
 HEADERS += \
+    HashNode.h \
+    KeyHash.h \
     database.h \
     editwindow.h \
     graphwindow.h \
+    hashMap.h \
     loginwindow.h \
     mainwindow.h \
     map.h \
