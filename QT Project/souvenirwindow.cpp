@@ -20,10 +20,10 @@ void SouvenirWindow::setSouvenirSelection(std::vector<Team> &loadedTeams)
 	this->loadedTeams = &loadedTeams;
 
 	// Table Setup
-	int numSouvenirs = 0;
+    int numSouvenirs = 0;
 	for (unsigned int i = 0; i < loadedTeams.size(); i++)
 	{
-		numSouvenirs = numSouvenirs + loadedTeams[i].getSouvenirs().size();
+        numSouvenirs = numSouvenirs + loadedTeams[i].getSouvenirs()->size();
 	}
 
 	ui->souvenirTable->setRowCount(numSouvenirs);
@@ -51,12 +51,12 @@ void SouvenirWindow::setSouvenirSelection(std::vector<Team> &loadedTeams)
 			int key = loadedTeams[i].getKeys()[j];
 			// set the name of the souvenir
 			label = new QLabel();
-			label->setText(loadedTeams[i].getSouvenirs()[key].getName());
+            label->setText(loadedTeams[i].getSouvenirs()->at(key).getName());
 			ui->souvenirTable->setCellWidget(foodsLoaded, 1, label);
 
 			// set the price of the souvenir
 			label = new QLabel();
-			label->setText("$" + QString::number(loadedTeams[i].getSouvenirs()[key].getPrice()));
+            label->setText("$" + QString::number(loadedTeams[i].getSouvenirs()->at(key).getPrice()));
 			ui->souvenirTable->setCellWidget(foodsLoaded, 2, label);
 
 			// add QLineEdit objects for quantity input
@@ -78,7 +78,7 @@ void SouvenirWindow::loadSouvenirQuantities()
 			QSpinBox *spinBox = qobject_cast<QSpinBox *>(ui->souvenirTable->cellWidget(souvenirsLoaded, 3));
 			if (spinBox)
 			{
-				(*loadedTeams)[i].getSouvenirs()[loadedTeams->at(i).getKeys()[j]].setQuantity(spinBox->value());
+                (*loadedTeams)[i].getSouvenirs()->at(loadedTeams->at(i).getKeys()[j]).setQuantity(spinBox->value());
 			}
 			souvenirsLoaded++;
 		}

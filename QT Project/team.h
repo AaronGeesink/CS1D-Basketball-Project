@@ -6,6 +6,7 @@
 #include <map>
 #include "souvenir.h"
 #include "matrixgraph.h"
+#include "HashMap.h"
 //#include "map.h"
 
 /**
@@ -53,7 +54,7 @@ public:
 	 * This method returns a map of souvenirs for a team
 	 * @return map<int, Souvenir>&
 	 */
-	std::map<int, Souvenir>& getSouvenirs();
+    HashMap<int, Souvenir, 30, MyKeyHash> * getSouvenirs();
 
 	/**
 	 * @author Aaron Geesink
@@ -97,11 +98,11 @@ public:
 
 	/**
 	 * @author Aaron Geesink
-	 * @brief setSouvenirs(std::map<int, Souvenir> souvenirs)
+     * @brief setSouvenirs(HashMap<int, Souvenir, MyKeyHash> souvenirs)
 	 * Sets the souvenirs for a team to a map of Souvenir objects
-	 * @param std::map<int, Souvenir> souvenirs
+     * @param HashMap<int, Souvenir, MyKeyHash> souvenirs
 	 */
-	void setSouvenirs(std::map<int, Souvenir> souvenirs);
+    void setSouvenirs(HashMap<int, Souvenir, 30, MyKeyHash> * souvenirs);
 
 	/**
 	 * @author Aaron Geesink
@@ -123,7 +124,7 @@ private:
 	QString teamName;		/// The name of a Team
 	QString location;		/// The location of a team
 	std::vector<Edge<QString>> edges;	/// The edges surrounding a team
-	std::map<int, Souvenir> souvenirs;	/// The souvenirs for a team
+    HashMap<int, Souvenir, 30, MyKeyHash> *souvenirs;	/// The souvenirs for a team
 	std::vector<int> keys;				/// Keys for a team's souvenir vector
 };
 

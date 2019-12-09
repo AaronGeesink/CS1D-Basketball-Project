@@ -1,6 +1,6 @@
 #include "team.h"
 
-Team::Team() : teamName{""}, location{""}, souvenirs{ }
+Team::Team() : teamName{""}, location{""}, souvenirs{NULL}
 {	}
 
 QString Team::getTeamName()
@@ -18,7 +18,7 @@ std::vector<Edge<QString>> Team::getEdges()
 	return edges;
 }
 
-std::map<int, Souvenir>& Team::getSouvenirs()
+HashMap<int, Souvenir, 30, MyKeyHash> * Team::getSouvenirs()
 {
 	return souvenirs;
 }
@@ -43,7 +43,7 @@ void Team::setEdges(std::vector<Edge<QString>> edges)
 	this->edges = edges;
 }
 
-void Team::setSouvenirs(std::map<int, Souvenir> souvenirs)
+void Team::setSouvenirs(HashMap<int, Souvenir, 30, MyKeyHash> * souvenirs)
 {
 	this->souvenirs = souvenirs;
 }
@@ -55,5 +55,5 @@ void Team::setKeys(std::vector<int> keys)
 
 void Team::addSouvenir(Souvenir souvenir)
 {
-	souvenirs.insert({souvenir.getID(), souvenir});
+    souvenirs->insert(souvenir.getID(), souvenir);
 }

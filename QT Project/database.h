@@ -67,7 +67,7 @@ std::vector<Edge<QString>> queryEdges(QString startTeam);
  * @param QString teamName
  * @return std::map<int, Souvenir>
  */
-std::map<int, Souvenir> querySouvenirs(QString teamName);
+HashMap<int, Souvenir, 30, MyKeyHash> * querySouvenirs(QString teamName);
 
 /**
  * @author Aaron Geesink

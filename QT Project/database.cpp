@@ -170,7 +170,7 @@ std::vector<Edge<QString>> queryEdges(QString startTeam)
 }
 
 
-std::map<int, Souvenir> querySouvenirs(QString teamName)
+HashMap<int, Souvenir, 30, MyKeyHash> * querySouvenirs(QString teamName)
 {
 	std::vector<QString> souvenirNames;
 	std::vector<float> souvenirPrices;
@@ -216,12 +216,12 @@ std::map<int, Souvenir> querySouvenirs(QString teamName)
 
 // construct the souvenirs
 
-	std::map<int, Souvenir> souvenirs;
+    HashMap<int, Souvenir, 30, MyKeyHash> *souvenirs = new HashMap<int, Souvenir, 30, MyKeyHash>;
 	for (int i = 0; i < souvenirNames.size(); i++)
 	{
 		Souvenir souvenir(souvenirNames[i], souvenirPrices[i], souvenirIDs[i]);
-		souvenirs.insert({souvenirIDs[i], souvenir});
-		//qDebug() << "souvenir: " << souvenirs.at(souvenirIDs[i]).getName() << souvenirs.at(souvenirIDs[i]).getID() << souvenirIDs[i];
+        souvenirs->insert(souvenirIDs[i], souvenir);
+        qDebug() << "souvenir: " << souvenirs->at(souvenirIDs[i]).getName() << souvenirs->at(souvenirIDs[i]).getID() << souvenirIDs[i];
 	}
     //qDebug() << souvenirs.size();
 	return souvenirs;
