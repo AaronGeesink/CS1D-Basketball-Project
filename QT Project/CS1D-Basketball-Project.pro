@@ -31,12 +31,12 @@ SOURCES += \
     viewwindow.cpp
 
 HEADERS += \
-    Map.h \
     database.h \
     editwindow.h \
     graphwindow.h \
     loginwindow.h \
     mainwindow.h \
+    map.h \
     map.h \
     matrixgraph.h \
     resultswindow.h \
