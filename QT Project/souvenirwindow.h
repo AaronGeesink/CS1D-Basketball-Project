@@ -10,6 +10,10 @@ namespace Ui {
 class SouvenirWindow;
 }
 
+/**
+ * @brief SouvenirWindow
+ * This class generates the window which allows admins to display souvenirs
+ */
 class SouvenirWindow : public QWidget
 {
 	Q_OBJECT
@@ -42,12 +46,33 @@ public:
 	std::vector<Team>& getLoadedTeams();
 
 signals:
+	/**
+	 * @author Aaron Geesink
+	 * @brief moveToTripClicked()
+	 * Proceeds to the Trip window
+	 */
 	void moveToTripClicked();
+
+	/**
+	 * @author Aaron Geesink
+	 * @brief moveToResultsClicked()
+	 * Proceeds to the results window
+	 */
 	void moveToResultsClicked();
 
 private slots:
+	/**
+	 * @author Aaron Geesink
+	 * @brief on_moveToTrip_clicked()
+	 * Proceeds to the Trip window
+	 */
 	void on_moveToTrip_clicked();
 
+	/**
+	 * @author Aaron Geesink
+	 * @brief on_moveToResults_clicked()
+	 * Proceeds to the Results window
+	 */
 	void on_moveToResults_clicked();
 
 private:

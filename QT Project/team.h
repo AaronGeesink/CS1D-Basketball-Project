@@ -8,50 +8,123 @@
 #include "matrixgraph.h"
 //#include "map.h"
 
+/**
+ *@author Aaron Geesink
+ *@brief Team class
+ * This is the Team class used to instantiate, store, and perform calculations on teams
+ *@date December 2019
+ */
 class Team
 {
 public:
+	/**
+	 * @brief Team()
+	 * Default Constructor
+	 */
 	Team();
 
-	//QString getConference();
-	//QString getDivision();
+	/**
+	 * @author Aaron Geesink
+	 * @brief getTeamName()
+	 * This method returns a QString containing the name of the Team
+	 * @return QString
+	 */
 	QString getTeamName();
+
+	/**
+	 * @author Aaron Geesink
+	 * @brief getLocation()
+	 * This method returns a QString containing the location of the Team
+	 * @return QString
+	 */
 	QString getLocation();
-	//QString getArenaName();
-	//int getArenaCap();
-	//int getJoinYear();
-	//QString getCoach();
+
+	/**
+	 * @author Aaron Geesink
+	 * @brief getEdges()
+	 * This method returns a vector of Edges containing the edges surrounding a team
+	 * @return vector<Edge<QString>>
+	 */
     std::vector<Edge<QString>> getEdges();
+
+	/**
+	 * @author Aaron Geesink
+	 * @brief getSouvenirs()
+	 * This method returns a map of souvenirs for a team
+	 * @return map<int, Souvenir>&
+	 */
 	std::map<int, Souvenir>& getSouvenirs();
+
+	/**
+	 * @author Aaron Geesink
+	 * @brief getKeys()
+	 * This method returns a vector of keys for  a team's souvenir map
+	 * @return vector<int>
+	 */
 	std::vector<int> getKeys();
+
+	/**
+	 * @author Aaron Geesink
+	 * @brief getNumNonZeroSouvenirs()
+	 * This method returns the number of souvenirs purchased for this team
+	 * @return int
+	 */
 	int getNumNonZeroSouvenirs();
 
-	//void setConference(QString conference);
-	//void setDivision(QString division);
+	/**
+	 * @author Aaron Geesink
+	 * @brief setTeamName(QString teamName)
+	 * Sets the teamName of a Team object to QString teamName
+	 * @param Qstring teamName
+	 */
 	void setTeamName(QString teamName);
+
+	/**
+	 * @author Aaron Geesink
+	 * @brief setLocation(QString location)
+	 * Sets the location of a Team object to QString location
+	 * @param Qstring location
+	 */
 	void setLocation(QString location);
-	//void setArenaName(QString arenaName);
-	//void setArenaCap(int arenaCap);
-	//void setJoinYear(int joinYear);
-	//void setCoach(QString coach);
+
+	/**
+	 * @author Aaron Geesink
+	 * @brief setEdges(std::vector<Edge<QString>> edges)
+	 * Sets the edges surrounding a team to a vector of Edge objects
+	 * @param std::vector<Edge<QString>> edges
+	 */
     void setEdges(std::vector<Edge<QString>> edges);
+
+	/**
+	 * @author Aaron Geesink
+	 * @brief setSouvenirs(std::map<int, Souvenir> souvenirs)
+	 * Sets the souvenirs for a team to a map of Souvenir objects
+	 * @param std::map<int, Souvenir> souvenirs
+	 */
 	void setSouvenirs(std::map<int, Souvenir> souvenirs);
+
+	/**
+	 * @author Aaron Geesink
+	 * @brief setKeys(std::vector<int> keys)
+	 * Sets the keys for a team to a vector of keys
+	 * @param std::vector<int> keys
+	 */
 	void setKeys(std::vector<int> keys);
 
+	/**
+	 * @author Aaron Geesink
+	 * @brief addSouvenir(Souvenir souvenir)
+	 * Adds a souvenir to a Team's souvenir map
+	 * @param Souvenir souvenir
+	 */
 	void addSouvenir(Souvenir souvenir);
 
 private:
-	//QString conference;
-	//QString division;
-	QString teamName;
-	QString location;
-	//QString arenaName;
-	//int arenaCap;
-	//int joinYear;
-	//QString coach;
-    std::vector<Edge<QString>> edges;
-	std::map<int, Souvenir> souvenirs;
-	std::vector<int> keys;
+	QString teamName;		/// The name of a Team
+	QString location;		/// The location of a team
+	std::vector<Edge<QString>> edges;	/// The edges surrounding a team
+	std::map<int, Souvenir> souvenirs;	/// The souvenirs for a team
+	std::vector<int> keys;				/// Keys for a team's souvenir vector
 };
 
 #endif // TEAM_H

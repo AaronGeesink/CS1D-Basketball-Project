@@ -23,6 +23,7 @@ void createDatabase();
  */
 bool checkConnection();
 
+
 Team queryTeam(QString teamName);
 
 /**
@@ -52,10 +53,10 @@ Edge<QString> queryEdge(QString start, QString end);
 
 /**
  * @author Aaron Geesink
- * @brief queryEdges(QString teamName)
+ * @brief queryEdges(QString startTeam)
  * Queries the SQL database for the edges of a given team
  * @param QString teamName
- * @return Edge
+ * @return std::vector<Edge<QString>>
  */
 std::vector<Edge<QString>> queryEdges(QString startTeam);
 
@@ -64,12 +65,26 @@ std::vector<Edge<QString>> queryEdges(QString startTeam);
  * @brief querySouvenirs(QString teamName)
  * Queries the SQL database for a team's souvenirs.
  * @param QString teamName
- * @return std::vector<Souvenir>
+ * @return std::map<int, Souvenir>
  */
 std::map<int, Souvenir> querySouvenirs(QString teamName);
 
+/**
+ * @author Aaron Geesink
+ * @brief querySouvenir(int souvenirID)
+ * Returns the souvenir for a given key
+ * @param int souvenirID
+ * @return Souvenir
+ */
 Souvenir querySouvenir(int souvenirID);
 
+/**
+ * @author Aaron Geesink
+ * @brief queryKeys(QString teamName);
+ * Returns a vector of keys for a team's souvenirs map
+ * @param QString teamName
+ * @return std::vector<int>
+ */
 std::vector<int> queryKeys(QString teamName);
 
 /**
