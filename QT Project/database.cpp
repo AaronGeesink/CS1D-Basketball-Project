@@ -38,8 +38,8 @@ Team queryTeam(QString teamName)
 	team.setTeamName(teamName);
 	team.setEdges(queryEdges(teamName));
 	team.setLocation(queryLocation(teamName));
-	team.setSouvenirs(querySouvenirs(teamName));
 	team.setKeys(queryKeys(teamName));
+	team.setSouvenirs(querySouvenirs(teamName));
 
 	qDebug() << "Name: " << team.getTeamName()
 			 << "\nLocation: " << team.getLocation()
@@ -66,8 +66,8 @@ std::vector<Team> queryTeams()
 		team.setTeamName(teamNames[i]);
 		team.setEdges(queryEdges(teamNames[i]));
 		team.setLocation(queryLocation(teamNames[i]));
-		team.setSouvenirs(querySouvenirs(teamNames[i]));
 		team.setKeys(queryKeys(teamNames[i]));
+		team.setSouvenirs(querySouvenirs(teamNames[i]));
 		teams.push_back(team);
 
 		qDebug() << "Name: " << team.getTeamName()

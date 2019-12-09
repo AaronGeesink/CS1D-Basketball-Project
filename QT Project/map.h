@@ -109,10 +109,9 @@ Map<V> &Map<V>::operator=(const Map<V> &other)
 
 	Position<V> *_list = new Position<V>[other._size];
 
-	for (int i = 0; i < other._size(); i++)
+	for (int i = 0; i < other._size; i++)
 	{
-		*(_list)[i].setKey(other.*(list)[i].Key());
-		*(_list)[i].setValue(other.*(list)[i].Value());
+		_list[i] = other.list[i];
 	}
 
 	delete [] this->list;
@@ -238,7 +237,5 @@ void Map<V>::Erase(const int& key)
 		std::cerr << "The position does not exist\n\n";
 	}
 }
-
-
 
 #endif /* MAPH_H_ */
