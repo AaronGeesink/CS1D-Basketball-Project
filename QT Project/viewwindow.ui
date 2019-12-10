@@ -175,6 +175,19 @@
     <string>Souvenirs</string>
    </property>
   </widget>
+  <widget class="QLabel" name="totalCapLabel">
+   <property name="geometry">
+    <rect>
+     <x>370</x>
+     <y>20</y>
+     <width>161</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>
