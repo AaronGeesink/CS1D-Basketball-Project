@@ -1,0 +1,265 @@
+\hypertarget{class_team}{}\section{Team Class Reference}
+\label{class_team}\index{Team@{Team}}
+
+
+\mbox{\hyperlink{class_team}{Team}} class This is the \mbox{\hyperlink{class_team}{Team}} class used to instantiate, store, and perform calculations on teams.  
+
+
+
+
+{\ttfamily \#include $<$team.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_team_aada295895b747960576b69d8c87a54ba}\label{class_team_aada295895b747960576b69d8c87a54ba}} 
+\mbox{\hyperlink{class_team_aada295895b747960576b69d8c87a54ba}{Team}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_team_aada295895b747960576b69d8c87a54ba}{Team()}} Default Constructor. \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{class_team_a36148ba356032791f4789a493e1ee149}{get\+Team\+Name}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_team_a36148ba356032791f4789a493e1ee149}{get\+Team\+Name()}} This method returns a Q\+String containing the name of the \mbox{\hyperlink{class_team}{Team}} \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{class_team_a111f7ada960236792e4a82e1e5612d0b}{get\+Location}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_team_a111f7ada960236792e4a82e1e5612d0b}{get\+Location()}} This method returns a Q\+String containing the location of the \mbox{\hyperlink{class_team}{Team}} \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_edge}{Edge}}$<$ Q\+String $>$ $>$ \mbox{\hyperlink{class_team_a04db74ce13bfe7c9d9fdf133920b5d72}{get\+Edges}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_team_a04db74ce13bfe7c9d9fdf133920b5d72}{get\+Edges()}} This method returns a vector of Edges containing the edges surrounding a team \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_hash_map}{Hash\+Map}}$<$ int, \mbox{\hyperlink{class_souvenir}{Souvenir}}, 30, \mbox{\hyperlink{struct_my_key_hash}{My\+Key\+Hash}} $>$ $\ast$ \mbox{\hyperlink{class_team_a1f677711d70b0efedde0c24445813dc2}{get\+Souvenirs}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_team_a1f677711d70b0efedde0c24445813dc2}{get\+Souvenirs()}} This method returns a map of souvenirs for a team \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{class_team_ab7ed1cd5a51fb12b70e029bf50336050}{get\+Keys}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_team_ab7ed1cd5a51fb12b70e029bf50336050}{get\+Keys()}} This method returns a vector of keys for a team\textquotesingle{}s souvenir map \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_team_a369e1504be751aa8bf1445a69901e9da}{get\+Num\+Non\+Zero\+Souvenirs}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_team_a369e1504be751aa8bf1445a69901e9da}{get\+Num\+Non\+Zero\+Souvenirs()}} This method returns the number of souvenirs purchased for this team \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_team_a1ea161f9bcc465d45a8ca2603590739e}{set\+Team\+Name}} (Q\+String team\+Name)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_team_a1ea161f9bcc465d45a8ca2603590739e}{set\+Team\+Name(\+Q\+String team\+Name)}} Sets the team\+Name of a \mbox{\hyperlink{class_team}{Team}} object to Q\+String team\+Name \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_team_a50b52da7424bde42a2bfad0c1e9bce9c}{set\+Location}} (Q\+String location)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_team_a50b52da7424bde42a2bfad0c1e9bce9c}{set\+Location(\+Q\+String location)}} Sets the location of a \mbox{\hyperlink{class_team}{Team}} object to Q\+String location \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_team_adf74a36b8444f5dff3de272e9d79873f}{set\+Edges}} (std\+::vector$<$ \mbox{\hyperlink{struct_edge}{Edge}}$<$ Q\+String $>$$>$ edges)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_team_adf74a36b8444f5dff3de272e9d79873f}{set\+Edges(std\+::vector$<$\+Edge$<$\+Q\+String$>$$>$ edges)}} Sets the edges surrounding a team to a vector of \mbox{\hyperlink{struct_edge}{Edge}} objects \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_team_a4b82732cdbc226bf1678dbf298493c9f}{set\+Souvenirs}} (\mbox{\hyperlink{class_hash_map}{Hash\+Map}}$<$ int, \mbox{\hyperlink{class_souvenir}{Souvenir}}, 30, \mbox{\hyperlink{struct_my_key_hash}{My\+Key\+Hash}} $>$ $\ast$souvenirs)
+\begin{DoxyCompactList}\small\item\em set\+Souvenirs(\+Hash\+Map$<$int, Souvenir, My\+Key\+Hash$>$ souvenirs) Sets the souvenirs for a team to a map of \mbox{\hyperlink{class_souvenir}{Souvenir}} objects \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_team_a70009ebba2b8dc25c20d13a02b6b6780}{set\+Keys}} (std\+::vector$<$ int $>$ keys)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_team_a70009ebba2b8dc25c20d13a02b6b6780}{set\+Keys(std\+::vector$<$int$>$ keys)}} Sets the keys for a team to a vector of keys \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_team_a5d516800cd065c65222caf75ab3f5286}{add\+Souvenir}} (\mbox{\hyperlink{class_souvenir}{Souvenir}} souvenir)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_team_a5d516800cd065c65222caf75ab3f5286}{add\+Souvenir(\+Souvenir souvenir)}} Adds a souvenir to a \mbox{\hyperlink{class_team}{Team}}\textquotesingle{}s souvenir map \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\mbox{\hyperlink{class_team}{Team}} class This is the \mbox{\hyperlink{class_team}{Team}} class used to instantiate, store, and perform calculations on teams. 
+
+\begin{DoxyAuthor}{Author}
+Aaron Geesink 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+December 2019 
+\end{DoxyDate}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_team_a5d516800cd065c65222caf75ab3f5286}\label{class_team_a5d516800cd065c65222caf75ab3f5286}} 
+\index{Team@{Team}!addSouvenir@{addSouvenir}}
+\index{addSouvenir@{addSouvenir}!Team@{Team}}
+\subsubsection{\texorpdfstring{addSouvenir()}{addSouvenir()}}
+{\footnotesize\ttfamily void Team\+::add\+Souvenir (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_souvenir}{Souvenir}}}]{souvenir }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_team_a5d516800cd065c65222caf75ab3f5286}{add\+Souvenir(\+Souvenir souvenir)}} Adds a souvenir to a \mbox{\hyperlink{class_team}{Team}}\textquotesingle{}s souvenir map 
+
+\begin{DoxyAuthor}{Author}
+Aaron Geesink 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{class_souvenir}{Souvenir}}} & souvenir \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_team_a04db74ce13bfe7c9d9fdf133920b5d72}\label{class_team_a04db74ce13bfe7c9d9fdf133920b5d72}} 
+\index{Team@{Team}!getEdges@{getEdges}}
+\index{getEdges@{getEdges}!Team@{Team}}
+\subsubsection{\texorpdfstring{getEdges()}{getEdges()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{struct_edge}{Edge}}$<$ Q\+String $>$ $>$ Team\+::get\+Edges (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_team_a04db74ce13bfe7c9d9fdf133920b5d72}{get\+Edges()}} This method returns a vector of Edges containing the edges surrounding a team 
+
+\begin{DoxyAuthor}{Author}
+Aaron Geesink 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+vector$<$Edge$<$\+Q\+String$>$$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_team_ab7ed1cd5a51fb12b70e029bf50336050}\label{class_team_ab7ed1cd5a51fb12b70e029bf50336050}} 
+\index{Team@{Team}!getKeys@{getKeys}}
+\index{getKeys@{getKeys}!Team@{Team}}
+\subsubsection{\texorpdfstring{getKeys()}{getKeys()}}
+{\footnotesize\ttfamily std\+::vector$<$ int $>$ Team\+::get\+Keys (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_team_ab7ed1cd5a51fb12b70e029bf50336050}{get\+Keys()}} This method returns a vector of keys for a team\textquotesingle{}s souvenir map 
+
+\begin{DoxyAuthor}{Author}
+Aaron Geesink 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+vector$<$int$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_team_a111f7ada960236792e4a82e1e5612d0b}\label{class_team_a111f7ada960236792e4a82e1e5612d0b}} 
+\index{Team@{Team}!getLocation@{getLocation}}
+\index{getLocation@{getLocation}!Team@{Team}}
+\subsubsection{\texorpdfstring{getLocation()}{getLocation()}}
+{\footnotesize\ttfamily Q\+String Team\+::get\+Location (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_team_a111f7ada960236792e4a82e1e5612d0b}{get\+Location()}} This method returns a Q\+String containing the location of the \mbox{\hyperlink{class_team}{Team}} 
+
+\begin{DoxyAuthor}{Author}
+Aaron Geesink 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+Q\+String 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_team_a369e1504be751aa8bf1445a69901e9da}\label{class_team_a369e1504be751aa8bf1445a69901e9da}} 
+\index{Team@{Team}!getNumNonZeroSouvenirs@{getNumNonZeroSouvenirs}}
+\index{getNumNonZeroSouvenirs@{getNumNonZeroSouvenirs}!Team@{Team}}
+\subsubsection{\texorpdfstring{getNumNonZeroSouvenirs()}{getNumNonZeroSouvenirs()}}
+{\footnotesize\ttfamily int Team\+::get\+Num\+Non\+Zero\+Souvenirs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_team_a369e1504be751aa8bf1445a69901e9da}{get\+Num\+Non\+Zero\+Souvenirs()}} This method returns the number of souvenirs purchased for this team 
+
+\begin{DoxyAuthor}{Author}
+Aaron Geesink 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_team_a1f677711d70b0efedde0c24445813dc2}\label{class_team_a1f677711d70b0efedde0c24445813dc2}} 
+\index{Team@{Team}!getSouvenirs@{getSouvenirs}}
+\index{getSouvenirs@{getSouvenirs}!Team@{Team}}
+\subsubsection{\texorpdfstring{getSouvenirs()}{getSouvenirs()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_hash_map}{Hash\+Map}}$<$ int, \mbox{\hyperlink{class_souvenir}{Souvenir}}, 30, \mbox{\hyperlink{struct_my_key_hash}{My\+Key\+Hash}} $>$ $\ast$ Team\+::get\+Souvenirs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_team_a1f677711d70b0efedde0c24445813dc2}{get\+Souvenirs()}} This method returns a map of souvenirs for a team 
+
+\begin{DoxyAuthor}{Author}
+Aaron Geesink 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+map$<$int, Souvenir$>$\& 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_team_a36148ba356032791f4789a493e1ee149}\label{class_team_a36148ba356032791f4789a493e1ee149}} 
+\index{Team@{Team}!getTeamName@{getTeamName}}
+\index{getTeamName@{getTeamName}!Team@{Team}}
+\subsubsection{\texorpdfstring{getTeamName()}{getTeamName()}}
+{\footnotesize\ttfamily Q\+String Team\+::get\+Team\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_team_a36148ba356032791f4789a493e1ee149}{get\+Team\+Name()}} This method returns a Q\+String containing the name of the \mbox{\hyperlink{class_team}{Team}} 
+
+\begin{DoxyAuthor}{Author}
+Aaron Geesink 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+Q\+String 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_team_adf74a36b8444f5dff3de272e9d79873f}\label{class_team_adf74a36b8444f5dff3de272e9d79873f}} 
+\index{Team@{Team}!setEdges@{setEdges}}
+\index{setEdges@{setEdges}!Team@{Team}}
+\subsubsection{\texorpdfstring{setEdges()}{setEdges()}}
+{\footnotesize\ttfamily void Team\+::set\+Edges (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{struct_edge}{Edge}}$<$ Q\+String $>$$>$}]{edges }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_team_adf74a36b8444f5dff3de272e9d79873f}{set\+Edges(std\+::vector$<$\+Edge$<$\+Q\+String$>$$>$ edges)}} Sets the edges surrounding a team to a vector of \mbox{\hyperlink{struct_edge}{Edge}} objects 
+
+\begin{DoxyAuthor}{Author}
+Aaron Geesink 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em std\+::vector$<$\+Edge$<$\+Q\+String$>$$>$} & edges \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_team_a70009ebba2b8dc25c20d13a02b6b6780}\label{class_team_a70009ebba2b8dc25c20d13a02b6b6780}} 
+\index{Team@{Team}!setKeys@{setKeys}}
+\index{setKeys@{setKeys}!Team@{Team}}
+\subsubsection{\texorpdfstring{setKeys()}{setKeys()}}
+{\footnotesize\ttfamily void Team\+::set\+Keys (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int $>$}]{keys }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_team_a70009ebba2b8dc25c20d13a02b6b6780}{set\+Keys(std\+::vector$<$int$>$ keys)}} Sets the keys for a team to a vector of keys 
+
+\begin{DoxyAuthor}{Author}
+Aaron Geesink 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em std\+::vector$<$int$>$} & keys \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_team_a50b52da7424bde42a2bfad0c1e9bce9c}\label{class_team_a50b52da7424bde42a2bfad0c1e9bce9c}} 
+\index{Team@{Team}!setLocation@{setLocation}}
+\index{setLocation@{setLocation}!Team@{Team}}
+\subsubsection{\texorpdfstring{setLocation()}{setLocation()}}
+{\footnotesize\ttfamily void Team\+::set\+Location (\begin{DoxyParamCaption}\item[{Q\+String}]{location }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_team_a50b52da7424bde42a2bfad0c1e9bce9c}{set\+Location(\+Q\+String location)}} Sets the location of a \mbox{\hyperlink{class_team}{Team}} object to Q\+String location 
+
+\begin{DoxyAuthor}{Author}
+Aaron Geesink 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em Qstring} & location \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_team_a4b82732cdbc226bf1678dbf298493c9f}\label{class_team_a4b82732cdbc226bf1678dbf298493c9f}} 
+\index{Team@{Team}!setSouvenirs@{setSouvenirs}}
+\index{setSouvenirs@{setSouvenirs}!Team@{Team}}
+\subsubsection{\texorpdfstring{setSouvenirs()}{setSouvenirs()}}
+{\footnotesize\ttfamily void Team\+::set\+Souvenirs (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_hash_map}{Hash\+Map}}$<$ int, \mbox{\hyperlink{class_souvenir}{Souvenir}}, 30, \mbox{\hyperlink{struct_my_key_hash}{My\+Key\+Hash}} $>$ $\ast$}]{souvenirs }\end{DoxyParamCaption})}
+
+
+
+set\+Souvenirs(\+Hash\+Map$<$int, Souvenir, My\+Key\+Hash$>$ souvenirs) Sets the souvenirs for a team to a map of \mbox{\hyperlink{class_souvenir}{Souvenir}} objects 
+
+\begin{DoxyAuthor}{Author}
+Aaron Geesink 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em Hash\+Map$<$int,\mbox{\hyperlink{class_souvenir}{Souvenir}},My\+Key\+Hash$>$} & souvenirs \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_team_a1ea161f9bcc465d45a8ca2603590739e}\label{class_team_a1ea161f9bcc465d45a8ca2603590739e}} 
+\index{Team@{Team}!setTeamName@{setTeamName}}
+\index{setTeamName@{setTeamName}!Team@{Team}}
+\subsubsection{\texorpdfstring{setTeamName()}{setTeamName()}}
+{\footnotesize\ttfamily void Team\+::set\+Team\+Name (\begin{DoxyParamCaption}\item[{Q\+String}]{team\+Name }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_team_a1ea161f9bcc465d45a8ca2603590739e}{set\+Team\+Name(\+Q\+String team\+Name)}} Sets the team\+Name of a \mbox{\hyperlink{class_team}{Team}} object to Q\+String team\+Name 
+
+\begin{DoxyAuthor}{Author}
+Aaron Geesink 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em Qstring} & team\+Name \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/chatm/\+Desktop/\+Basketball Project/\+Q\+T Project/team.\+h\item 
+C\+:/\+Users/chatm/\+Desktop/\+Basketball Project/\+Q\+T Project/team.\+cpp\end{DoxyCompactItemize}

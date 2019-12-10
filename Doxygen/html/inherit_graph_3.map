@@ -1,0 +1,12 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" title=" " alt="" coords="5,208,79,235"/>
+<area shape="rect" id="node2" href="$class_edit_window.html" title="EditWindow This class generates the window which allows admins to edit the SQL database." alt="" coords="145,5,235,32"/>
+<area shape="rect" id="node3" href="$class_graph_window.html" title="EditWindow This class generates the window which allows admins to display graph traversals." alt="" coords="139,56,241,83"/>
+<area shape="rect" id="node4" href="$class_login_window.html" title="LoginWindow This class allows the user to input a username and password, and verifies if their login ..." alt="" coords="141,107,239,133"/>
+<area shape="rect" id="node5" href="$class_main_window.html" title="LoginWindow This class generates the main menu, and includes functions which control all other window..." alt="" coords="142,157,238,184"/>
+<area shape="rect" id="node6" href="$class_results_window.html" title=" " alt="" coords="134,208,246,235"/>
+<area shape="rect" id="node7" href="$class_souvenir_window.html" title="SouvenirWindow This class generates the window which allows admins to display souvenirs." alt="" coords="131,259,249,285"/>
+<area shape="rect" id="node8" href="$class_trip_select_window.html" title="TripSelectWindow This class generates the window which allows for trips to be planned." alt="" coords="127,309,253,336"/>
+<area shape="rect" id="node9" href="$class_trip_window.html" title="TripWindow This class generates the window for a given trip plan." alt="" coords="145,360,235,387"/>
+<area shape="rect" id="node10" href="$class_view_window.html" title="LoginWindow This class generates the window which allows the user to view team and souvenir data." alt="" coords="142,411,238,437"/>
+</map>

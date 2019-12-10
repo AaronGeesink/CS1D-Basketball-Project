@@ -1,0 +1,5 @@
+<map id="ResultsWindow::setResults" name="ResultsWindow::setResults">
+<area shape="rect" id="node1" title="setResults(std::vector&lt;Team&gt;&amp; loadedTeams) Sets the results screen to the currently loaded teams" alt="" coords="5,31,188,57"/>
+<area shape="rect" id="node2" href="$class_matrix_graph.html#ac8410c5005729bdc4783429962446cad" title="addEdge(T start, T end, double weight) Function to insert a new edge" alt="" coords="236,5,388,32"/>
+<area shape="rect" id="node3" href="$class_matrix_graph.html#a998736fb9402f7f40d97a60d8441c1ec" title="aStar(T start, T target) Function to calculate the aStar path from start to target" alt="" coords="246,56,378,83"/>
+</map>

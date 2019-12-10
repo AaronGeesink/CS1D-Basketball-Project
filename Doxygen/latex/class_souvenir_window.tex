@@ -1,0 +1,136 @@
+\hypertarget{class_souvenir_window}{}\section{Souvenir\+Window Class Reference}
+\label{class_souvenir_window}\index{SouvenirWindow@{SouvenirWindow}}
+
+
+\mbox{\hyperlink{class_souvenir_window}{Souvenir\+Window}} This class generates the window which allows admins to display souvenirs.  
+
+
+
+
+{\ttfamily \#include $<$souvenirwindow.\+h$>$}
+
+
+
+Inheritance diagram for Souvenir\+Window\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=168pt]{class_souvenir_window__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Souvenir\+Window\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=168pt]{class_souvenir_window__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_souvenir_window_a711717cbb7f22fe11e3778126a0b4577}{move\+To\+Trip\+Clicked}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_souvenir_window_a711717cbb7f22fe11e3778126a0b4577}{move\+To\+Trip\+Clicked()}} Proceeds to the Trip window \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_souvenir_window_a6528ccd60ed871aa9f5f7dc1fb84b67f}{move\+To\+Results\+Clicked}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_souvenir_window_a6528ccd60ed871aa9f5f7dc1fb84b67f}{move\+To\+Results\+Clicked()}} Proceeds to the results window \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_souvenir_window_af2665f6d0cceb868136cebb928536aa1}\label{class_souvenir_window_af2665f6d0cceb868136cebb928536aa1}} 
+{\bfseries Souvenir\+Window} (Q\+Widget $\ast$parent=nullptr)
+\item 
+void \mbox{\hyperlink{class_souvenir_window_a1ded9a4ba9dd58b0f6dad72917b558b2}{set\+Souvenir\+Selection}} (std\+::vector$<$ \mbox{\hyperlink{class_team}{Team}} $>$ \&loaded\+Teams)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_souvenir_window_a1ded9a4ba9dd58b0f6dad72917b558b2}{set\+Souvenir\+Selection(std\+::vector$<$\+Team$>$\& loaded\+Teams)}} Sets the \mbox{\hyperlink{class_souvenir}{Souvenir}} selection of the \mbox{\hyperlink{class_souvenir_window}{Souvenir\+Window}} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_souvenir_window_a1c004a0549aeb3b18269f1330c23168e}{load\+Souvenir\+Quantities}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_souvenir_window_a1c004a0549aeb3b18269f1330c23168e}{load\+Souvenir\+Quantities()}} Loads the quantities of \mbox{\hyperlink{class_souvenir}{Souvenir}} on the \mbox{\hyperlink{class_souvenir_window}{Souvenir\+Window}} \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_team}{Team}} $>$ \& \mbox{\hyperlink{class_souvenir_window_a7986e93d5b36524ff45b4218baa26abe}{get\+Loaded\+Teams}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_souvenir_window_a7986e93d5b36524ff45b4218baa26abe}{get\+Loaded\+Teams()}} Returns a vector containing the currently loaded Teams \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_souvenir_window_a0261810aa9a58cd4609d81e96c1d4902}\label{class_souvenir_window_a0261810aa9a58cd4609d81e96c1d4902}} 
+std\+::vector$<$ int $>$ {\bfseries get\+Quantities} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\mbox{\hyperlink{class_souvenir_window}{Souvenir\+Window}} This class generates the window which allows admins to display souvenirs. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_souvenir_window_a7986e93d5b36524ff45b4218baa26abe}\label{class_souvenir_window_a7986e93d5b36524ff45b4218baa26abe}} 
+\index{SouvenirWindow@{SouvenirWindow}!getLoadedTeams@{getLoadedTeams}}
+\index{getLoadedTeams@{getLoadedTeams}!SouvenirWindow@{SouvenirWindow}}
+\subsubsection{\texorpdfstring{getLoadedTeams()}{getLoadedTeams()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_team}{Team}} $>$ \& Souvenir\+Window\+::get\+Loaded\+Teams (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_souvenir_window_a7986e93d5b36524ff45b4218baa26abe}{get\+Loaded\+Teams()}} Returns a vector containing the currently loaded Teams 
+
+\begin{DoxyAuthor}{Author}
+Aaron Geesink 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+vector$<$\+Team$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_souvenir_window_a1c004a0549aeb3b18269f1330c23168e}\label{class_souvenir_window_a1c004a0549aeb3b18269f1330c23168e}} 
+\index{SouvenirWindow@{SouvenirWindow}!loadSouvenirQuantities@{loadSouvenirQuantities}}
+\index{loadSouvenirQuantities@{loadSouvenirQuantities}!SouvenirWindow@{SouvenirWindow}}
+\subsubsection{\texorpdfstring{loadSouvenirQuantities()}{loadSouvenirQuantities()}}
+{\footnotesize\ttfamily void Souvenir\+Window\+::load\+Souvenir\+Quantities (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_souvenir_window_a1c004a0549aeb3b18269f1330c23168e}{load\+Souvenir\+Quantities()}} Loads the quantities of \mbox{\hyperlink{class_souvenir}{Souvenir}} on the \mbox{\hyperlink{class_souvenir_window}{Souvenir\+Window}} 
+
+\begin{DoxyAuthor}{Author}
+Aaron Geesink 
+\end{DoxyAuthor}
+\mbox{\Hypertarget{class_souvenir_window_a6528ccd60ed871aa9f5f7dc1fb84b67f}\label{class_souvenir_window_a6528ccd60ed871aa9f5f7dc1fb84b67f}} 
+\index{SouvenirWindow@{SouvenirWindow}!moveToResultsClicked@{moveToResultsClicked}}
+\index{moveToResultsClicked@{moveToResultsClicked}!SouvenirWindow@{SouvenirWindow}}
+\subsubsection{\texorpdfstring{moveToResultsClicked}{moveToResultsClicked}}
+{\footnotesize\ttfamily void Souvenir\+Window\+::move\+To\+Results\+Clicked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+\mbox{\hyperlink{class_souvenir_window_a6528ccd60ed871aa9f5f7dc1fb84b67f}{move\+To\+Results\+Clicked()}} Proceeds to the results window 
+
+\begin{DoxyAuthor}{Author}
+Aaron Geesink 
+\end{DoxyAuthor}
+\mbox{\Hypertarget{class_souvenir_window_a711717cbb7f22fe11e3778126a0b4577}\label{class_souvenir_window_a711717cbb7f22fe11e3778126a0b4577}} 
+\index{SouvenirWindow@{SouvenirWindow}!moveToTripClicked@{moveToTripClicked}}
+\index{moveToTripClicked@{moveToTripClicked}!SouvenirWindow@{SouvenirWindow}}
+\subsubsection{\texorpdfstring{moveToTripClicked}{moveToTripClicked}}
+{\footnotesize\ttfamily void Souvenir\+Window\+::move\+To\+Trip\+Clicked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+\mbox{\hyperlink{class_souvenir_window_a711717cbb7f22fe11e3778126a0b4577}{move\+To\+Trip\+Clicked()}} Proceeds to the Trip window 
+
+\begin{DoxyAuthor}{Author}
+Aaron Geesink 
+\end{DoxyAuthor}
+\mbox{\Hypertarget{class_souvenir_window_a1ded9a4ba9dd58b0f6dad72917b558b2}\label{class_souvenir_window_a1ded9a4ba9dd58b0f6dad72917b558b2}} 
+\index{SouvenirWindow@{SouvenirWindow}!setSouvenirSelection@{setSouvenirSelection}}
+\index{setSouvenirSelection@{setSouvenirSelection}!SouvenirWindow@{SouvenirWindow}}
+\subsubsection{\texorpdfstring{setSouvenirSelection()}{setSouvenirSelection()}}
+{\footnotesize\ttfamily void Souvenir\+Window\+::set\+Souvenir\+Selection (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{class_team}{Team}} $>$ \&}]{loaded\+Teams }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_souvenir_window_a1ded9a4ba9dd58b0f6dad72917b558b2}{set\+Souvenir\+Selection(std\+::vector$<$\+Team$>$\& loaded\+Teams)}} Sets the \mbox{\hyperlink{class_souvenir}{Souvenir}} selection of the \mbox{\hyperlink{class_souvenir_window}{Souvenir\+Window}} 
+
+\begin{DoxyAuthor}{Author}
+Aaron Geesink 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em vector$<$\+Team$>$\&} & loaded\+Teams \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/chatm/\+Desktop/\+Basketball Project/\+Q\+T Project/souvenirwindow.\+h\item 
+C\+:/\+Users/chatm/\+Desktop/\+Basketball Project/\+Q\+T Project/souvenirwindow.\+cpp\end{DoxyCompactItemize}
