@@ -8,7 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
+    this->setStyleSheet("background-color: rgba(20, 20, 20, 150);");
 	ui->stackedWidget->insertWidget(1,&viewWind);
 	ui->stackedWidget->insertWidget(2,&loginWind);
 	ui->stackedWidget->insertWidget(3,&editWind);

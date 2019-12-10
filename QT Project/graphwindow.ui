@@ -85,6 +85,9 @@
      <height>100</height>
     </size>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: qlineargradient(spread:pad, x1:0.489, y1:0, x2:0.517, y2:1, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(52, 52, 52, 255));</string>
+   </property>
    <property name="text">
     <string>DFS</string>
    </property>
@@ -104,6 +107,9 @@
      <height>100</height>
     </size>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: qlineargradient(spread:pad, x1:0.489, y1:0, x2:0.517, y2:1, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(52, 52, 52, 255));</string>
+   </property>
    <property name="text">
     <string>BFS</string>
    </property>
@@ -122,6 +128,9 @@
      <width>0</width>
      <height>100</height>
     </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: qlineargradient(spread:pad, x1:0.489, y1:0, x2:0.517, y2:1, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(52, 52, 52, 255));</string>
    </property>
    <property name="text">
     <string>MST</string>

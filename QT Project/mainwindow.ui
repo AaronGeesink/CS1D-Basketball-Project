@@ -254,6 +254,9 @@ Menu</string>
       <property name="acceptDrops">
        <bool>false</bool>
       </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);</string>
+      </property>
       <property name="text">
        <string>NBA Basketball Vacation Planner</string>
       </property>
