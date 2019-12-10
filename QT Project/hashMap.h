@@ -20,7 +20,8 @@
 #include "KeyHash.h"
 #include <cstddef>
 
-struct MyKeyHash {
+struct MyKeyHash
+{
     unsigned long operator()(const int& k) const
     {
         return k % 30;
