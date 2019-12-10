@@ -64,6 +64,10 @@
       <height>50</height>
      </size>
     </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);
+background-color:qlineargradient(spread:pad, x1:0, y1:0.506, x2:1, y2:0.511045, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(52, 52, 52, 255))</string>
+    </property>
     <property name="text">
      <string>Login</string>
     </property>
