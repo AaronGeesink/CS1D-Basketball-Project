@@ -20,8 +20,7 @@
 #include "KeyHash.h"
 #include <cstddef>
 
-struct MyKeyHash
-{
+struct MyKeyHash {
     unsigned long operator()(const int& k) const
     {
         return k % 30;
@@ -55,7 +54,7 @@ public:
         }
     }
 
-	V at(const K &key)
+    V at(const K &key)
     {
         //V value;
         unsigned long hashValue = hashFunc(key);
@@ -65,7 +64,7 @@ public:
             if (entry->getKey() == key) {
                 //value = entry->getValue();
                 //return true;
-				return entry->getValue();
+                return entry->getValue();
             }
             else
             {
