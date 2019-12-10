@@ -6,6 +6,7 @@ ViewWindow::ViewWindow(QWidget *parent) :
 	ui(new Ui::ViewWindow)
 {
 	ui->setupUi(this);
+    ui->databaseView->setSelectionMode(QAbstractItemView::NoSelection);
 }
 
 ViewWindow::~ViewWindow()
@@ -51,6 +52,7 @@ void ViewWindow::on_teamButton_clicked()
 	query.exec("select * from teams WHERE teamName='"+team+"'");
 	model->setQuery(query);
 	ui->databaseView->setModel(model);
+    ui->databaseView->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
 }
 
 void ViewWindow::on_allTeamsButton_clicked()
@@ -64,6 +66,7 @@ void ViewWindow::on_allTeamsButton_clicked()
 	query.exec("SELECT teamName FROM teams WHERE active='1' ORDER BY teamName");
 	model->setQuery(query);
 	ui->databaseView->setModel(model);
+    ui->databaseView->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
 }
 
 void ViewWindow::on_arenaButton_clicked()
@@ -77,6 +80,7 @@ void ViewWindow::on_arenaButton_clicked()
 	query.exec("SELECT arena, teamName FROM teams WHERE active='1' ORDER BY arena");
 	model->setQuery(query);
 	ui->databaseView->setModel(model);
+    ui->databaseView->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
 }
 
 void ViewWindow::on_seatButton_clicked()
@@ -101,6 +105,7 @@ void ViewWindow::on_seatButton_clicked()
 	query.exec("SELECT arena, arenaCap FROM teams WHERE active='1' ORDER BY arenaCap");
 	model->setQuery(query);
 	ui->databaseView->setModel(model);
+    ui->databaseView->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
 }
 
 void ViewWindow::on_eastTeamButton_clicked()
@@ -114,6 +119,7 @@ void ViewWindow::on_eastTeamButton_clicked()
 	query.exec("select * from teams WHERE conference='Eastern' AND active='1' ORDER BY teamName");
 	model->setQuery(query);
 	ui->databaseView->setModel(model);
+    ui->databaseView->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
 }
 
 void ViewWindow::on_southeastTeamButton_clicked()
@@ -127,6 +133,7 @@ void ViewWindow::on_southeastTeamButton_clicked()
 	query.exec("select * from teams WHERE division='Southeast' AND active='1' ORDER BY teamName");
 	model->setQuery(query);
 	ui->databaseView->setModel(model);
+    ui->databaseView->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
 }
 
 void ViewWindow::on_coachButton_clicked()
@@ -140,6 +147,7 @@ void ViewWindow::on_coachButton_clicked()
 	query.exec("select teamName, coach from teams WHERE active='1' ORDER BY teamName");
 	model->setQuery(query);
 	ui->databaseView->setModel(model);
+    ui->databaseView->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
 }
 
 void ViewWindow::on_yearButton_clicked()
@@ -153,6 +161,7 @@ void ViewWindow::on_yearButton_clicked()
 	query.exec("select teamName, arena, joinYear from teams WHERE active='1' ORDER BY joinYear");
 	model->setQuery(query);
 	ui->databaseView->setModel(model);
+    ui->databaseView->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
 }
 
 void ViewWindow::on_souvenirButton_clicked()
@@ -169,4 +178,5 @@ void ViewWindow::on_souvenirButton_clicked()
 	query.exec("select * from souvenirs WHERE teamName='"+team+"'");
 	model->setQuery(query);
 	ui->databaseView->setModel(model);
+    ui->databaseView->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
 }

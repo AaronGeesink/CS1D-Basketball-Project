@@ -11,6 +11,7 @@ GraphWindow::GraphWindow(QWidget *parent) :
     QTableWidgetItem *item2 = new QTableWidgetItem("End");
     QTableWidgetItem *item3 = new QTableWidgetItem("Distance");
     ui->setupUi(this);
+    ui->travList->setSelectionMode(QAbstractItemView::NoSelection);
     ui->travList->setColumnCount(3);
     ui->travList->setHorizontalHeaderItem(0, item1);
     ui->travList->setHorizontalHeaderItem(1, item2);
@@ -41,6 +42,7 @@ void GraphWindow::displayDFS(std::vector<Edge<QString>> edges)
     QTableWidgetItem *distance = new QTableWidgetItem(QString::number(totalDistance));
     ui->travList->setItem(row, 1, lable);
     ui->travList->setItem(row, 2, distance);
+    ui->travList->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
 }
 
 void GraphWindow::on_dfsBtn_clicked()

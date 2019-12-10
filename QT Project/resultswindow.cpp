@@ -7,6 +7,7 @@ ResultsWindow::ResultsWindow(QWidget *parent) :
 	ui(new Ui::ResultsWindow)
 {
 	ui->setupUi(this);
+    ui->travelTable->setSelectionMode(QAbstractItemView::NoSelection);
 }
 
 ResultsWindow::~ResultsWindow()

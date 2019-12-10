@@ -117,6 +117,8 @@ void TripWindow::setSpecifiedTrip()
         ui->custom1Table->setItem(i, 0, new QTableWidgetItem);
         ui->custom1Table->item(i,0)->setText(teams[i].getTeamName());
 	}
+    ui->custom1Table->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+    ui->custom1OrderedTable->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
 	ui->stackedWidget->setCurrentIndex(1);
 }
 
@@ -175,6 +177,8 @@ void TripWindow::setShortestTrip()
         ui->custom2Table->setItem(i, 0, new QTableWidgetItem);
         ui->custom2Table->item(i,0)->setText(teams[i].getTeamName());
     }
+    ui->custom2Table->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+    ui->custom2OrderedTable->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
 	ui->stackedWidget->setCurrentIndex(3);
 }
 
