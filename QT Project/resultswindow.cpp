@@ -8,6 +8,8 @@ ResultsWindow::ResultsWindow(QWidget *parent) :
 {
 	ui->setupUi(this);
     ui->travelTable->setSelectionMode(QAbstractItemView::NoSelection);
+    ui->souvenirTable->setSelectionMode(QAbstractItemView::NoSelection);
+
 }
 
 ResultsWindow::~ResultsWindow()
@@ -41,7 +43,6 @@ void ResultsWindow::setResults(std::vector<Team> &loadedTeams, std::vector<int> 
 	ui->travelTable->setHorizontalHeaderItem(0, new QTableWidgetItem("Start"));
 	ui->travelTable->setHorizontalHeaderItem(1, new QTableWidgetItem("End"));
 	ui->travelTable->setHorizontalHeaderItem(2, new QTableWidgetItem("Distance"));
-	ui->travelTable->setSelectionMode(QAbstractItemView::NoSelection);
 
 	// setup for the souvenir table
 	ui->souvenirTable->clear();
@@ -79,7 +80,6 @@ void ResultsWindow::setResults(std::vector<Team> &loadedTeams, std::vector<int> 
 	ui->souvenirTable->setHorizontalHeaderItem(3, new QTableWidgetItem("Quantity"));
 	ui->souvenirTable->setHorizontalHeaderItem(4, new QTableWidgetItem("Total"));
 
-	ui->souvenirTable->setSelectionMode(QAbstractItemView::NoSelection);
 
 	// Displaying data to the distance table
 	QLabel *name;
@@ -232,6 +232,10 @@ void ResultsWindow::setResults(std::vector<Team> &loadedTeams, std::vector<int> 
 	label = new QLabel();
 	label->setText("$" + QString::number(grandTotal));
 	ui->souvenirTable->setCellWidget(souvenirsLoaded + souvenirTeams.size(), 4, label);
+    ui->travelTable->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+    ui->souvenirTable->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+
+
 }
 
 void ResultsWindow::on_moveToSouvenir_clicked()
