@@ -23,7 +23,7 @@ public:
 	 * Sets the results screen to the currently loaded teams
 	 * @param vector<Team>& loadedTeams
 	 */
-	void setResults(std::vector<Team>& loadedTeams);
+	void setResults(std::vector<Team>& loadedTeams, std::vector<int> quantities);
 
 signals:
 	/**

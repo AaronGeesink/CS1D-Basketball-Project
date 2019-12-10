@@ -33,12 +33,12 @@ public:
         return _key;
     }
 
-    V getValue() const
+	V getValue()
     {
         return _value;
     }
 
-    void setValue(V value)
+	void setValue(V value)
     {
         _value = value;
     }

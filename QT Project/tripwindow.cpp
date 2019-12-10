@@ -193,7 +193,7 @@ void TripWindow::on_moveToSouvenir_clicked()
 	// Denver Nuggets plan
 	if (planNumber == 0)
 	{
-        //loadedTeams.clear();
+		loadedTeams.clear();
 
 		loadedTeams.push_back(queryTeam("Denver Nuggets"));
 		loadedTeams.push_back(queryTeam(comboValue));

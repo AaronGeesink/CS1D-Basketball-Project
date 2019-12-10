@@ -1,161 +1,152 @@
-// Hash node class template
-const static int TABLE_SIZE = 30;
+#pragma once
 
-template <typename K, typename V>
-class HashNode {
-public:
-    HashNode(const K &key, const V &value) :
-    key(key), value(value), next(nullptr) {
-    }
+/**
+ * Copyright 2017 HashMap Development Team
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
 
-    K getKey() const {
-        return key;
-    }
+#include "HashNode.h"
+#include "KeyHash.h"
+#include <cstddef>
 
-    V getValue() const {
-        return value;
-    }
-
-    void setValue(V value) {
-        HashNode::value = value;
-    }
-
-    HashNode *getNext() const {
-        return next;
-    }
-
-    void setNext(HashNode *next) {
-        HashNode::next = next;
-    }
-
-private:
-    // key-value pair
-    K key;
-    V value;
-    // next bucket with the same key
-    HashNode *next;
-};
-
-// Default hash function class
-template <typename K>
-struct KeyHash {
-    unsigned long operator()(const K& key) const
+struct MyKeyHash {
+    unsigned long operator()(const int& k) const
     {
-        return reinterpret_cast<unsigned long>(key) % TABLE_SIZE;
+        return k % 30;
     }
 };
 
 // Hash map class template
-template <typename K, typename V, typename F = KeyHash<K>>
-class HashMap {
+template <typename K, typename V, size_t tableSize, typename F = KeyHash<K, tableSize> >
+class HashMap
+{
 public:
-    HashMap() {
-        // construct zero initialized hash table of size
-        table = new HashNode<K, V> *[TABLE_SIZE]();
+    HashMap() :
+        table(),
+        hashFunc()
+    {
     }
 
-    ~HashMap() {
+    ~HashMap()
+    {
         // destroy all buckets one by one
-        if(table != nullptr)
-        {
-        for (int i = 0; i < TABLE_SIZE; ++i) {
+        for (size_t i = 0; i < tableSize; ++i) {
             HashNode<K, V> *entry = table[i];
-            while (entry != nullptr) {
+
+            while (entry != NULL) {
                 HashNode<K, V> *prev = entry;
                 entry = entry->getNext();
                 delete prev;
             }
-            table[i] = nullptr;
-        }
-        // destroy the hash table
-        delete [] table;
+
+            table[i] = NULL;
         }
     }
 
-    V at(const K &key) {
-        V value;
+	V at(const K &key)
+    {
+        //V value;
         unsigned long hashValue = hashFunc(key);
         HashNode<K, V> *entry = table[hashValue];
 
-        while (entry != nullptr) {
+        while (entry != NULL) {
             if (entry->getKey() == key) {
                 //value = entry->getValue();
-                break;
                 //return true;
+				return entry->getValue();
             }
             else
+            {
                 entry = entry->getNext();
+            }
         }
-        return entry->getValue();
     }
 
-    void insert(const K &key, const V &value) {
+    void insert(const K &key, const V &value)
+    {
         unsigned long hashValue = hashFunc(key);
-        HashNode<K, V> *prev = nullptr;
+        HashNode<K, V> *prev = NULL;
         HashNode<K, V> *entry = table[hashValue];
 
-        while (entry != nullptr && entry->getKey() != key) {
+        while (entry != NULL && entry->getKey() != key) {
             prev = entry;
             entry = entry->getNext();
         }
 
-        if (entry == nullptr) {
+        if (entry == NULL) {
             entry = new HashNode<K, V>(key, value);
-            if (prev == nullptr) {
+
+            if (prev == NULL) {
                 // insert as first bucket
                 table[hashValue] = entry;
+                tSize++;
+
             } else {
                 prev->setNext(entry);
+                tSize++;
             }
+
         } else {
             // just update the value
             entry->setValue(value);
         }
     }
 
-    void remove(const K &key) {
+    void remove(const K &key)
+    {
         unsigned long hashValue = hashFunc(key);
-        HashNode<K, V> *prev = nullptr;
+        HashNode<K, V> *prev = NULL;
         HashNode<K, V> *entry = table[hashValue];
 
-        while (entry != nullptr && entry->getKey() != key) {
+        while (entry != NULL && entry->getKey() != key) {
             prev = entry;
             entry = entry->getNext();
         }
 
-        if (entry == nullptr) {
+        if (entry == NULL) {
             // key not found
             return;
-        }
-        else {
-            if (prev == nullptr) {
+
+        } else {
+            if (prev == NULL) {
                 // remove first bucket of the list
                 table[hashValue] = entry->getNext();
+
             } else {
                 prev->setNext(entry->getNext());
             }
+
             delete entry;
         }
     }
 
+    const HashMap & operator=(const HashMap * other)
+    {
+        delete this->table;
+        //delete this->hashFunc;
+        table = other->table;
+        hashFunc = other->hashFunc;
+    }
+    int size()
+    {
+        return tSize;
+    }
+
+    //HashMap(const HashMap & other);
 private:
     // hash table
-    HashNode<K, V> **table;
+    HashNode<K, V> *table[tableSize];
+    int tSize = 0;
     F hashFunc;
 };
-/* EXAMPLE IMPLIMENTATION*/
-/*HashMap<int, string, MyKeyHash> hmap;
-hmap.put(1, "val1");
-hmap.put(2, "val2");
-hmap.put(3, "val3");
-
-string value;
-hmap.get(2, value);
-cout << value << endl;
-bool res = hmap.get(3, value);
-if (res)
-    cout << value << endl;
-hmap.remove(3);
-res = hmap.get(3, value);
-if (res)
-    cout << value << endl;*/

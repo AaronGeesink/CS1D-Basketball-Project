@@ -54,7 +54,7 @@ public:
 	 * This method returns a map of souvenirs for a team
 	 * @return map<int, Souvenir>&
 	 */
-    HashMap<int, Souvenir, 30, MyKeyHash> * getSouvenirs();
+	HashMap<int, Souvenir, 30, MyKeyHash> * getSouvenirs();
 
 	/**
 	 * @author Aaron Geesink

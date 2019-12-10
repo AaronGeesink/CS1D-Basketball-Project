@@ -14,8 +14,9 @@ ResultsWindow::~ResultsWindow()
 	delete ui;
 }
 
-void ResultsWindow::setResults(std::vector<Team> &loadedTeams)
+void ResultsWindow::setResults(std::vector<Team> &loadedTeams, std::vector<int> quantities)
 {
+	int num = 0;
 
 	qDebug() << "number of teams: " << loadedTeams.size();
 	for (int i = 0; i < loadedTeams.size(); i++)
@@ -25,8 +26,9 @@ void ResultsWindow::setResults(std::vector<Team> &loadedTeams)
 			qDebug() << "\nTeam: " << loadedTeams[i].getTeamName()
                      << "\nSouvenir: " << loadedTeams[i].getSouvenirs()->at(loadedTeams[i].getKeys()[j]).getName()
                      << "\nPrice: " << loadedTeams[i].getSouvenirs()->at(loadedTeams[i].getKeys()[j]).getPrice()
-                     << "\Quantity: " << loadedTeams[i].getSouvenirs()->at(loadedTeams[i].getKeys()[j]).getQuantity()
+					 << "\Quantity: " << quantities[num]
 					 << '\n';
+			num++;
 		}
 	}
 
@@ -47,19 +49,22 @@ void ResultsWindow::setResults(std::vector<Team> &loadedTeams)
 
 	bool pushback = true;
 
+	num = 0;
+
 	for (int i = 0; i < loadedTeams.size(); i++)
 	{
 		for (int j = 0; j < loadedTeams[i].getKeys().size(); j++)
 		{
-            if (loadedTeams[i].getSouvenirs()->at(loadedTeams[i].getKeys()[j]).getQuantity() > 0)
+			if (quantities[num] > 0)
 			{
-                numSouvenirs = numSouvenirs + loadedTeams[i].getSouvenirs()->at(loadedTeams[i].getKeys()[j]).getQuantity();
+				numSouvenirs = numSouvenirs + quantities[num];
 				if (pushback)
 				{
 					souvenirTeams.push_back(loadedTeams[i].getTeamName());
 					pushback = false;
 				}
 			}
+			num++;
 		}
 		pushback = true;
 	}
@@ -153,13 +158,15 @@ void ResultsWindow::setResults(std::vector<Team> &loadedTeams)
 	double grandTotal = 0;
 	std::vector<double> souvenirTotals;
 	pushback = false;
+	double total = 0;
+	num = 0;
 
 	for (int i = 0; i < loadedTeams.size(); i++)
 	{
 		double souvenirTotal = 0;
 		for (int j = 0; j < loadedTeams[i].getKeys().size(); j++)
 		{
-            if (loadedTeams[i].getSouvenirs()->at(loadedTeams[i].getKeys()[j]).getQuantity() > 0)
+			if (quantities[num] > 0)
 			{
 				pushback = true;
 
@@ -174,23 +181,25 @@ void ResultsWindow::setResults(std::vector<Team> &loadedTeams)
 
 				// set the price for an individual food item
 				label = new QLabel();
-                label->setText("$" + QString::number(loadedTeams[i].getSouvenirs()->at(loadedTeams[i].getKeys()[j]).getPrice()));
+				label->setText("$" + QString::number(loadedTeams[i].getSouvenirs()->at(loadedTeams[i].getKeys()[j]).getPrice()));
 				ui->souvenirTable->setCellWidget(souvenirsLoaded, 2, label);
 
 				// set the quantity purchases
 				label = new QLabel();
-                label->setText("x" + QString::number(loadedTeams[i].getSouvenirs()->at(loadedTeams[i].getKeys()[j]).getQuantity()));
+				label->setText("x" + QString::number(quantities[num]));
 				ui->souvenirTable->setCellWidget(souvenirsLoaded, 3, label);
 
 				// display total Price for the food items
 				label = new QLabel();
-                label->setText("$" + QString::number(loadedTeams[i].getSouvenirs()->at(loadedTeams[i].getKeys()[j]).calculateTotal()));
+				total = quantities[num] * loadedTeams[i].getSouvenirs()->at(loadedTeams[i].getKeys()[j]).getPrice();
+				label->setText("$" + QString::number(total));
 				ui->souvenirTable->setCellWidget(souvenirsLoaded, 4, label);
 
-                grandTotal = grandTotal + loadedTeams[i].getSouvenirs()->at(loadedTeams[i].getKeys()[j]).calculateTotal();
-                souvenirTotal = souvenirTotal + loadedTeams[i].getSouvenirs()->at(loadedTeams[i].getKeys()[j]).calculateTotal();
+				grandTotal = grandTotal + total;
+				souvenirTotal = souvenirTotal + total;
 				souvenirsLoaded++;
 			}
+			num++;
 		}
 		if (pushback)
 		{

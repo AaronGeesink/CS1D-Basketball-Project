@@ -45,6 +45,8 @@ public:
 	 */
 	std::vector<Team>& getLoadedTeams();
 
+	std::vector<int> getQuantities();
+
 signals:
 	/**
 	 * @author Aaron Geesink
@@ -78,6 +80,7 @@ private slots:
 private:
 	Ui::SouvenirWindow *ui;
 	std::vector<Team>* loadedTeams;		/// A vector containing the currently loaded teams
+	std::vector<int> quantities;
 };
 
 #endif // SOUVENIRWINDOW_H

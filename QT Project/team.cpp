@@ -55,5 +55,5 @@ void Team::setKeys(std::vector<int> keys)
 
 void Team::addSouvenir(Souvenir souvenir)
 {
-    souvenirs->insert(souvenir.getID(), souvenir);
+	souvenirs->insert(souvenir.getID(), souvenir);
 }
