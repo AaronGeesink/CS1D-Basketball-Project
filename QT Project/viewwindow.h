@@ -95,6 +95,7 @@ private slots:
 private:
 	Ui::ViewWindow *ui;
 	QSqlQueryModel * model;	/// A model used to display SQL tables
+	int totalCap = 0;
 };
 
 #endif // VIEWWINDOW_H
