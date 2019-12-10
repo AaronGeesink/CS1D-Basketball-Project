@@ -6,6 +6,7 @@ TripWindow::TripWindow(QWidget *parent) :
 	ui(new Ui::TripWindow)
 {
 	ui->setupUi(this);
+    ui->label->setPixmap(QDir::currentPath() + "/resources/nba.jpg");
     QObject::connect(ui->custom1Table, SIGNAL(cellPressed(int, int)), this, SLOT(addItem1(int,int)));
     QObject::connect(ui->custom1OrderedTable, SIGNAL(cellPressed(int, int)), this, SLOT(removeItem1(int,int)));
     QObject::connect(ui->custom2Table, SIGNAL(cellPressed(int, int)), this, SLOT(addItem2(int,int)));

@@ -333,9 +333,6 @@ background-color:qlineargradient(spread:pad, x1:0, y1:0.506, x2:1, y2:0.511045, 
    <property name="text">
     <string/>
    </property>
-   <property name="pixmap">
-    <pixmap>../build-CS1D-Basketball-Project-Desktop-Debug/resources/nba.jpg</pixmap>
-   </property>
   </widget>
   <zorder>label</zorder>
   <zorder>verticalLayoutWidget</zorder>
