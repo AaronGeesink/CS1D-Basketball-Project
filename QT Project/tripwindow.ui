@@ -56,7 +56,7 @@
        <string notr="true">background-color: rgba(29, 29, 29, 150);</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="DenverNuggetsPage">
        <widget class="QLabel" name="nuggetsTitle">
@@ -75,8 +75,8 @@
        <widget class="QComboBox" name="NuggetsCombobox">
         <property name="geometry">
          <rect>
-          <x>70</x>
-          <y>180</y>
+          <x>340</x>
+          <y>200</y>
           <width>141</width>
           <height>22</height>
          </rect>
@@ -85,8 +85,8 @@
        <widget class="QLabel" name="nuggetsLabel">
         <property name="geometry">
          <rect>
-          <x>60</x>
-          <y>110</y>
+          <x>330</x>
+          <y>120</y>
           <width>171</width>
           <height>51</height>
          </rect>

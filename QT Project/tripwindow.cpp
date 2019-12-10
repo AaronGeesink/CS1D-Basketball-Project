@@ -127,12 +127,11 @@ void TripWindow::setPistonsTrip()
 
 	// Table Setup
 	ui->pistonsTable->setRowCount(loadedTeams.size());
-	ui->pistonsTable->setColumnCount(3);
-	ui->pistonsTable->setHorizontalHeaderItem(0, new QTableWidgetItem("Start Team"));
-	ui->pistonsTable->setHorizontalHeaderItem(1, new QTableWidgetItem("End Team"));
-	ui->pistonsTable->setHorizontalHeaderItem(2, new QTableWidgetItem("Distance"));
+	ui->pistonsTable->setColumnCount(1);
+	ui->pistonsTable->setHorizontalHeaderItem(0, new QTableWidgetItem("Teams to Visit"));
 
 	ui->pistonsTable->setSelectionMode(QAbstractItemView::NoSelection);
+	ui->pistonsTable->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
 
 	QLabel *name;
 	for (int i = 0; i < loadedTeams.size(); i++)
