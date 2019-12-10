@@ -1,0 +1,153 @@
+\hypertarget{class_map}{}\section{Map$<$ V $>$ Class Template Reference}
+\label{class_map}\index{Map$<$ V $>$@{Map$<$ V $>$}}
+
+
+\mbox{\hyperlink{class_map}{Map}} class This is the map class used to hold souvenirs.  
+
+
+
+
+{\ttfamily \#include $<$map.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_map_ab69b0a4611deb854aaa3a29bbdb831fd}\label{class_map_ab69b0a4611deb854aaa3a29bbdb831fd}} 
+\mbox{\hyperlink{class_map_ab69b0a4611deb854aaa3a29bbdb831fd}{Map}} (const int S\+I\+ZE)
+\begin{DoxyCompactList}\small\item\em Overloaded constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_map_ab353b487c30315a03bd2761072a8773a}\label{class_map_ab353b487c30315a03bd2761072a8773a}} 
+\mbox{\hyperlink{class_map_ab353b487c30315a03bd2761072a8773a}{$\sim$\+Map}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_map_a0086c1ab7748d1517aaf8618043dd7f3}{Size}} () const
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_map_a0086c1ab7748d1517aaf8618043dd7f3}{Size()}} Returns the size of the map. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_map_a842c78e12564c5d4248efddf0a0dd218}{Empty}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_map_a842c78e12564c5d4248efddf0a0dd218}{Empty()}} Returns true of the map is empty. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_position}{Position}}$<$ V $>$ \mbox{\hyperlink{class_map_a5a4498cca2ab6536d04915f07ca5f01f}{Find}} (const int \&key)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_map_a5a4498cca2ab6536d04915f07ca5f01f}{Find(const int\& key)}} This function will return the position of the specified key. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_acc047d86867d1093a12c152aaa99dff2}{Put}} (const int \&key, const V \&value)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_map_acc047d86867d1093a12c152aaa99dff2}{Put(const int \&key, const V \&value)}} Puts a position into the map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_a6ab297193740409c74ad10cfb9116e8b}{Erase}} (const int \&key)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_map_a6ab297193740409c74ad10cfb9116e8b}{Erase(const int\& key)}} This function will remove the position with the specified key. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_a2f04ee3a341608930df81062df179453}{Output\+IO}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_map_a2f04ee3a341608930df81062df179453}{Output\+I\+O()}} Outputs the map IO. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename V$>$\newline
+class Map$<$ V $>$}
+
+\mbox{\hyperlink{class_map}{Map}} class This is the map class used to hold souvenirs. 
+
+\begin{DoxyAuthor}{Author}
+Aaron \& Faris 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+December 2019 
+\end{DoxyDate}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_map_a842c78e12564c5d4248efddf0a0dd218}\label{class_map_a842c78e12564c5d4248efddf0a0dd218}} 
+\index{Map$<$ V $>$@{Map$<$ V $>$}!Empty@{Empty}}
+\index{Empty@{Empty}!Map$<$ V $>$@{Map$<$ V $>$}}
+\subsubsection{\texorpdfstring{Empty()}{Empty()}}
+{\footnotesize\ttfamily template$<$typename V $>$ \\
+bool \mbox{\hyperlink{class_map}{Map}}$<$ V $>$\+::Empty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_map_a842c78e12564c5d4248efddf0a0dd218}{Empty()}} Returns true of the map is empty. 
+
+\begin{DoxyAuthor}{Author}
+Aaron Geesink 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_map_a6ab297193740409c74ad10cfb9116e8b}\label{class_map_a6ab297193740409c74ad10cfb9116e8b}} 
+\index{Map$<$ V $>$@{Map$<$ V $>$}!Erase@{Erase}}
+\index{Erase@{Erase}!Map$<$ V $>$@{Map$<$ V $>$}}
+\subsubsection{\texorpdfstring{Erase()}{Erase()}}
+{\footnotesize\ttfamily template$<$typename V $>$ \\
+void \mbox{\hyperlink{class_map}{Map}}$<$ V $>$\+::Erase (\begin{DoxyParamCaption}\item[{const int \&}]{key }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_map_a6ab297193740409c74ad10cfb9116e8b}{Erase(const int\& key)}} This function will remove the position with the specified key. 
+
+\begin{DoxyAuthor}{Author}
+Aaron Geesink 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+const int\& key 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_map_a5a4498cca2ab6536d04915f07ca5f01f}\label{class_map_a5a4498cca2ab6536d04915f07ca5f01f}} 
+\index{Map$<$ V $>$@{Map$<$ V $>$}!Find@{Find}}
+\index{Find@{Find}!Map$<$ V $>$@{Map$<$ V $>$}}
+\subsubsection{\texorpdfstring{Find()}{Find()}}
+{\footnotesize\ttfamily template$<$typename V $>$ \\
+\mbox{\hyperlink{class_position}{Position}}$<$ V $>$ \mbox{\hyperlink{class_map}{Map}}$<$ V $>$\+::Find (\begin{DoxyParamCaption}\item[{const int \&}]{key }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_map_a5a4498cca2ab6536d04915f07ca5f01f}{Find(const int\& key)}} This function will return the position of the specified key. 
+
+\begin{DoxyAuthor}{Author}
+Aaron Geesink 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+Position$<$\+V$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_map_a2f04ee3a341608930df81062df179453}\label{class_map_a2f04ee3a341608930df81062df179453}} 
+\index{Map$<$ V $>$@{Map$<$ V $>$}!OutputIO@{OutputIO}}
+\index{OutputIO@{OutputIO}!Map$<$ V $>$@{Map$<$ V $>$}}
+\subsubsection{\texorpdfstring{OutputIO()}{OutputIO()}}
+{\footnotesize\ttfamily template$<$typename V $>$ \\
+void \mbox{\hyperlink{class_map}{Map}}$<$ V $>$\+::Output\+IO (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_map_a2f04ee3a341608930df81062df179453}{Output\+I\+O()}} Outputs the map IO. 
+
+\begin{DoxyAuthor}{Author}
+Aaron Geesink 
+\end{DoxyAuthor}
+\mbox{\Hypertarget{class_map_acc047d86867d1093a12c152aaa99dff2}\label{class_map_acc047d86867d1093a12c152aaa99dff2}} 
+\index{Map$<$ V $>$@{Map$<$ V $>$}!Put@{Put}}
+\index{Put@{Put}!Map$<$ V $>$@{Map$<$ V $>$}}
+\subsubsection{\texorpdfstring{Put()}{Put()}}
+{\footnotesize\ttfamily template$<$typename V $>$ \\
+void \mbox{\hyperlink{class_map}{Map}}$<$ V $>$\+::Put (\begin{DoxyParamCaption}\item[{const int \&}]{key,  }\item[{const V \&}]{value }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_map_acc047d86867d1093a12c152aaa99dff2}{Put(const int \&key, const V \&value)}} Puts a position into the map. 
+
+\begin{DoxyAuthor}{Author}
+Aaron Geesink 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+const int \&key, const V \&value 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_map_a0086c1ab7748d1517aaf8618043dd7f3}\label{class_map_a0086c1ab7748d1517aaf8618043dd7f3}} 
+\index{Map$<$ V $>$@{Map$<$ V $>$}!Size@{Size}}
+\index{Size@{Size}!Map$<$ V $>$@{Map$<$ V $>$}}
+\subsubsection{\texorpdfstring{Size()}{Size()}}
+{\footnotesize\ttfamily template$<$typename V $>$ \\
+int \mbox{\hyperlink{class_map}{Map}}$<$ V $>$\+::Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+\mbox{\hyperlink{class_map_a0086c1ab7748d1517aaf8618043dd7f3}{Size()}} Returns the size of the map. 
+
+\begin{DoxyAuthor}{Author}
+Aaron Geesink 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/chatm/\+Desktop/\+Basketball Project/\+Q\+T Project/map.\+h\end{DoxyCompactItemize}

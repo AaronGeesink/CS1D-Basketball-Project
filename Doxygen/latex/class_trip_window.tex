@@ -1,0 +1,173 @@
+\hypertarget{class_trip_window}{}\section{Trip\+Window Class Reference}
+\label{class_trip_window}\index{TripWindow@{TripWindow}}
+
+
+\mbox{\hyperlink{class_trip_window}{Trip\+Window}} This class generates the window for a given trip plan.  
+
+
+
+
+{\ttfamily \#include $<$tripwindow.\+h$>$}
+
+
+
+Inheritance diagram for Trip\+Window\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=147pt]{class_trip_window__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Trip\+Window\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=147pt]{class_trip_window__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_trip_window_aabdb6746515d78bd347b71d90e144dc2}\label{class_trip_window_aabdb6746515d78bd347b71d90e144dc2}} 
+void {\bfseries add\+Item1} (int row, int col)
+\item 
+\mbox{\Hypertarget{class_trip_window_a32737b6f063a65fa49b1c584da85d3cf}\label{class_trip_window_a32737b6f063a65fa49b1c584da85d3cf}} 
+void \mbox{\hyperlink{class_trip_window_a32737b6f063a65fa49b1c584da85d3cf}{remove\+Item1}} (int row, int col)
+\begin{DoxyCompactList}\small\item\em QT Ui function allowing users to select custom teams for a trip. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_trip_window_aabba0a16f98658f4a5d4582fba74cb6d}\label{class_trip_window_aabba0a16f98658f4a5d4582fba74cb6d}} 
+void \mbox{\hyperlink{class_trip_window_aabba0a16f98658f4a5d4582fba74cb6d}{add\+Item2}} (int row, int col)
+\begin{DoxyCompactList}\small\item\em QT Ui function allowing users to select custom teams for a trip. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_trip_window_abdc696c4355e726d204a88eb06bdc0b6}\label{class_trip_window_abdc696c4355e726d204a88eb06bdc0b6}} 
+void \mbox{\hyperlink{class_trip_window_abdc696c4355e726d204a88eb06bdc0b6}{remove\+Item2}} (int row, int col)
+\begin{DoxyCompactList}\small\item\em QT Ui function allowing users to select custom teams for a trip. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_trip_window_a022620b15ec96f33d4c5fe5c4463b311}{move\+To\+Trip\+Select\+Clicked}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_trip_window_a022620b15ec96f33d4c5fe5c4463b311}{move\+To\+Trip\+Select\+Clicked()}} Proceeds to the trip select window \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_trip_window_a258950562707b2b3f37b86542a7e70cb}{move\+To\+Souvenir\+Clicked}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_trip_window_a258950562707b2b3f37b86542a7e70cb}{move\+To\+Souvenir\+Clicked()}} Proceeds to the souvenir window \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_trip_window_a1827498c546476a81c56dd48ef471933}\label{class_trip_window_a1827498c546476a81c56dd48ef471933}} 
+{\bfseries Trip\+Window} (Q\+Widget $\ast$parent=nullptr)
+\item 
+void \mbox{\hyperlink{class_trip_window_a1cba8e72154a26bb2a4c8a240b559824}{set\+Nuggets\+Trip}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_trip_window_a1cba8e72154a26bb2a4c8a240b559824}{set\+Nuggets\+Trip()}} Sets the window to the Denver Nuggets trip \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_trip_window_a218b804ec1d07721d0b5b69aeacfdc25}{set\+Specified\+Trip}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_trip_window_a218b804ec1d07721d0b5b69aeacfdc25}{set\+Specified\+Trip()}} Sets the window to the Specified trip \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_trip_window_a2ee37fbce38c78242d3ad8acecd42491}{set\+Pistons\+Trip}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_trip_window_a2ee37fbce38c78242d3ad8acecd42491}{set\+Pistons\+Trip()}} Sets the window to the Pistons trip \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_trip_window_a15e3c7981197598f0a54feb03a31b023}{set\+Shortest\+Trip}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_trip_window_a15e3c7981197598f0a54feb03a31b023}{set\+Shortest\+Trip()}} Sets the window to the Shortest trip \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_team}{Team}} $>$ \& \mbox{\hyperlink{class_trip_window_a3e7069c4f2e25f84f8e1cc25eedabaa0}{get\+Loaded\+Teams}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_trip_window_a3e7069c4f2e25f84f8e1cc25eedabaa0}{get\+Loaded\+Teams()}} Returns a vector containing the currently loaded Teams \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\mbox{\hyperlink{class_trip_window}{Trip\+Window}} This class generates the window for a given trip plan. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_trip_window_a3e7069c4f2e25f84f8e1cc25eedabaa0}\label{class_trip_window_a3e7069c4f2e25f84f8e1cc25eedabaa0}} 
+\index{TripWindow@{TripWindow}!getLoadedTeams@{getLoadedTeams}}
+\index{getLoadedTeams@{getLoadedTeams}!TripWindow@{TripWindow}}
+\subsubsection{\texorpdfstring{getLoadedTeams()}{getLoadedTeams()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_team}{Team}} $>$ \& Trip\+Window\+::get\+Loaded\+Teams (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_trip_window_a3e7069c4f2e25f84f8e1cc25eedabaa0}{get\+Loaded\+Teams()}} Returns a vector containing the currently loaded Teams 
+
+\begin{DoxyAuthor}{Author}
+Aaron Geesink 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+vector$<$\+Team$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_trip_window_a258950562707b2b3f37b86542a7e70cb}\label{class_trip_window_a258950562707b2b3f37b86542a7e70cb}} 
+\index{TripWindow@{TripWindow}!moveToSouvenirClicked@{moveToSouvenirClicked}}
+\index{moveToSouvenirClicked@{moveToSouvenirClicked}!TripWindow@{TripWindow}}
+\subsubsection{\texorpdfstring{moveToSouvenirClicked}{moveToSouvenirClicked}}
+{\footnotesize\ttfamily void Trip\+Window\+::move\+To\+Souvenir\+Clicked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+\mbox{\hyperlink{class_trip_window_a258950562707b2b3f37b86542a7e70cb}{move\+To\+Souvenir\+Clicked()}} Proceeds to the souvenir window 
+
+\begin{DoxyAuthor}{Author}
+Aaron Geesink 
+\end{DoxyAuthor}
+\mbox{\Hypertarget{class_trip_window_a022620b15ec96f33d4c5fe5c4463b311}\label{class_trip_window_a022620b15ec96f33d4c5fe5c4463b311}} 
+\index{TripWindow@{TripWindow}!moveToTripSelectClicked@{moveToTripSelectClicked}}
+\index{moveToTripSelectClicked@{moveToTripSelectClicked}!TripWindow@{TripWindow}}
+\subsubsection{\texorpdfstring{moveToTripSelectClicked}{moveToTripSelectClicked}}
+{\footnotesize\ttfamily void Trip\+Window\+::move\+To\+Trip\+Select\+Clicked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+\mbox{\hyperlink{class_trip_window_a022620b15ec96f33d4c5fe5c4463b311}{move\+To\+Trip\+Select\+Clicked()}} Proceeds to the trip select window 
+
+\begin{DoxyAuthor}{Author}
+Aaron Geesink 
+\end{DoxyAuthor}
+\mbox{\Hypertarget{class_trip_window_a1cba8e72154a26bb2a4c8a240b559824}\label{class_trip_window_a1cba8e72154a26bb2a4c8a240b559824}} 
+\index{TripWindow@{TripWindow}!setNuggetsTrip@{setNuggetsTrip}}
+\index{setNuggetsTrip@{setNuggetsTrip}!TripWindow@{TripWindow}}
+\subsubsection{\texorpdfstring{setNuggetsTrip()}{setNuggetsTrip()}}
+{\footnotesize\ttfamily void Trip\+Window\+::set\+Nuggets\+Trip (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_trip_window_a1cba8e72154a26bb2a4c8a240b559824}{set\+Nuggets\+Trip()}} Sets the window to the Denver Nuggets trip 
+
+\begin{DoxyAuthor}{Author}
+Aaron Geesink 
+\end{DoxyAuthor}
+\mbox{\Hypertarget{class_trip_window_a2ee37fbce38c78242d3ad8acecd42491}\label{class_trip_window_a2ee37fbce38c78242d3ad8acecd42491}} 
+\index{TripWindow@{TripWindow}!setPistonsTrip@{setPistonsTrip}}
+\index{setPistonsTrip@{setPistonsTrip}!TripWindow@{TripWindow}}
+\subsubsection{\texorpdfstring{setPistonsTrip()}{setPistonsTrip()}}
+{\footnotesize\ttfamily void Trip\+Window\+::set\+Pistons\+Trip (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_trip_window_a2ee37fbce38c78242d3ad8acecd42491}{set\+Pistons\+Trip()}} Sets the window to the Pistons trip 
+
+\begin{DoxyAuthor}{Author}
+Aaron Geesink 
+\end{DoxyAuthor}
+\mbox{\Hypertarget{class_trip_window_a15e3c7981197598f0a54feb03a31b023}\label{class_trip_window_a15e3c7981197598f0a54feb03a31b023}} 
+\index{TripWindow@{TripWindow}!setShortestTrip@{setShortestTrip}}
+\index{setShortestTrip@{setShortestTrip}!TripWindow@{TripWindow}}
+\subsubsection{\texorpdfstring{setShortestTrip()}{setShortestTrip()}}
+{\footnotesize\ttfamily void Trip\+Window\+::set\+Shortest\+Trip (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_trip_window_a15e3c7981197598f0a54feb03a31b023}{set\+Shortest\+Trip()}} Sets the window to the Shortest trip 
+
+\begin{DoxyAuthor}{Author}
+Aaron Geesink 
+\end{DoxyAuthor}
+\mbox{\Hypertarget{class_trip_window_a218b804ec1d07721d0b5b69aeacfdc25}\label{class_trip_window_a218b804ec1d07721d0b5b69aeacfdc25}} 
+\index{TripWindow@{TripWindow}!setSpecifiedTrip@{setSpecifiedTrip}}
+\index{setSpecifiedTrip@{setSpecifiedTrip}!TripWindow@{TripWindow}}
+\subsubsection{\texorpdfstring{setSpecifiedTrip()}{setSpecifiedTrip()}}
+{\footnotesize\ttfamily void Trip\+Window\+::set\+Specified\+Trip (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_trip_window_a218b804ec1d07721d0b5b69aeacfdc25}{set\+Specified\+Trip()}} Sets the window to the Specified trip 
+
+\begin{DoxyAuthor}{Author}
+Aaron Geesink 
+\end{DoxyAuthor}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/chatm/\+Desktop/\+Basketball Project/\+Q\+T Project/tripwindow.\+h\item 
+C\+:/\+Users/chatm/\+Desktop/\+Basketball Project/\+Q\+T Project/tripwindow.\+cpp\end{DoxyCompactItemize}

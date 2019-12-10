@@ -1,0 +1,4 @@
+<map id="MatrixGraph::addEdge" name="MatrixGraph::addEdge">
+<area shape="rect" id="node1" title="addEdge(T start, T end, double weight) Function to insert a new edge" alt="" coords="236,5,388,32"/>
+<area shape="rect" id="node2" href="$class_results_window.html#a0b6b87c53306edc985aa988a6816369a" title="setResults(std::vector&lt;Team&gt;&amp; loadedTeams) Sets the results screen to the currently loaded teams" alt="" coords="5,5,188,32"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="LoginWindow" name="LoginWindow">
+<area shape="rect" id="node1" title="LoginWindow This class allows the user to input a username and password, and verifies if their login ..." alt="" coords="5,80,104,107"/>
+<area shape="rect" id="node2" title=" " alt="" coords="18,5,91,32"/>
+</map>

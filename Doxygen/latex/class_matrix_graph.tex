@@ -1,0 +1,236 @@
+\hypertarget{class_matrix_graph}{}\section{Matrix\+Graph$<$ T $>$ Class Template Reference}
+\label{class_matrix_graph}\index{MatrixGraph$<$ T $>$@{MatrixGraph$<$ T $>$}}
+
+
+\mbox{\hyperlink{class_matrix_graph}{Matrix\+Graph}} class This is the graph class used to instantiate and perform traversals on graphs.  
+
+
+
+
+{\ttfamily \#include $<$matrixgraph.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_matrix_graph_a388cdebfe849fd7f1b5bb48638b097d0}{Matrix\+Graph}} (T elements\mbox{[}$\,$\mbox{]}, int size)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_matrix_graph_a388cdebfe849fd7f1b5bb48638b097d0}{Matrix\+Graph(\+T elements\mbox{[}$\,$\mbox{]}, int size)}} Constructor to create the initial adjacency matrix. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_matrix_graph_ab84318948ee00c6d4ee05bf3506e17b2}{$\sim$\+Matrix\+Graph}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_matrix_graph_ab84318948ee00c6d4ee05bf3506e17b2}{$\sim$\+Matrix\+Graph()}} deconstructor for a graph \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_matrix_graph_ac8410c5005729bdc4783429962446cad}{add\+Edge}} (T start, T end, double weight)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_matrix_graph_ac8410c5005729bdc4783429962446cad}{add\+Edge(\+T start, T end, double weight)}} Function to insert a new edge \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_edge}{Edge}}$<$ T $>$ $>$ \mbox{\hyperlink{class_matrix_graph_ac6f0cc48b7826d606bd951f193ddbffb}{D\+FS}} (T start)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_matrix_graph_ac6f0cc48b7826d606bd951f193ddbffb}{D\+F\+S(\+T start)}} function to call D\+FS from the client. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_edge}{Edge}}$<$ T $>$ $>$ \mbox{\hyperlink{class_matrix_graph_a3beaf5181ebc3e8f9c0d9610578b5ea3}{B\+FS}} (T start)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_matrix_graph_a3beaf5181ebc3e8f9c0d9610578b5ea3}{B\+F\+S(\+T start)}} Function to calculate the breadth first search traversal. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_vertex}{Vertex}}$<$ T $>$ $>$ \mbox{\hyperlink{class_matrix_graph_a998736fb9402f7f40d97a60d8441c1ec}{a\+Star}} (T start, T target)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_matrix_graph_a998736fb9402f7f40d97a60d8441c1ec}{a\+Star(\+T start, T target)}} Function to calculate the a\+Star path from start to target \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_edge}{Edge}}$<$ T $>$ $>$ \mbox{\hyperlink{class_matrix_graph_ae83e60b9abc197b2959481d25555e9af}{kruskal\+M\+ST}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_matrix_graph_ae83e60b9abc197b2959481d25555e9af}{kruskal\+M\+S\+T()}} Function to calculate the minimum spanning tree using Kruskal\textquotesingle{}s algorithm \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_matrix_graph_a3bf901c33eb9d46bee8b05f71b16a9ed}{clear}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_matrix_graph_a3bf901c33eb9d46bee8b05f71b16a9ed}{clear()}} function to clear the graph of all of it\textquotesingle{}s data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_matrix_graph_ab77cb8ae78964112e9af1af96614f21a}{display\+Graph}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_matrix_graph_ab77cb8ae78964112e9af1af96614f21a}{display\+Graph()}} Function to display the adjacency matrix for the graph \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class Matrix\+Graph$<$ T $>$}
+
+\mbox{\hyperlink{class_matrix_graph}{Matrix\+Graph}} class This is the graph class used to instantiate and perform traversals on graphs. 
+
+\begin{DoxyAuthor}{Author}
+Aaron \& Garrett Geesink 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+December 2019 
+\end{DoxyDate}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_matrix_graph_a388cdebfe849fd7f1b5bb48638b097d0}\label{class_matrix_graph_a388cdebfe849fd7f1b5bb48638b097d0}} 
+\index{MatrixGraph$<$ T $>$@{MatrixGraph$<$ T $>$}!MatrixGraph@{MatrixGraph}}
+\index{MatrixGraph@{MatrixGraph}!MatrixGraph$<$ T $>$@{MatrixGraph$<$ T $>$}}
+\subsubsection{\texorpdfstring{MatrixGraph()}{MatrixGraph()}}
+{\footnotesize\ttfamily template$<$typename T$>$ \\
+\mbox{\hyperlink{class_matrix_graph}{Matrix\+Graph}}$<$ T $>$\+::\mbox{\hyperlink{class_matrix_graph}{Matrix\+Graph}} (\begin{DoxyParamCaption}\item[{T}]{elements\mbox{[}$\,$\mbox{]},  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_matrix_graph_a388cdebfe849fd7f1b5bb48638b097d0}{Matrix\+Graph(\+T elements\mbox{[}$\,$\mbox{]}, int size)}} Constructor to create the initial adjacency matrix. 
+
+\begin{DoxyAuthor}{Author}
+Aaron Geesink 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em T} & elements\mbox{[}\mbox{]}, int size \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_matrix_graph_ab84318948ee00c6d4ee05bf3506e17b2}\label{class_matrix_graph_ab84318948ee00c6d4ee05bf3506e17b2}} 
+\index{MatrixGraph$<$ T $>$@{MatrixGraph$<$ T $>$}!````~MatrixGraph@{$\sim$MatrixGraph}}
+\index{````~MatrixGraph@{$\sim$MatrixGraph}!MatrixGraph$<$ T $>$@{MatrixGraph$<$ T $>$}}
+\subsubsection{\texorpdfstring{$\sim$MatrixGraph()}{~MatrixGraph()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_matrix_graph}{Matrix\+Graph}}$<$ T $>$\+::$\sim$\mbox{\hyperlink{class_matrix_graph}{Matrix\+Graph}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_matrix_graph_ab84318948ee00c6d4ee05bf3506e17b2}{$\sim$\+Matrix\+Graph()}} deconstructor for a graph 
+
+\begin{DoxyAuthor}{Author}
+Aaron Geesink 
+\end{DoxyAuthor}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_matrix_graph_ac8410c5005729bdc4783429962446cad}\label{class_matrix_graph_ac8410c5005729bdc4783429962446cad}} 
+\index{MatrixGraph$<$ T $>$@{MatrixGraph$<$ T $>$}!addEdge@{addEdge}}
+\index{addEdge@{addEdge}!MatrixGraph$<$ T $>$@{MatrixGraph$<$ T $>$}}
+\subsubsection{\texorpdfstring{addEdge()}{addEdge()}}
+{\footnotesize\ttfamily template$<$typename T$>$ \\
+void \mbox{\hyperlink{class_matrix_graph}{Matrix\+Graph}}$<$ T $>$\+::add\+Edge (\begin{DoxyParamCaption}\item[{T}]{start,  }\item[{T}]{end,  }\item[{double}]{weight }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_matrix_graph_ac8410c5005729bdc4783429962446cad}{add\+Edge(\+T start, T end, double weight)}} Function to insert a new edge 
+
+\begin{DoxyAuthor}{Author}
+Aaron Geesink 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em T} & start, T end, double weight \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_matrix_graph_ac8410c5005729bdc4783429962446cad_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_matrix_graph_a998736fb9402f7f40d97a60d8441c1ec}\label{class_matrix_graph_a998736fb9402f7f40d97a60d8441c1ec}} 
+\index{MatrixGraph$<$ T $>$@{MatrixGraph$<$ T $>$}!aStar@{aStar}}
+\index{aStar@{aStar}!MatrixGraph$<$ T $>$@{MatrixGraph$<$ T $>$}}
+\subsubsection{\texorpdfstring{aStar()}{aStar()}}
+{\footnotesize\ttfamily template$<$typename T$>$ \\
+std\+::vector$<$ \mbox{\hyperlink{struct_vertex}{Vertex}}$<$ T $>$ $>$ \mbox{\hyperlink{class_matrix_graph}{Matrix\+Graph}}$<$ T $>$\+::a\+Star (\begin{DoxyParamCaption}\item[{T}]{start,  }\item[{T}]{target }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_matrix_graph_a998736fb9402f7f40d97a60d8441c1ec}{a\+Star(\+T start, T target)}} Function to calculate the a\+Star path from start to target 
+
+\begin{DoxyAuthor}{Author}
+Aaron \& Garrett Geesink 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em T} & start, T target \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$Vertex$<$\+T$>$$>$ 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_matrix_graph_a998736fb9402f7f40d97a60d8441c1ec_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_matrix_graph_a3beaf5181ebc3e8f9c0d9610578b5ea3}\label{class_matrix_graph_a3beaf5181ebc3e8f9c0d9610578b5ea3}} 
+\index{MatrixGraph$<$ T $>$@{MatrixGraph$<$ T $>$}!BFS@{BFS}}
+\index{BFS@{BFS}!MatrixGraph$<$ T $>$@{MatrixGraph$<$ T $>$}}
+\subsubsection{\texorpdfstring{BFS()}{BFS()}}
+{\footnotesize\ttfamily template$<$typename T$>$ \\
+std\+::vector$<$ \mbox{\hyperlink{struct_edge}{Edge}}$<$ T $>$ $>$ \mbox{\hyperlink{class_matrix_graph}{Matrix\+Graph}}$<$ T $>$\+::B\+FS (\begin{DoxyParamCaption}\item[{T}]{start }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_matrix_graph_a3beaf5181ebc3e8f9c0d9610578b5ea3}{B\+F\+S(\+T start)}} Function to calculate the breadth first search traversal. 
+
+\begin{DoxyAuthor}{Author}
+Aaron Geesink 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em T} & start \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$Edge$<$\+T$>$$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_matrix_graph_a3bf901c33eb9d46bee8b05f71b16a9ed}\label{class_matrix_graph_a3bf901c33eb9d46bee8b05f71b16a9ed}} 
+\index{MatrixGraph$<$ T $>$@{MatrixGraph$<$ T $>$}!clear@{clear}}
+\index{clear@{clear}!MatrixGraph$<$ T $>$@{MatrixGraph$<$ T $>$}}
+\subsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_matrix_graph}{Matrix\+Graph}}$<$ T $>$\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_matrix_graph_a3bf901c33eb9d46bee8b05f71b16a9ed}{clear()}} function to clear the graph of all of it\textquotesingle{}s data. 
+
+\begin{DoxyAuthor}{Author}
+Aaron Geesink 
+\end{DoxyAuthor}
+\mbox{\Hypertarget{class_matrix_graph_ac6f0cc48b7826d606bd951f193ddbffb}\label{class_matrix_graph_ac6f0cc48b7826d606bd951f193ddbffb}} 
+\index{MatrixGraph$<$ T $>$@{MatrixGraph$<$ T $>$}!DFS@{DFS}}
+\index{DFS@{DFS}!MatrixGraph$<$ T $>$@{MatrixGraph$<$ T $>$}}
+\subsubsection{\texorpdfstring{DFS()}{DFS()}}
+{\footnotesize\ttfamily template$<$typename T$>$ \\
+std\+::vector$<$ \mbox{\hyperlink{struct_edge}{Edge}}$<$ T $>$ $>$ \mbox{\hyperlink{class_matrix_graph}{Matrix\+Graph}}$<$ T $>$\+::D\+FS (\begin{DoxyParamCaption}\item[{T}]{start }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_matrix_graph_ac6f0cc48b7826d606bd951f193ddbffb}{D\+F\+S(\+T start)}} function to call D\+FS from the client. 
+
+\begin{DoxyAuthor}{Author}
+Aaron \& Garrett Geesink 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em T} & start \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$Edge$<$\+T$>$$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_matrix_graph_ab77cb8ae78964112e9af1af96614f21a}\label{class_matrix_graph_ab77cb8ae78964112e9af1af96614f21a}} 
+\index{MatrixGraph$<$ T $>$@{MatrixGraph$<$ T $>$}!displayGraph@{displayGraph}}
+\index{displayGraph@{displayGraph}!MatrixGraph$<$ T $>$@{MatrixGraph$<$ T $>$}}
+\subsubsection{\texorpdfstring{displayGraph()}{displayGraph()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_matrix_graph}{Matrix\+Graph}}$<$ T $>$\+::display\+Graph (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_matrix_graph_ab77cb8ae78964112e9af1af96614f21a}{display\+Graph()}} Function to display the adjacency matrix for the graph 
+
+\begin{DoxyAuthor}{Author}
+Aaron Geesink 
+\end{DoxyAuthor}
+\mbox{\Hypertarget{class_matrix_graph_ae83e60b9abc197b2959481d25555e9af}\label{class_matrix_graph_ae83e60b9abc197b2959481d25555e9af}} 
+\index{MatrixGraph$<$ T $>$@{MatrixGraph$<$ T $>$}!kruskalMST@{kruskalMST}}
+\index{kruskalMST@{kruskalMST}!MatrixGraph$<$ T $>$@{MatrixGraph$<$ T $>$}}
+\subsubsection{\texorpdfstring{kruskalMST()}{kruskalMST()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::vector$<$ \mbox{\hyperlink{struct_edge}{Edge}}$<$ T $>$ $>$ \mbox{\hyperlink{class_matrix_graph}{Matrix\+Graph}}$<$ T $>$\+::kruskal\+M\+ST (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\mbox{\hyperlink{class_matrix_graph_ae83e60b9abc197b2959481d25555e9af}{kruskal\+M\+S\+T()}} Function to calculate the minimum spanning tree using Kruskal\textquotesingle{}s algorithm 
+
+\begin{DoxyAuthor}{Author}
+Aaron Geesink 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$Edge$<$\+T$>$$>$ 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/chatm/\+Desktop/\+Basketball Project/\+Q\+T Project/matrixgraph.\+h\end{DoxyCompactItemize}
