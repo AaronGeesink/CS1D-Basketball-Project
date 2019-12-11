@@ -160,3 +160,55 @@ void EditWindow::on_revertButton_clicked()
 {
 	model->QSqlTableModel::revertAll();
 }
+
+void EditWindow::on_changeArenaButton_clicked()
+{
+	if(checkConnection())
+	{
+		QSqlQuery query(QSqlDatabase::database());
+		if(currentTable != 1)
+		{
+			QMessageBox::information(this, tr("Error adding"), tr("Please load Cities before changing"));
+		}
+		else
+		{
+			QString teamName, arenaName, souvenirPrice;
+			teamName = ui->teamComboBox->currentText();
+			arenaName = ui->arenaLineEdit->text();
+
+			query.prepare("UPDATE teams SET arenaName='"+arenaName+"' WHERE teamName='"+teamName+"')");
+			if (query.exec())
+			{
+				QMessageBox::information(this, tr("Success"), tr("Teams successfully changed"));
+			}
+			else
+			{
+				QMessageBox::information(this, tr("Error Changing arenas"), tr("Error Changing arenas"));
+			}
+
+			query.prepare("UPDATE distances SET startArena='"+arenaName+"' WHERE startArena='"+teamName+"')");
+			if (query.exec())
+			{
+				QMessageBox::information(this, tr("Success"), tr("Teams successfully changed"));
+			}
+			else
+			{
+				QMessageBox::information(this, tr("Error Changing arenas"), tr("Error Changing arenas"));
+			}
+
+
+		}
+		if(!query.exec())
+		{
+			qDebug("Failed to add new record");
+		}
+		else
+		{
+			ui->souvenirLineEdit->setText("");
+			ui->priceLineEdit->setText("");
+		}
+		model->select();
+		ui->databaseView->setModel(model);
+	}
+
+}
