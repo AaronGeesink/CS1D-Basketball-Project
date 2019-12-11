@@ -42,6 +42,7 @@ void TripWindow::setNuggetsTrip()
 
     ui->nuggetsTable->setSelectionMode(QAbstractItemView::NoSelection);*/
 
+	ui->NuggetsCombobox->clear();
 	for(int i = 0; i < teamNames.size(); ++i)
 		ui->NuggetsCombobox->addItem(teamNames[i]);
 

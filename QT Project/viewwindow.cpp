@@ -34,6 +34,7 @@ void ViewWindow::populateCombo()
 		}
 	}
 
+	ui->teamComboBox->clear();
 	for(int i = 0; i < teams.size(); ++i)
 		ui->teamComboBox->addItem(teams.at(i));
 }
