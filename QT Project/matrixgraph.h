@@ -229,18 +229,18 @@ void MatrixGraph<T>::addEdge(T start, T end, double weight)
 	//adj[endID][startID] = 1;
 
     Edge<T> edgeForward = { start, end, weight };
-    //Edge<T> edgeBackward = { end, start, weight };
+	//Edge<T> edgeBackward = { end, start, weight };
 
     vertices[startID].edges.push_back(edgeForward);
-    //vertices[endID].edges.push_back(edgeBackward);
+	//vertices[endID].edges.push_back(edgeBackward);
 
     edges.push_back(make_pair( weight, make_pair(startID, endID)));
 
     vertices[startID].edges.back().pEndVertex = &vertices[endID];
-    //vertices[endID].edges.back().pEndVertex = &vertices[startID];
+	//vertices[endID].edges.back().pEndVertex = &vertices[startID];
 
     vertices[startID].edges.back().pStartVertex = &vertices[startID];
-    //vertices[endID].edges.back().pStartVertex = &vertices[endID];
+	//vertices[endID].edges.back().pStartVertex = &vertices[endID];
 }
 
 template<typename T>
