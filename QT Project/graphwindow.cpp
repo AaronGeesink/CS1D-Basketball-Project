@@ -12,6 +12,7 @@ GraphWindow::GraphWindow(QWidget *parent) :
     QTableWidgetItem *item3 = new QTableWidgetItem("Distance");
     ui->setupUi(this);
     ui->travList->setSelectionMode(QAbstractItemView::NoSelection);
+    ui->travList->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->travList->setColumnCount(3);
     ui->travList->setHorizontalHeaderItem(0, item1);
     ui->travList->setHorizontalHeaderItem(1, item2);

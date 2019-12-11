@@ -281,32 +281,40 @@ void TripWindow::on_moveToSouvenir_clicked()
                 notVisited.erase(i);
                 break;
             }
-        for(int k = 0; k!=visited.size(); k++)
+        for(int x = 0; x!=visited.size(); x++)
         {
         for(auto i = notVisited.begin(); i!=notVisited.end(); i++)
         {
             //find cost of each node
-            astarVertex = graph1->aStar(visited[k].getTeamName(), i->getTeamName());
+            astarVertex.clear();
+            astarVertex = graph1->aStar(visited[x].getTeamName(), i->getTeamName());
             double pathCost = 0;
-            for (int i = astarVertex.size() - 2; i >= 0; i--)
+            for (int k = astarVertex.size() - 2; k >= 0; k--)
             {
-                for (int j = 0; j < astarVertex[i].edges.size(); j++)
+                for (int j = 0; j < astarVertex[k].edges.size(); j++)
                 {
-                    if (astarVertex[i].edges[j].pEndVertex->value == astarVertex[i].parent->value)
+                    if (astarVertex[k].edges[j].pEndVertex->value == astarVertex[k].parent->value)
                     {
-                        //cout << " --> " << astarVertex[i].value << " (" << astarVertex[i].edges[j].weight << ")";
-                        pathCost += astarVertex[i].edges[j].weight;
+                        qDebug() << visited[x].getTeamName() << " --> " << astarVertex[k].value << " (" << astarVertex[k].edges[j].weight << ")";
+                        pathCost += astarVertex[k].edges[j].weight;
                     }
                 }
             }
+            //if(astarVertex.size() <= 2)
+            //{
+             //   qDebug() << "LESS THAN /= 2" << astarVertex.at(0).parent->value;
+            //    pathCost /= 2;
+           // }
 
             testNode node;
-            node.start = visited[k].getTeamName();
+            node.start = visited[x].getTeamName();
             node.end = i->getTeamName();
             node.weight = pathCost;
             testNodes.push_back(node);
         }
         std::sort(testNodes.begin(), testNodes.end(), comparator());
+        for (auto i: testNodes)
+            qDebug() << i.start << i.end << i.weight;
 
         for(auto i: testNodes)
         {
@@ -334,13 +342,16 @@ void TripWindow::on_moveToSouvenir_clicked()
         }
         for(auto i: testNodes)
         {
-            //qDebug() << "start: " << i.start << ", end: "<< i.end;
-            //qDebug() << "distance: " << i.weight;
+            qDebug() << "start: " << i.start << ", end: "<< i.end;
+            qDebug() << "distance: " << i.weight;
         }
+        testNodes.clear();
         }
         for (auto i : visited) {
-			//qDebug() << "Team: " << i.getTeamName();
+            //qDebug() << "Team: " << i.getTeamName();
         }
+        //graph1->aStar("Sacramento Kings", "Boston Celtics");
+
         loadedTeams = visited;
 	}
 	// Custom Shortest plan
@@ -478,6 +489,7 @@ void TripWindow::on_moveToSouvenir_clicked()
             //qDebug() << "start: " << i.start << ", end: "<< i.end;
             //qDebug() << "distance: " << i.weight;
         }
+        testNodes.clear();
         }
         for (auto i : visited) {
 			//qDebug() << "Team: " << i.getTeamName();

@@ -229,18 +229,18 @@ void MatrixGraph<T>::addEdge(T start, T end, double weight)
     adj[endID][startID] = 1;
 
     Edge<T> edgeForward = { start, end, weight };
-    Edge<T> edgeBackward = { end, start, weight };
+    //Edge<T> edgeBackward = { end, start, weight };
 
     vertices[startID].edges.push_back(edgeForward);
-    vertices[endID].edges.push_back(edgeBackward);
+    //vertices[endID].edges.push_back(edgeBackward);
 
     edges.push_back(make_pair( weight, make_pair(startID, endID)));
 
     vertices[startID].edges.back().pEndVertex = &vertices[endID];
-    vertices[endID].edges.back().pEndVertex = &vertices[startID];
+    //vertices[endID].edges.back().pEndVertex = &vertices[startID];
 
     vertices[startID].edges.back().pStartVertex = &vertices[startID];
-    vertices[endID].edges.back().pStartVertex = &vertices[endID];
+    //vertices[endID].edges.back().pStartVertex = &vertices[endID];
 }
 
 template<typename T>
@@ -467,34 +467,36 @@ std::vector<Vertex<T>> MatrixGraph<T>::aStar(T start, T target)
     }
     Vertex<T> currentNode = vertices[startID];
     do
-    {
-        closed.push_back(currentNode);
-        for (int i = 0; i < currentNode.edges.size(); i++)
-        {
-            open.push_back(*currentNode.edges[i].pEndVertex);
-            open[open.size() - 1].cost = currentNode.cost + currentNode.edges[i].weight;
-            open[open.size() - 1].parent = new Vertex<T>(currentNode);
-        }
-        for (int i = 0; i < closed.size(); i++)
-        {
-            for (int j = 0; j < open.size(); j++)
-            {
-                if (closed[i].value == open[j].value)
-                {
-                    open.erase(open.begin() + j);
-                    j--;
-                }
-            }
-        }
-        currentNode = open[0];
-        for (int i = 1; i < open.size(); i++)
-        {
-            if (open[i].cost < currentNode.cost)
-            {
-                currentNode = open[i];
-            }
-        }
-    } while (currentNode.value != target);
+     {
+         sort(vertices[currentNode.id].edges.begin(), vertices[currentNode.id].edges.end(), compareEdgeWeight<T>());
+
+         closed.push_back(currentNode);
+         for (int i = 0; i < currentNode.edges.size(); i++)
+         {
+             open.push_back(*currentNode.edges[i].pEndVertex);
+             open[open.size() - 1].cost = currentNode.cost + currentNode.edges[i].weight;
+             open[open.size() - 1].parent = new Vertex<T>(currentNode);
+         }
+         for (int i = 0; i < closed.size(); i++)
+         {
+             for (int j = 0; j < open.size(); j++)
+             {
+                 if (closed[i].value == open[j].value)
+                 {
+                     open.erase(open.begin() + j);
+                     j--;
+                 }
+             }
+         }
+         currentNode = open[0];
+         for (int i = 1; i < open.size(); i++)
+         {
+             if (open[i].cost < currentNode.cost)
+             {
+                 currentNode = open[i];
+             }
+         }
+     } while (currentNode.value != target);
 
     // push the calculated path to the path vector
     path.push_back(currentNode);

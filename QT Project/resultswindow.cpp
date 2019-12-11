@@ -123,17 +123,22 @@ void ResultsWindow::setResults(std::vector<Team> &loadedTeams, std::vector<int> 
 
         astarVertex = graph1->aStar(startTeam, endTeam);
         intermediateDistance = 0;
-        for (int i = astarVertex.size() - 2; i >= 0; i--)
-        {
-            for (int j = 0; j < astarVertex[i].edges.size(); j++)
+
+            for (int i = astarVertex.size() - 2; i >= 0; i--)
             {
-                if (astarVertex[i].edges[j].pEndVertex->value == astarVertex[i].parent->value)
+                for (int j = 0; j < astarVertex[i].edges.size(); j++)
                 {
-                    //cout << " --> " << astarVertex[i].value << " (" << astarVertex[i].edges[j].weight << ")";
-                    intermediateDistance += astarVertex[i].edges[j].weight;
+                    if (astarVertex[i].edges[j].pEndVertex->value == astarVertex[i].parent->value)
+                    {
+                        intermediateDistance += astarVertex[i].edges[j].weight;
+                    }
                 }
             }
-        }
+        //if(astarVertex.size() <= 2)
+        //{
+        //    qDebug() << "LESS THAN /= 2" << astarVertex.at(0).parent->value;
+        //    intermediateDistance /= 2;
+        //}
         totalDistance += intermediateDistance;
         ui->travelTable->setItem(counter, 0, new QTableWidgetItem);
         ui->travelTable->setItem(counter, 1, new QTableWidgetItem);
@@ -233,6 +238,7 @@ void ResultsWindow::setResults(std::vector<Team> &loadedTeams, std::vector<int> 
 	label->setText("$" + QString::number(grandTotal));
 	ui->souvenirTable->setCellWidget(souvenirsLoaded + souvenirTeams.size(), 4, label);
     ui->travelTable->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+    ui->travelTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->souvenirTable->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
 
 
