@@ -71,6 +71,12 @@ private slots:
 	 */
 	void on_revertButton_clicked();
 
+	void on_changeArenaButton_clicked();
+
+	void on_loadDistances_clicked();
+
+	void on_addDistanceButton_clicked();
+
 private:
 	Ui::EditWindow *ui;
 	QSqlTableModel * model;			/// Table Model for rendering SQL table to the window

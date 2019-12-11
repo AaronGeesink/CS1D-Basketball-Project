@@ -46,9 +46,6 @@ void EditWindow::on_loadTeams_clicked()
 	model->setEditStrategy(QSqlTableModel::OnManualSubmit);
 	model->select();
 
-	//model->setHeaderData(0, Qt::Horizontal, tr("City Name"));
-	//model->setHeaderData(1, Qt::Horizontal, tr("Active"));
-
 	ui->databaseView->verticalHeader()->setVisible(false);
 	ui->databaseView->setModel(model);
 }
@@ -61,9 +58,6 @@ void EditWindow::on_loadSouvenirs_clicked()
 	model->setTable("souvenirs");
 	model->setEditStrategy(QSqlTableModel::OnManualSubmit);
 	model->select();
-	model->setHeaderData(0, Qt::Horizontal, tr("Team"));
-	model->setHeaderData(1, Qt::Horizontal, tr("Item"));
-	model->setHeaderData(2, Qt::Horizontal, tr("Price"));
 
 	ui->databaseView->verticalHeader()->setVisible(false);
 	ui->databaseView->setModel(model);
@@ -159,4 +153,97 @@ void EditWindow::on_submitButton_clicked()
 void EditWindow::on_revertButton_clicked()
 {
 	model->QSqlTableModel::revertAll();
+}
+
+void EditWindow::on_changeArenaButton_clicked()
+{
+	if(checkConnection())
+	{
+		QSqlQuery query(QSqlDatabase::database());
+		if(currentTable != 1)
+		{
+			QMessageBox::information(this, tr("Error adding"), tr("Please load Teams before changing"));
+		}
+		else
+		{
+			QString teamName, arenaName, souvenirPrice;
+			teamName = ui->teamComboBox->currentText();
+			arenaName = ui->arenaLineEdit->text();
+
+			query.prepare("UPDATE teams SET arena='"+arenaName+"' WHERE teamName='"+teamName+"'");
+			if (query.exec())
+			{
+				QMessageBox::information(this, tr("Success"), tr("Arena successfully changed"));
+			}
+			else
+			{
+				QMessageBox::information(this, tr("Error Changing arenas"), tr("Error Changing arenas"));
+			}
+
+			query.prepare("UPDATE distances SET startArena='"+arenaName+"' WHERE startTeam='"+teamName+"'");
+			if (query.exec())
+			{
+				QMessageBox::information(this, tr("Success"), tr("Arena successfully changed"));
+			}
+			else
+			{
+				QMessageBox::information(this, tr("Error Changing arenas"), tr("Error Changing arenas"));
+			}
+
+
+		}
+		if(!query.exec())
+		{
+			qDebug("Failed to add new record");
+		}
+		else
+		{
+			ui->souvenirLineEdit->setText("");
+			ui->priceLineEdit->setText("");
+		}
+		model->select();
+		ui->databaseView->setModel(model);
+	}
+
+}
+
+void EditWindow::on_loadDistances_clicked()
+{
+	currentTable = 3;
+
+	model = new QSqlTableModel(this);
+	model->setTable("distances");
+	model->setEditStrategy(QSqlTableModel::OnManualSubmit);
+	model->select();
+
+	ui->databaseView->verticalHeader()->setVisible(false);
+	ui->databaseView->setModel(model);
+}
+
+void EditWindow::on_addDistanceButton_clicked()
+{
+	if(checkConnection())
+	{
+		QSqlQuery query(QSqlDatabase::database());
+		if(currentTable != 3)
+		{
+			QMessageBox::information(this, tr("Error adding"), tr("Please load Distances before adding"));
+		}
+		else
+		{
+			QString teamName;
+			teamName = ui->teamComboBox->currentText();
+			query.prepare("INSERT INTO distances VALUES('"+teamName+"', NULL, NULL, NULL)");
+			if (query.exec())
+			{
+				QMessageBox::information(this, tr("Distance added"), tr("Distance added"));
+			}
+			else
+			{
+				QMessageBox::information(this, tr("Error adding"), tr("Distance Error"));
+			}
+		}
+		model->select();
+		ui->databaseView->setModel(model);
+	}
 }

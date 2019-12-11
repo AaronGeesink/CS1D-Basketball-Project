@@ -41,7 +41,7 @@
   <widget class="QTableView" name="databaseView">
    <property name="geometry">
     <rect>
-     <x>479</x>
+     <x>489</x>
      <y>40</y>
      <width>691</width>
      <height>611</height>
@@ -85,9 +85,9 @@
   <widget class="QPushButton" name="loadTeams">
    <property name="geometry">
     <rect>
-     <x>60</x>
-     <y>40</y>
-     <width>175</width>
+     <x>10</x>
+     <y>30</y>
+     <width>150</width>
      <height>50</height>
     </rect>
    </property>
@@ -104,15 +104,15 @@
     </size>
    </property>
    <property name="text">
-    <string>Load Teams</string>
+    <string>Teams</string>
    </property>
   </widget>
   <widget class="QPushButton" name="loadSouvenirs">
    <property name="geometry">
     <rect>
-     <x>60</x>
-     <y>120</y>
-     <width>175</width>
+     <x>170</x>
+     <y>30</y>
+     <width>150</width>
      <height>50</height>
     </rect>
    </property>
@@ -129,14 +129,14 @@
     </size>
    </property>
    <property name="text">
-    <string>Load Souvenirs</string>
+    <string>Souvenirs</string>
    </property>
   </widget>
   <widget class="QLabel" name="deleteLabel">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>430</y>
+     <x>10</x>
+     <y>370</y>
      <width>200</width>
      <height>30</height>
     </rect>
@@ -157,36 +157,11 @@
     <string>Delete a souvenir:</string>
    </property>
   </widget>
-  <widget class="QLabel" name="addLabel1">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>192</y>
-     <width>175</width>
-     <height>30</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>150</width>
-     <height>30</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>175</width>
-     <height>16777215</height>
-    </size>
-   </property>
-   <property name="text">
-    <string>Add a Souvenir:</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="addLabel2">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>227</y>
+     <x>20</x>
+     <y>110</y>
      <width>100</width>
      <height>50</height>
     </rect>
@@ -210,8 +185,8 @@
   <widget class="QLineEdit" name="priceLineEdit">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>317</y>
+     <x>90</x>
+     <y>310</y>
      <width>175</width>
      <height>30</height>
     </rect>
@@ -282,8 +257,8 @@
   <widget class="QLabel" name="addLabel3">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>282</y>
+     <x>20</x>
+     <y>260</y>
      <width>150</width>
      <height>30</height>
     </rect>
@@ -307,8 +282,8 @@
   <widget class="QLineEdit" name="deleteLineEdit">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>465</y>
+     <x>90</x>
+     <y>410</y>
      <width>175</width>
      <height>30</height>
     </rect>
@@ -329,9 +304,9 @@
   <widget class="QComboBox" name="teamComboBox">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>227</y>
-     <width>175</width>
+     <x>80</x>
+     <y>110</y>
+     <width>150</width>
      <height>50</height>
     </rect>
    </property>
@@ -354,8 +329,8 @@
   <widget class="QLabel" name="addLabel4">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>317</y>
+     <x>30</x>
+     <y>310</y>
      <width>100</width>
      <height>30</height>
     </rect>
@@ -379,8 +354,8 @@
   <widget class="QLineEdit" name="souvenirLineEdit">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>282</y>
+     <x>90</x>
+     <y>260</y>
      <width>175</width>
      <height>30</height>
     </rect>
@@ -401,8 +376,8 @@
   <widget class="QLabel" name="deleteLabel2">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>465</y>
+     <x>20</x>
+     <y>410</y>
      <width>125</width>
      <height>30</height>
     </rect>
@@ -426,8 +401,8 @@
   <widget class="QPushButton" name="addSouvenirButton">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>352</y>
+     <x>290</x>
+     <y>280</y>
      <width>125</width>
      <height>50</height>
     </rect>
@@ -448,14 +423,14 @@
     <enum>Qt::RightToLeft</enum>
    </property>
    <property name="text">
-    <string>Add</string>
+    <string>Add Souvenir</string>
    </property>
   </widget>
   <widget class="QPushButton" name="deleteSouvenirItem">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>500</y>
+     <x>290</x>
+     <y>400</y>
      <width>125</width>
      <height>50</height>
     </rect>
@@ -476,7 +451,123 @@
     <enum>Qt::RightToLeft</enum>
    </property>
    <property name="text">
-    <string>Delete</string>
+    <string>Delete Souvenir</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>190</y>
+     <width>101</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>New Arena:</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="arenaLineEdit">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>180</y>
+     <width>175</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>150</width>
+     <height>30</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>175</width>
+     <height>16777215</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="changeArenaButton">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>170</y>
+     <width>125</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>100</width>
+     <height>50</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>125</width>
+     <height>16777215</height>
+    </size>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::RightToLeft</enum>
+   </property>
+   <property name="text">
+    <string>Change Arena</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="loadDistances">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>30</y>
+     <width>150</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>150</width>
+     <height>50</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>175</width>
+     <height>16777215</height>
+    </size>
+   </property>
+   <property name="text">
+    <string>Distances</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="addDistanceButton">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>100</y>
+     <width>125</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>100</width>
+     <height>50</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>125</width>
+     <height>16777215</height>
+    </size>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::RightToLeft</enum>
+   </property>
+   <property name="text">
+    <string>Add Distance</string>
    </property>
   </widget>
  </widget>
