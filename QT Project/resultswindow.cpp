@@ -20,7 +20,7 @@ ResultsWindow::~ResultsWindow()
 void ResultsWindow::setResults(std::vector<Team> &loadedTeams, std::vector<int> quantities)
 {
 	int num = 0;
-
+/*
 	qDebug() << "number of teams: " << loadedTeams.size();
 	for (int i = 0; i < loadedTeams.size(); i++)
 	{
@@ -34,7 +34,7 @@ void ResultsWindow::setResults(std::vector<Team> &loadedTeams, std::vector<int> 
 			num++;
 		}
 	}
-
+*/
 	// setup for the distance table
 	ui->travelTable->clear();
 	ui->travelTable->setRowCount(loadedTeams.size());
@@ -118,8 +118,8 @@ void ResultsWindow::setResults(std::vector<Team> &loadedTeams, std::vector<int> 
         QString startTeam = i->getTeamName();
         QString endTeam = (i+1)->getTeamName();
 
-		qDebug() << "Start: " << startTeam;
-		qDebug() << "End: " << endTeam;
+		//qDebug() << "Start: " << startTeam;
+		//qDebug() << "End: " << endTeam;
 
         astarVertex = graph1->aStar(startTeam, endTeam);
         intermediateDistance = 0;
@@ -240,8 +240,6 @@ void ResultsWindow::setResults(std::vector<Team> &loadedTeams, std::vector<int> 
     ui->travelTable->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
     ui->travelTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->souvenirTable->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
-
-
 }
 
 void ResultsWindow::on_moveToSouvenir_clicked()

@@ -202,7 +202,7 @@ void TripWindow::on_moveToSouvenir_clicked()
 		loadedTeams.push_back(queryTeam("Denver Nuggets"));
 		loadedTeams.push_back(queryTeam(comboValue));
 
-		qDebug() << loadedTeams[0].getTeamName() << " --> " << loadedTeams[1].getTeamName();
+		//qDebug() << loadedTeams[0].getTeamName() << " --> " << loadedTeams[1].getTeamName();
 	}
 	// custom specified plan
 	else if (planNumber == 1)
@@ -295,7 +295,7 @@ void TripWindow::on_moveToSouvenir_clicked()
                 {
                     if (astarVertex[k].edges[j].pEndVertex->value == astarVertex[k].parent->value)
                     {
-                        qDebug() << visited[x].getTeamName() << " --> " << astarVertex[k].value << " (" << astarVertex[k].edges[j].weight << ")";
+						//qDebug() << visited[x].getTeamName() << " --> " << astarVertex[k].value << " (" << astarVertex[k].edges[j].weight << ")";
                         pathCost += astarVertex[k].edges[j].weight;
                     }
                 }
@@ -313,8 +313,6 @@ void TripWindow::on_moveToSouvenir_clicked()
             testNodes.push_back(node);
         }
         std::sort(testNodes.begin(), testNodes.end(), comparator());
-        for (auto i: testNodes)
-            qDebug() << i.start << i.end << i.weight;
 
         for(auto i: testNodes)
         {
@@ -342,8 +340,8 @@ void TripWindow::on_moveToSouvenir_clicked()
         }
         for(auto i: testNodes)
         {
-            qDebug() << "start: " << i.start << ", end: "<< i.end;
-            qDebug() << "distance: " << i.weight;
+			//qDebug() << "start: " << i.start << ", end: "<< i.end;
+			//qDebug() << "distance: " << i.weight;
         }
         testNodes.clear();
         }

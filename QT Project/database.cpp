@@ -157,6 +157,27 @@ std::vector<Edge<QString>> queryEdges(QString startTeam)
         distances.push_back(query.value(0).toDouble());
 	}
 
+// check to see if end Teams are active, and delete their data if they are not
+	QString active("0");
+
+	query.prepare("SELECT teamName FROM teams WHERE active='"+active+"'");
+	if(!query.exec())
+	{
+		qDebug() << "Failed to query from SQL Database";
+	}
+	while(query.next())
+	{
+		for (int i = 0; i < endTeams.size(); i++)
+		{
+			if (query.value(0).toString() == endTeams[i])
+			{
+				endTeams.erase(endTeams.begin() + i);
+				distances.erase(distances.begin() + i);
+				i--;
+			}
+		}
+	}
+
 // construct the edges
 	for (int i = 0; i < endTeams.size(); i++)
 	{
@@ -221,7 +242,7 @@ HashMap<int, Souvenir, 30, MyKeyHash> * querySouvenirs(QString teamName)
 	{
 		Souvenir souvenir(souvenirNames[i], souvenirPrices[i], souvenirIDs[i]);
         souvenirs->insert(souvenirIDs[i], souvenir);
-        qDebug() << "souvenir: " << souvenirs->at(souvenirIDs[i]).getName() << souvenirs->at(souvenirIDs[i]).getID() << souvenirIDs[i];
+		//qDebug() << "souvenir: " << souvenirs->at(souvenirIDs[i]).getName() << souvenirs->at(souvenirIDs[i]).getID() << souvenirIDs[i];
 	}
     //qDebug() << souvenirs.size();
 	return souvenirs;

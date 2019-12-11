@@ -226,7 +226,7 @@ void MatrixGraph<T>::addEdge(T start, T end, double weight)
     }
     // Considering a bidirectional edge
     adj[startID][endID] = 1;
-    adj[endID][startID] = 1;
+	//adj[endID][startID] = 1;
 
     Edge<T> edgeForward = { start, end, weight };
     //Edge<T> edgeBackward = { end, start, weight };

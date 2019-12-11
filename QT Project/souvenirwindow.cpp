@@ -82,7 +82,7 @@ void SouvenirWindow::loadSouvenirQuantities()
 				//loadedTeams->at(i).getSouvenirs()->at(loadedTeams->at(i).getKeys()[j]).setQuantity(spinBox->value());
 				int value = spinBox->value();
 				quantities.push_back(value);
-				qDebug() << quantities.size();
+				//qDebug() << quantities.size();
 				//qDebug() << spinBox->value();
 				//qDebug() << loadedTeams->at(i).getSouvenirs()->at(loadedTeams->at(i).getKeys()[j]).getName();
 				//qDebug() << loadedTeams->at(i).getSouvenirs()->at(loadedTeams->at(i).getKeys()[j]).getQuantity();
